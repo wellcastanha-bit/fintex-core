@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useDelayedLoading } from "@/lib/hooks/use-delayed-loading";
 import { fmtBRL } from "./ui/card_shell";
 import CardsTopo, { type DashboardKpis } from "./ui/boxes/cards_topo";
 import RankingPagamentos, { type RankingPagamentoRow } from "./ui/boxes/ranking_pagamentos";
@@ -163,12 +164,14 @@ const EMPTY: DashboardData = {
 export default function DashboardView({ qs = "period=hoje", isFatias = false }: { qs?: string; isFatias?: boolean }) {
   const [data, setData] = useState<DashboardData>(EMPTY)
   const [loading, setLoading] = useState(true)
+  const { startLoading, stopLoading } = useDelayedLoading()
 
   useEffect(() => {
     const controller = new AbortController()
     let cancelled = false
 
     setLoading(true)
+    startLoading()
 
     fetch(`/api/dashboard?${qs}`, { signal: controller.signal })
       .then((r) => r.json())
@@ -178,14 +181,18 @@ export default function DashboardView({ qs = "period=hoje", isFatias = false }: 
       })
       .catch(() => {})
       .finally(() => {
-        if (!cancelled) setLoading(false)
+        if (!cancelled) {
+          setLoading(false)
+          stopLoading()
+        }
       })
 
     return () => {
       cancelled = true
       controller.abort()
+      stopLoading()
     }
-  }, [qs])
+  }, [qs]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div

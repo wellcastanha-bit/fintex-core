@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useDelayedLoading } from '@/lib/hooks/use-delayed-loading'
 
 type View = 'empresas' | 'holdings'
 
@@ -32,6 +33,7 @@ export default function EmpresaSelectorTabs({
   const showTabs = temEmpresas && temHoldings
 
   const [view, setView] = useState<View>('empresas')
+  const { startLoading } = useDelayedLoading()
 
   const fs = compact ? 15 : 16
   const gap = compact ? 10 : 12
@@ -104,6 +106,7 @@ export default function EmpresaSelectorTabs({
             <form
               key={acesso.empresa_id}
               action={selecionarEmpresa.bind(null, acesso.empresa_id)}
+              onSubmit={() => startLoading()}
             >
               <button
                 type="submit"
@@ -171,6 +174,7 @@ export default function EmpresaSelectorTabs({
             <form
               key={h.id}
               action={selecionarHolding.bind(null, h.id)}
+              onSubmit={() => startLoading()}
             >
               <button
                 type="submit"

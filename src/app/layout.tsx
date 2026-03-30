@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import SwRegister from "./sw-register";
+import { LoadingProvider } from "@/lib/loading-store";
+import GlobalLoadingOverlay from "@/components/global-loading-overlay";
 
 export const metadata: Metadata = {
   title: "Fintex",
@@ -42,7 +44,10 @@ export default function RootLayout({
     <html lang="pt-br">
       <body>
         <SwRegister />
-        {children}
+        <LoadingProvider>
+          <GlobalLoadingOverlay />
+          {children}
+        </LoadingProvider>
       </body>
     </html>
   );
