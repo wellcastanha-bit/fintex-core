@@ -5,6 +5,7 @@ import { MonthCalendar } from "./components/calendar";
 import { ReservasDoDia } from "./components/reservas-do-dia";
 import type { Reserva } from "./components/reservas-do-dia";
 import { subscribeReservations } from "@/lib/realtime";
+import { useLoadingStore } from "@/lib/loading-store";
 
 const AQUA = "#4fdcff";
 const PAGE_BG = "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(6,16,37,0.94) 100%)";
@@ -226,6 +227,7 @@ const TODAY = toISODate(new Date());
 export default function ReservasPage() {
   const [reservas, setReservas] = useState<Reserva[]>([]);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const { startLoading, stopLoading } = useLoadingStore();
 
   const [monthDate, setMonthDate] = useState(() => {
     const d = new Date();
@@ -258,6 +260,7 @@ export default function ReservasPage() {
     const lastDay = new Date(y, m + 1, 0).getDate();
     const to = `${y}-${pad2(m + 1)}-${pad2(lastDay)}`;
 
+    startLoading();
     fetch(`/api/reservas?from=${from}&to=${to}`)
       .then((r) => r.json())
       .then((json) => {
@@ -265,22 +268,26 @@ export default function ReservasPage() {
         if (json.ok) { setReservas(json.rows ?? []); setFetchError(null); }
         else setFetchError(json.error ?? 'Erro desconhecido');
       })
-      .catch((e) => { if (!cancelled) setFetchError(String(e)); });
+      .catch((e) => { if (!cancelled) setFetchError(String(e)); })
+      .finally(() => { if (!cancelled) stopLoading(); });
 
     reloadRef.current = () => {
+      startLoading();
       fetch(`/api/reservas?from=${from}&to=${to}`)
         .then((r) => r.json())
         .then((json) => {
           if (json.ok) { setReservas(json.rows ?? []); setFetchError(null); }
           else setFetchError(json.error ?? 'Erro desconhecido');
         })
-        .catch((e) => setFetchError(String(e)));
+        .catch((e) => setFetchError(String(e)))
+        .finally(() => stopLoading());
     };
 
     return () => {
       cancelled = true;
+      stopLoading();
     };
-  }, [monthDate]);
+  }, [monthDate, startLoading, stopLoading]);
 
   useEffect(() => {
     let unsub: (() => void) | null = null;

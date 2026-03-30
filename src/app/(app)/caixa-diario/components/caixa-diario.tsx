@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { useLoadingStore } from "@/lib/loading-store";
 
 const EntradasTab: any = dynamic(() => import("./entradas").then((m: any) => m.default), { ssr: false });
 const DespesasTab: any = dynamic(() => import("./despesas").then((m: any) => m.default), { ssr: false });
@@ -220,6 +221,7 @@ function StatCard({
 
 export default function CaixaDiario() {
   const STAT_W = 170;
+  const { startLoading, stopLoading } = useLoadingStore();
 
   const [tab, setTab] = useState<TabKey>("entradas");
   const [dateISO, setDateISO] = useState<string>(() => getDiaOperacionalISO());
@@ -258,6 +260,7 @@ export default function CaixaDiario() {
 
     async function load() {
       setStatus("loading");
+      startLoading();
       try {
         const res = await fetch(`/api/caixa-diario?date=${encodeURIComponent(dateISO)}`, { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -295,12 +298,14 @@ export default function CaixaDiario() {
       } catch {
         if (!alive) return;
         setStatus("err");
+      } finally {
+        if (alive) stopLoading();
       }
     }
 
     load();
-    return () => { alive = false; };
-  }, [dateISO]);
+    return () => { alive = false; stopLoading(); };
+  }, [dateISO, startLoading, stopLoading]);
 
   const totalsByPay = useMemo(() => {
     const base = { dinheiro: 0, pix: 0, online: 0, debito: 0, credito: 0, total: 0 };

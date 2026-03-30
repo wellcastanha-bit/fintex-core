@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { type ReactNode } from "react";
 import type { ApiDashboard, ApiRow as ApiRowType } from "./page";
+import AnimatedMetricValue from "@/components/animated-metric-value";
 
 const CARD_BG =
   "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))";
@@ -126,7 +127,7 @@ function TopCard({
   accent = "aqua",
 }: {
   title: string;
-  value: string;
+  value: ReactNode;
   sub1?: string;
   accent?: Accent;
 }) {
@@ -357,33 +358,33 @@ export default function Entradas({ api, isFatias = false }: { api: ApiDashboard 
         >
           <TopCard
             title="Pedidos"
-            value={String(ct?.pedidos ?? 0)}
+            value={<AnimatedMetricValue value={ct?.pedidos ?? 0} type="integer" />}
             sub1={`Ticket médio: ${fmtBRL(ct?.ticket_medio ?? 0)}`}
             accent="aqua"
           />
           <TopCard
             title="Faturamento"
-            value={fmtBRL(faturamento)}
+            value={<AnimatedMetricValue value={faturamento} type="currency" />}
             sub1="Receita Total:"
             accent="aqua"
           />
           <TopCard
             title="Lucro Estimado"
-            value={fmtBRL(lucro)}
+            value={<AnimatedMetricValue value={lucro} type="currency" />}
             sub1={`Margem: ${pct(margemPct)}`}
             accent="green"
           />
           {isFatias ? (
             <TopCard
               title="Fatias Vendidas"
-              value={String(fatiasTotal)}
+              value={<AnimatedMetricValue value={fatiasTotal} type="integer" />}
               sub1={`Total: ${fmtBRL(fatiasTotal * 5)}`}
               accent="green"
             />
           ) : (
             <TopCard
               title="Despesas"
-              value={fmtBRL(ct?.despesas ?? 0)}
+              value={<AnimatedMetricValue value={ct?.despesas ?? 0} type="currency" />}
               sub1="Despesa Total:"
               accent="red"
             />

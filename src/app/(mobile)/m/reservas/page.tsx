@@ -2,6 +2,7 @@
 
 import React, { useMemo, useRef, useEffect, useState } from "react";
 import { subscribeReservations } from "@/lib/realtime";
+import { useLoadingStore } from "@/lib/loading-store";
 
 const AQUA_LINE = "rgba(79,220,255,0.18)";
 const BG_CARD = "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))";
@@ -271,6 +272,7 @@ const TODAY = toISODate(new Date());
 export default function MobileReservasPage() {
   const [reservas, setReservas] = useState<Reserva[]>([]);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const { startLoading, stopLoading } = useLoadingStore();
 
   const [monthRef, setMonthRef] = useState<Date>(() => {
     const d = new Date();
@@ -327,6 +329,7 @@ export default function MobileReservasPage() {
     const lastDay = new Date(y, m + 1, 0).getDate();
     const to = `${y}-${pad2(m + 1)}-${pad2(lastDay)}`;
 
+    startLoading();
     fetch(`/api/reservas?from=${from}&to=${to}`)
       .then((r) => r.json())
       .then((json) => {
@@ -334,22 +337,26 @@ export default function MobileReservasPage() {
         if (json.ok) { setReservas(json.rows ?? []); setFetchError(null); }
         else setFetchError(json.error ?? 'Erro desconhecido');
       })
-      .catch((e) => { if (!cancelled) setFetchError(String(e)); });
+      .catch((e) => { if (!cancelled) setFetchError(String(e)); })
+      .finally(() => { if (!cancelled) stopLoading(); });
 
     reloadRef.current = () => {
+      startLoading();
       fetch(`/api/reservas?from=${from}&to=${to}`)
         .then((r) => r.json())
         .then((json) => {
           if (json.ok) { setReservas(json.rows ?? []); setFetchError(null); }
           else setFetchError(json.error ?? 'Erro desconhecido');
         })
-        .catch((e) => setFetchError(String(e)));
+        .catch((e) => setFetchError(String(e)))
+        .finally(() => stopLoading());
     };
 
     return () => {
       cancelled = true;
+      stopLoading();
     };
-  }, [monthRef]);
+  }, [monthRef, startLoading, stopLoading]);
 
   useEffect(() => {
     let unsub: (() => void) | null = null;

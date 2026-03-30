@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLoadingStore } from "@/lib/loading-store";
 
 import MenuConfig from "./components/menu";
 import Empresa from "./components/empresa";
@@ -51,8 +52,10 @@ export default function ConfiguracoesPage() {
   const [configuracoes, setConfiguracoes] = useState<Configuracoes | null>(null);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState<string | null>(null);
+  const { startLoading, stopLoading } = useLoadingStore();
 
   useEffect(() => {
+    startLoading();
     fetch("/api/configuracoes")
       .then((r) => r.json())
       .then((res) => {
@@ -60,8 +63,8 @@ export default function ConfiguracoesPage() {
         setConfiguracoes(res.data);
       })
       .catch((e: Error) => setErro(e.message))
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => { setLoading(false); stopLoading(); });
+  }, [startLoading, stopLoading]);
 
   if (loading) {
     return (

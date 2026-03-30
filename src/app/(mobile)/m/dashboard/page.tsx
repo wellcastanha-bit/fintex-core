@@ -6,6 +6,7 @@ import Saidas from "./saidas";
 import CardCaixa from "./conferenciacaixa";
 import { resolveTodayBRT } from "@/lib/period";
 import { useEmpresa } from "@/lib/empresa-context";
+import { useLoadingStore } from "@/lib/loading-store";
 
 const BG_PAGE =
   "radial-gradient(1200px 700px at 20% 0%, rgba(79,220,255,0.12), transparent 55%), radial-gradient(900px 520px at 80% 10%, rgba(79,220,255,0.10), transparent 60%), linear-gradient(180deg, rgba(4,19,40,1), rgba(2,11,24,1) 58%, rgba(2,9,20,1))";
@@ -239,9 +240,10 @@ export default function MobileDashboardPage() {
     return { queryString: `from=${f}&to=${t}`, localLabel: `${isoToBR(f)} – ${isoToBR(t)}` };
   }, [period, opToday, singleDate, rangeFrom, rangeTo]);
 
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
   const [api, setApi] = useState<ApiDashboard | null>(null);
   const [err, setErr] = useState<string>("");
+  const { startLoading, stopLoading } = useLoadingStore();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -250,6 +252,7 @@ export default function MobileDashboardPage() {
     async function load() {
       setLoading(true);
       setErr("");
+      startLoading();
       try {
         const res = await fetch(`/api/dashboard?${queryString}`, { signal: controller.signal });
         const j = (await res.json()) as ApiDashboard;
@@ -262,6 +265,7 @@ export default function MobileDashboardPage() {
         }
       } finally {
         if (alive) setLoading(false);
+        stopLoading();
       }
     }
 
@@ -269,8 +273,9 @@ export default function MobileDashboardPage() {
     return () => {
       alive = false;
       controller.abort();
+      stopLoading();
     };
-  }, [queryString]);
+  }, [queryString, startLoading, stopLoading]);
 
   const conf = api?.conferencia_caixa;
 
@@ -296,9 +301,9 @@ export default function MobileDashboardPage() {
               />
             }
           />
-          {loading || err ? (
+          {err ? (
             <div style={{ marginTop: 10, fontSize: 11, opacity: 0.7, fontWeight: 900 }}>
-              {loading ? "Carregando..." : `Erro: ${err}`}
+              {`Erro: ${err}`}
             </div>
           ) : null}
         </Shell>

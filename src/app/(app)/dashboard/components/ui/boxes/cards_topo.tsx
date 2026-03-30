@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { ReactNode } from "react";
+import AnimatedMetricValue from "@/components/animated-metric-value";
 
 function accentMap(accent: "aqua" | "green" | "red" | "gray") {
   const map = {
@@ -48,7 +50,7 @@ function MetricCard({
   accent = "aqua",
 }: {
   title: string;
-  value: string;
+  value: ReactNode;
   sub: string;
   accent?: "aqua" | "green" | "red" | "gray";
 }) {
@@ -147,23 +149,23 @@ export default function CardsTopo({
   return (
     <div style={{ padding: 18, paddingTop: 0 }}>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 12 }}>
-        <MetricCard title="PEDIDOS" value={String(p)} sub={`Ticket médio: ${fmtBRL(tm)}`} accent="gray" />
-        <MetricCard title="FATURAMENTO" value={fmtBRL(fat)} sub="Receita Total:" accent="aqua" />
+        <MetricCard title="PEDIDOS" value={<AnimatedMetricValue value={p} type="integer" />} sub={`Ticket médio: ${fmtBRL(tm)}`} accent="gray" />
+        <MetricCard title="FATURAMENTO" value={<AnimatedMetricValue value={fat} type="currency" />} sub="Receita Total:" accent="aqua" />
         <MetricCard
           title="LUCRO ESTIMADO"
-          value={fmtBRL(luc)}
+          value={<AnimatedMetricValue value={luc} type="currency" />}
           sub={`Margem: ${margemPctUI.toFixed(1).replace(".", ",")}%`}
           accent="green"
         />
         {isFatias ? (
           <MetricCard
             title="FATIAS VENDIDAS"
-            value={String(fatiasTotal)}
+            value={<AnimatedMetricValue value={fatiasTotal} type="integer" />}
             sub={`Total: ${fmtBRL(fatiasTotal * 5)}`}
             accent="green"
           />
         ) : (
-          <MetricCard title="DESPESAS" value={fmtBRL(desp)} sub={subDesp} accent="red" />
+          <MetricCard title="DESPESAS" value={<AnimatedMetricValue value={desp} type="currency" />} sub={subDesp} accent="red" />
         )}
       </div>
     </div>

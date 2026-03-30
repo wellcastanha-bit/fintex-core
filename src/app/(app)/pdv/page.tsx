@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useLoadingStore } from "@/lib/loading-store";
 
 import Cliente from "./components/cliente";
 import Plataforma from "./components/plataforma";
@@ -45,8 +46,10 @@ export default function Page() {
   const [erroConfig, setErroConfig] = useState<string | null>(null);
 
   const [toast, setToast] = useState<{ msg: string; type: ToastType } | null>(null);
+  const { startLoading, stopLoading } = useLoadingStore();
 
   useEffect(() => {
+    startLoading();
     fetch("/api/configuracoes")
       .then((r) => r.json())
       .then((res) => {
@@ -57,8 +60,8 @@ export default function Page() {
         setBairros(res.data.bairros ?? []);
       })
       .catch((e: Error) => setErroConfig(e.message))
-      .finally(() => setLoadingConfig(false));
-  }, []);
+      .finally(() => { setLoadingConfig(false); stopLoading(); });
+  }, [startLoading, stopLoading]);
 
   const showToast = useCallback((msg: string, type: ToastType = "error") => {
     setToast({ msg, type });

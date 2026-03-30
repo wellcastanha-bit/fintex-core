@@ -5,6 +5,7 @@ import { useEmpresaId } from "@/lib/hooks/use-empresa-id";
 import { subscribeOrders } from "@/lib/realtime";
 import { resolveTodayBRT } from "@/lib/period";
 import { useEmpresa } from "@/lib/empresa-context";
+import { useLoadingStore } from "@/lib/loading-store";
 
 const AQUA_LINE = "rgba(79,220,255,0.18)";
 const CARD_BG =
@@ -524,6 +525,7 @@ export default function MobilePedidosPage() {
 
   const empresaId = useEmpresaId();
   const { isFatias } = useEmpresa();
+  const { startLoading, stopLoading } = useLoadingStore();
 
   const opToday = useMemo(() => resolveTodayBRT(), []);
 
@@ -561,6 +563,7 @@ export default function MobilePedidosPage() {
     async function load() {
       setLoading(true);
       setErr("");
+      startLoading();
       try {
         const res = await fetch(`/api/pedidos?${queryString}`, { cache: "no-store" });
         const j = await res.json();
@@ -570,11 +573,12 @@ export default function MobilePedidosPage() {
         if (alive) { setPedidos([]); setErr(e?.message || "Erro ao carregar pedidos"); }
       } finally {
         if (alive) setLoading(false);
+        stopLoading();
       }
     }
     load();
-    return () => { alive = false; };
-  }, [queryString, reloadTick]);
+    return () => { alive = false; stopLoading(); };
+  }, [queryString, reloadTick, startLoading, stopLoading]);
 
   useEffect(() => {
     if (!empresaId) return;
