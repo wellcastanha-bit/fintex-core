@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useLoadingStore } from "@/lib/loading-store";
+import { resolveTodayBRT } from "@/lib/period";
 
 const EntradasTab: any = dynamic(() => import("./entradas").then((m: any) => m.default), { ssr: false });
 const DespesasTab: any = dynamic(() => import("./despesas").then((m: any) => m.default), { ssr: false });
@@ -44,14 +45,6 @@ function pad2(n: number) {
   return String(n).padStart(2, "0");
 }
 
-const OP_CUTOFF_HOUR = 6;
-const TZ_OFFSET_MIN = -180;
-
-function getDiaOperacionalISO() {
-  const now = new Date(Date.now() + TZ_OFFSET_MIN * 60_000);
-  if (now.getHours() < OP_CUTOFF_HOUR) now.setDate(now.getDate() - 1);
-  return `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
-}
 
 function toNumberSmart(v: any) {
   if (v === null || v === undefined) return 0;
@@ -224,12 +217,12 @@ export default function CaixaDiario() {
   const { startLoading, stopLoading } = useLoadingStore();
 
   const [tab, setTab] = useState<TabKey>("entradas");
-  const [dateISO, setDateISO] = useState<string>(() => getDiaOperacionalISO());
+  const [dateISO, setDateISO] = useState<string>(() => resolveTodayBRT());
   const [status, setStatus] = useState<"loading" | "ok" | "err">("loading");
 
   useEffect(() => {
     const t = setInterval(() => {
-      const next = getDiaOperacionalISO();
+      const next = resolveTodayBRT();
       setDateISO((cur) => (cur === next ? cur : next));
     }, 30_000);
     return () => clearInterval(t);

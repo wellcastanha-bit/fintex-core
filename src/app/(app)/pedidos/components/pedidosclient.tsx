@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef, useState } from "react";
+import { resolveTodayBRT, opDateWindowDates } from "@/lib/period";
 
 import { COLS, type Row, type ColDef } from "./pedidos.constant";
 
@@ -60,30 +61,6 @@ function toNumSafe(v: any) {
   return Number.isFinite(n) ? n : 0;
 }
 
-function toISODateLocal(d: Date) {
-  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
-}
-
-function getOperationalWindow(opts?: { cutoffHour?: number; operationalISO?: string }) {
-  const cutoffHour = typeof opts?.cutoffHour === "number" ? opts!.cutoffHour : 5;
-  const start = new Date();
-
-  if (opts?.operationalISO) {
-    const [yy, mm, dd] = opts.operationalISO.split("-").map((x) => Number(x));
-    start.setTime(new Date(yy, (mm || 1) - 1, dd || 1, 0, 0, 0, 0).getTime());
-  } else {
-    const now = new Date();
-    const base = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
-    if (now.getHours() < cutoffHour) base.setDate(base.getDate() - 1);
-    start.setTime(base.getTime());
-  }
-
-  start.setHours(cutoffHour, 0, 0, 0);
-  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
-  const operationalISO = toISODateLocal(start);
-
-  return { start, end, operationalISO };
-}
 
 function isInWindow(iso: string | undefined, start: Date, end: Date) {
   if (!iso) return false;
@@ -127,7 +104,6 @@ type Props = {
   highlightIdsFromParent?: string[];
   filterOperationalDay?: boolean;
   operationalISO?: string;
-  cutoffHour?: number;
   isFatias?: boolean;
 };
 
@@ -138,7 +114,6 @@ export default function PedidosClient({
   highlightIdsFromParent,
   filterOperationalDay = false,
   operationalISO,
-  cutoffHour = 5,
   isFatias = false,
 }: Props) {
   const effectiveCols = useMemo(() => getEffectiveCols(isFatias), [isFatias]);
@@ -147,9 +122,10 @@ export default function PedidosClient({
   const sourceOrders = useMemo(() => {
     const list = orders || [];
     if (!filterOperationalDay) return list;
-    const win = getOperationalWindow({ cutoffHour, operationalISO });
+    const opDate = operationalISO ?? resolveTodayBRT();
+    const win = opDateWindowDates(opDate);
     return list.filter((o) => isInWindow(o?.created_at, win.start, win.end));
-  }, [orders, filterOperationalDay, operationalISO, cutoffHour]);
+  }, [orders, filterOperationalDay, operationalISO]);
 
   const [rowsState, setRowsState] = useState<Row[]>(() => (sourceOrders || []).map((o) => mapOrderToRow(o, isFatias)));
 

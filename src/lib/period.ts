@@ -1,6 +1,8 @@
 const TZ_OFFSET_MS = -3 * 60 * 60 * 1000
 const BRT_CUTOFF_HOUR = 6
 
+export const OP_CUTOFF_HOUR = BRT_CUTOFF_HOUR
+
 function pad2(n: number) {
   return String(n).padStart(2, '0')
 }
@@ -20,6 +22,11 @@ export function opDateRangeUTC(opDate: string): { from: string; to: string } {
   const next = new Date(opDate + 'T00:00:00Z')
   next.setUTCDate(next.getUTCDate() + 1)
   return { from, to: formatUTCDate(next) + 'T09:00:00.000Z' }
+}
+
+export function opDateWindowDates(opDate: string): { start: Date; end: Date } {
+  const { from, to } = opDateRangeUTC(opDate)
+  return { start: new Date(from), end: new Date(to) }
 }
 
 export function periodRangeUTC(start: string, end: string): { from: string; to: string } {

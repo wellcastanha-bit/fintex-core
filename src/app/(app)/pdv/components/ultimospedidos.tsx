@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useOrders } from "@/lib/hooks/use-orders";
 import type { OrdersSourceItem } from "@/lib/types/orders";
+import { resolveTodayBRT, opDateWindowDates } from "@/lib/period";
 
 type Row = Record<string, any>;
 
@@ -82,30 +83,6 @@ function paymentLabel(v: any) {
   return (v ?? "-").toString();
 }
 
-function toISODateLocal(d: Date) {
-  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
-}
-
-function getOperationalWindow(opts?: { cutoffHour?: number; operationalISO?: string }) {
-  const cutoffHour = typeof opts?.cutoffHour === "number" ? opts!.cutoffHour : 5;
-
-  const start = new Date();
-  if (opts?.operationalISO) {
-    const [yy, mm, dd] = opts.operationalISO.split("-").map((x) => Number(x));
-    start.setTime(new Date(yy, (mm || 1) - 1, dd || 1, 0, 0, 0, 0).getTime());
-  } else {
-    const now = new Date();
-    const base = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
-    if (now.getHours() < cutoffHour) base.setDate(base.getDate() - 1);
-    start.setTime(base.getTime());
-  }
-
-  start.setHours(cutoffHour, 0, 0, 0);
-  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
-  const operationalISO = toISODateLocal(start);
-
-  return { start, end, operationalISO };
-}
 
 function isInWindow(iso: string | undefined, start: Date, end: Date) {
   if (!iso) return false;
@@ -171,14 +148,12 @@ type Props = {
   emptyText?: string;
   filterOperationalDay?: boolean;
   operationalISO?: string;
-  cutoffHour?: number;
 };
 
 export default function UltimosPedidos({
   emptyText = "Nada para mostrar.",
   filterOperationalDay = true,
   operationalISO,
-  cutoffHour = 5,
 }: Props) {
   const [hoverHeader, setHoverHeader] = useState(false);
   const { orders, prependOrder } = useOrders();
@@ -196,11 +171,12 @@ export default function UltimosPedidos({
   const visible = useMemo(() => {
     if (!filterOperationalDay) return orders.slice(0, 10);
 
-    const win = getOperationalWindow({ cutoffHour, operationalISO });
+    const opDate = operationalISO ?? resolveTodayBRT();
+    const win = opDateWindowDates(opDate);
     return orders
       .filter((o) => isInWindow(o.created_at, win.start, win.end))
       .slice(0, 10);
-  }, [orders, filterOperationalDay, cutoffHour, operationalISO]);
+  }, [orders, filterOperationalDay, operationalISO]);
 
   const rows: Row[] = useMemo(() => visible.map(mapOrderToRow), [visible]);
 
