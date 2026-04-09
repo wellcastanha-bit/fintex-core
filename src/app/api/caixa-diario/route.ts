@@ -149,7 +149,8 @@ export async function GET(req: NextRequest) {
       entries,
       pedidos,
     })
-  } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 })
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : 'Erro interno'
+    return NextResponse.json({ error: msg }, { status: 500 })
   }
 }

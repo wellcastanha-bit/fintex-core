@@ -362,7 +362,7 @@ export default function Page() {
               minWidth: 0,
             }}
           >
-            <div style={{ width: 340, flex: "0 0 340px" }}>
+            <div style={{ flex: "0 0 370px" }}>
               <Pagamento
                 pagamentos={pagamentos}
                 showToast={showToast}

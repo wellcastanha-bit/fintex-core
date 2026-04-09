@@ -290,7 +290,9 @@ export default function PedidosClient({
       setConfirmBusy(true);
       await onRequestDelete?.(confirmId);
     } catch {
-      // silent
+      if (patchErrorTimerRef.current) clearTimeout(patchErrorTimerRef.current);
+      setPatchError("Erro ao excluir pedido. Tente novamente.");
+      patchErrorTimerRef.current = setTimeout(() => setPatchError(""), 5000);
     } finally {
       setConfirmBusy(false);
       closeConfirm();

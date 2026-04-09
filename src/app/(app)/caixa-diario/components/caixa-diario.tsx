@@ -5,10 +5,10 @@ import dynamic from "next/dynamic";
 import { useLoadingStore } from "@/lib/loading-store";
 import { resolveTodayBRT } from "@/lib/period";
 
-const EntradasTab: any = dynamic(() => import("./entradas").then((m: any) => m.default), { ssr: false });
-const DespesasTab: any = dynamic(() => import("./despesas").then((m: any) => m.default), { ssr: false });
-const SangriasTab: any = dynamic(() => import("./sangria").then((m: any) => m.default), { ssr: false });
-const ContadoresTab: any = dynamic(() => import("./contadores").then((m: any) => m.default), { ssr: false });
+const EntradasTab = dynamic(() => import("./entradas"), { ssr: false });
+const DespesasTab = dynamic(() => import("./despesas"), { ssr: false });
+const SangriasTab = dynamic(() => import("./sangria"), { ssr: false });
+const ContadoresTab = dynamic(() => import("./contadores"), { ssr: false });
 
 type TabKey = "entradas" | "despesas" | "sangrias" | "contadores";
 
@@ -208,6 +208,40 @@ function StatCard({
           <div className={"mt-1 text-[14px] font-semibold " + valClass}>{value}</div>
         </div>
       </CardShell>
+    </div>
+  );
+}
+
+function TabBar({ tab, setTab }: { tab: TabKey; setTab: (k: TabKey) => void }) {
+  const base = "h-[44px] w-full rounded-full border border-white/10 bg-white/[0.04] px-2";
+  const item = "h-[44px] rounded-full flex items-center justify-center gap-2 text-[18px] font-semibold transition-all";
+  const inactive = "text-slate-300/70 hover:text-white";
+  const activeWrap = "ring-2 ring-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]";
+
+  const getActiveClass = (k: TabKey) => {
+    if (k !== tab) return item + " " + inactive;
+    if (k === "entradas") return item + " bg-emerald-500 text-white " + activeWrap;
+    if (k === "despesas") return item + " bg-red-500 text-white " + activeWrap;
+    if (k === "sangrias") return item + " bg-orange-500 text-white " + activeWrap;
+    return item + " bg-blue-500 text-white " + activeWrap;
+  };
+
+  return (
+    <div className={base}>
+      <div className="grid grid-cols-4 gap-2">
+        <button className={getActiveClass("entradas")} onClick={() => setTab("entradas")}>
+          <span className="opacity-90">↗</span> Entradas
+        </button>
+        <button className={getActiveClass("despesas")} onClick={() => setTab("despesas")}>
+          <span className="opacity-90">$</span> Despesas
+        </button>
+        <button className={getActiveClass("sangrias")} onClick={() => setTab("sangrias")}>
+          <span className="opacity-90">↘</span> Sangrias
+        </button>
+        <button className={getActiveClass("contadores")} onClick={() => setTab("contadores")}>
+          <span className="opacity-90">▦</span> Contadores
+        </button>
+      </div>
     </div>
   );
 }
@@ -501,40 +535,6 @@ export default function CaixaDiario() {
     }, 650);
   };
 
-  const TabBar = () => {
-    const base = "h-[44px] w-full rounded-full border border-white/10 bg-white/[0.04] px-2";
-    const item = "h-[44px] rounded-full flex items-center justify-center gap-2 text-[18px] font-semibold transition-all";
-    const inactive = "text-slate-300/70 hover:text-white";
-    const activeWrap = "ring-2 ring-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)]";
-
-    const getActiveClass = (k: TabKey) => {
-      if (k !== tab) return item + " " + inactive;
-      if (k === "entradas") return item + " bg-emerald-500 text-white " + activeWrap;
-      if (k === "despesas") return item + " bg-red-500 text-white " + activeWrap;
-      if (k === "sangrias") return item + " bg-orange-500 text-white " + activeWrap;
-      return item + " bg-blue-500 text-white " + activeWrap;
-    };
-
-    return (
-      <div className={base}>
-        <div className="grid grid-cols-4 gap-2">
-          <button className={getActiveClass("entradas")} onClick={() => setTab("entradas")}>
-            <span className="opacity-90">↗</span> Entradas
-          </button>
-          <button className={getActiveClass("despesas")} onClick={() => setTab("despesas")}>
-            <span className="opacity-90">$</span> Despesas
-          </button>
-          <button className={getActiveClass("sangrias")} onClick={() => setTab("sangrias")}>
-            <span className="opacity-90">↘</span> Sangrias
-          </button>
-          <button className={getActiveClass("contadores")} onClick={() => setTab("contadores")}>
-            <span className="opacity-90">▦</span> Contadores
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="w-full min-w-0 text-white">
       <div className="w-full min-w-0">
@@ -575,7 +575,7 @@ export default function CaixaDiario() {
         </div>
 
         <div className="mt-6">
-          <TabBar />
+          <TabBar tab={tab} setTab={setTab} />
         </div>
 
         <div className="mt-8 space-y-6">

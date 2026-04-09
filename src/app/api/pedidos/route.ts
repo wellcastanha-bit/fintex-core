@@ -78,8 +78,9 @@ export async function GET(req: NextRequest) {
     const hasMore = count !== null ? offset + limit < count : rows.length === limit
 
     return NextResponse.json({ ok: true, rows: rows.map(toOrderDTO), has_more: hasMore, offset, limit })
-  } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 })
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : 'Erro interno'
+    return NextResponse.json({ error: msg }, { status: 500 })
   }
 }
 

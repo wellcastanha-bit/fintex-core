@@ -37,7 +37,6 @@ export async function GET(req: NextRequest) {
   // we fall back to returning the raw RPC payload so the dashboard still loads.
   let expenseEntries: ExpenseEntry[] = []
   let withdrawalEntries: WithdrawalEntry[] = []
-  let entriesFetched = false
 
   try {
     ;[expenseEntries, withdrawalEntries] = await Promise.all([
@@ -68,7 +67,6 @@ export async function GET(req: NextRequest) {
         ).range(f, t)
       }),
     ])
-    entriesFetched = true
   } catch {
     // Schema migration not yet applied — return raw RPC payload without expense recomputation.
     return NextResponse.json({ ok: true, isHolding, periodo: { from: start, to: end }, ...data })
@@ -88,7 +86,7 @@ export async function GET(req: NextRequest) {
   // this guarantees group.valor === sum(group.itens.map(i => i.valor)) always.
   const despesaMap = new Map<string, {
     total: number
-    itens: Array<{ id: string; descricao: string; valor: number; data: string }>
+    itens: Array<{ id: string; descricao: string; valor: number; data: string; payment_method: string | null }>
   }>()
   for (const e of expenseEntries as ExpenseEntry[]) {
     const cat = String(e.category ?? 'Outros').trim() || 'Outros'

@@ -188,6 +188,7 @@ function computeDashboardCore(
       caixaInicial,
       entradasDinheiro,
       saidas,
+      provaReal: esperado,
       caixaFinal,
       quebra,
     },

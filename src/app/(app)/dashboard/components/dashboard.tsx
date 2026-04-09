@@ -114,6 +114,7 @@ function transformPayload(p: DashboardPayload): DashboardData {
   const confRaw = p.conferencia_caixa ?? EMPTY.conferencia_caixa
   const conferencia_caixa: ConferenciaData = {
     ...confRaw,
+    provaReal: confRaw.provaReal ?? 0,
     status: confRaw.status ?? ((confRaw.quebra ?? 0) === 0 ? "OK" : "ATENÇÃO"),
   }
 
