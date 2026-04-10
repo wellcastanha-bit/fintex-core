@@ -18,6 +18,17 @@ function validateBody(b: Record<string, unknown>): string | null {
   return null
 }
 
+// PostgreSQL undefined_column (42703) and PostgREST schema-cache miss (PGRST204).
+// Used to detect when an optional column hasn't been migrated yet.
+function isColumnError(err: { code?: string; message: string }): boolean {
+  return (
+    err.code === '42703' ||
+    err.code === 'PGRST204' ||
+    err.message.includes('column') ||
+    err.message.includes('does not exist')
+  )
+}
+
 export async function POST(req: NextRequest) {
   const { context, empresaIds, isHolding } = await requireContext()
 
@@ -37,21 +48,40 @@ export async function POST(req: NextRequest) {
     ? (body.payment_method as PaymentMethod)
     : null
 
-  const { data, error } = await supabase
+  const baseInsert = {
+    empresa_id: empresaIds[0],
+    op_date: String(body.op_date),
+    type: body.type as EntryType,
+    amount: body.amount as number,
+    category: body.category ? String(body.category).trim() || null : null,
+    description: String(body.description ?? '').trim() || null,
+    occurred_at: body.occurred_at ?? new Date().toISOString(),
+  }
+
+  // Attempt 1: full schema (payment_method + holding_id)
+  let { data, error } = await supabase
     .from('cash_entries')
-    .insert({
-      empresa_id: empresaIds[0],
-      op_date: String(body.op_date),
-      type: body.type as EntryType,
-      amount: body.amount as number,
-      category: body.category ? String(body.category).trim() || null : null,
-      description: String(body.description ?? '').trim() || null,
-      occurred_at: body.occurred_at ?? new Date().toISOString(),
-      payment_method: paymentMethod,
-      holding_id: isHolding ? context.id : null,
-    })
+    .insert({ ...baseInsert, payment_method: paymentMethod, holding_id: isHolding ? context.id : null })
     .select('id, type, category, description, amount, occurred_at, payment_method, holding_id')
     .single()
+
+  // Attempt 2: holding_id column absent — keep payment_method
+  if (error && isColumnError(error)) {
+    ;({ data, error } = await supabase
+      .from('cash_entries')
+      .insert({ ...baseInsert, payment_method: paymentMethod })
+      .select('id, type, category, description, amount, occurred_at, payment_method')
+      .single())
+  }
+
+  // Attempt 3: payment_method column also absent — minimal insert
+  if (error && isColumnError(error)) {
+    ;({ data, error } = await supabase
+      .from('cash_entries')
+      .insert(baseInsert)
+      .select('id, type, category, description, amount, occurred_at')
+      .single())
+  }
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 

@@ -25,7 +25,7 @@ export async function GET(req: NextRequest) {
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
-  type ExpenseEntry = { id: unknown; category: unknown; description: unknown; amount: unknown; occurred_at: unknown; payment_method: unknown }
+  type ExpenseEntry = { id: unknown; category: unknown; description: unknown; amount: unknown; occurred_at: unknown; payment_method?: unknown }
   type WithdrawalEntry = { amount: unknown }
 
   // For holding: include empresa-level entries (holding_id IS NULL) + holding-level entries.
@@ -35,41 +35,110 @@ export async function GET(req: NextRequest) {
   // NOTE: these queries depend on the holding_id and payment_method columns existing in
   // cash_entries. If the schema migration has not been applied yet, fetchAll will throw and
   // we fall back to returning the raw RPC payload so the dashboard still loads.
+  function isColumnError(err: { code?: string; message: string }): boolean {
+    return (
+      err.code === '42703' ||
+      err.code === 'PGRST204' ||
+      err.message.includes('column') ||
+      err.message.includes('does not exist')
+    )
+  }
+
   let expenseEntries: ExpenseEntry[] = []
   let withdrawalEntries: WithdrawalEntry[] = []
 
+  // Progressive fallback — mirrors caixa-diario/route.ts.
+  // Attempt 1: full schema (payment_method select + holding_id filter)
+  // Attempt 2: holding_id column absent — drop scope filter, keep payment_method select
+  // Attempt 3: payment_method column also absent — minimal select, no scope filter
+  // If all three fail (non-column error), fall back to raw RPC payload so the dashboard
+  // still renders with totals, just without itens detail.
   try {
-    ;[expenseEntries, withdrawalEntries] = await Promise.all([
-      fetchAll<ExpenseEntry>((f, t) => {
-        const q = supabase
+    expenseEntries = await fetchAll<ExpenseEntry>((f, t) => {
+      const q = supabase
+        .from('cash_entries')
+        .select('id, category, description, amount, occurred_at, payment_method')
+        .in('empresa_id', empresaIds)
+        .gte('op_date', start)
+        .lte('op_date', end)
+        .eq('type', 'expense')
+      return (isHolding
+        ? q.or(`holding_id.is.null,holding_id.eq.${context.id}`)
+        : q.is('holding_id', null)
+      ).range(f, t)
+    })
+  } catch (err1: unknown) {
+    const e1 = err1 instanceof Error ? { message: err1.message } : { message: String(err1) }
+    if (!isColumnError(e1)) {
+      return NextResponse.json({ ok: true, isHolding, periodo: { from: start, to: end }, ...data })
+    }
+    try {
+      expenseEntries = await fetchAll<ExpenseEntry>((f, t) =>
+        supabase
           .from('cash_entries')
           .select('id, category, description, amount, occurred_at, payment_method')
           .in('empresa_id', empresaIds)
           .gte('op_date', start)
           .lte('op_date', end)
           .eq('type', 'expense')
-        return (isHolding
-          ? q.or(`holding_id.is.null,holding_id.eq.${context.id}`)
-          : q.is('holding_id', null)
-        ).range(f, t)
-      }),
-      fetchAll<WithdrawalEntry>((f, t) => {
-        const q = supabase
+          .range(f, t)
+      )
+    } catch (err2: unknown) {
+      const e2 = err2 instanceof Error ? { message: err2.message } : { message: String(err2) }
+      if (!isColumnError(e2)) {
+        return NextResponse.json({ ok: true, isHolding, periodo: { from: start, to: end }, ...data })
+      }
+      try {
+        expenseEntries = await fetchAll<ExpenseEntry>((f, t) =>
+          supabase
+            .from('cash_entries')
+            .select('id, category, description, amount, occurred_at')
+            .in('empresa_id', empresaIds)
+            .gte('op_date', start)
+            .lte('op_date', end)
+            .eq('type', 'expense')
+            .range(f, t)
+        )
+      } catch {
+        return NextResponse.json({ ok: true, isHolding, periodo: { from: start, to: end }, ...data })
+      }
+    }
+  }
+
+  try {
+    withdrawalEntries = await fetchAll<WithdrawalEntry>((f, t) => {
+      const q = supabase
+        .from('cash_entries')
+        .select('amount')
+        .in('empresa_id', empresaIds)
+        .gte('op_date', start)
+        .lte('op_date', end)
+        .eq('type', 'withdrawal')
+      return (isHolding
+        ? q.or(`holding_id.is.null,holding_id.eq.${context.id}`)
+        : q.is('holding_id', null)
+      ).range(f, t)
+    })
+  } catch (err: unknown) {
+    const e = err instanceof Error ? { message: err.message } : { message: String(err) }
+    if (!isColumnError(e)) {
+      return NextResponse.json({ ok: true, isHolding, periodo: { from: start, to: end }, ...data })
+    }
+    // holding_id column absent — fetch without scope filter
+    try {
+      withdrawalEntries = await fetchAll<WithdrawalEntry>((f, t) =>
+        supabase
           .from('cash_entries')
           .select('amount')
           .in('empresa_id', empresaIds)
           .gte('op_date', start)
           .lte('op_date', end)
           .eq('type', 'withdrawal')
-        return (isHolding
-          ? q.or(`holding_id.is.null,holding_id.eq.${context.id}`)
-          : q.is('holding_id', null)
-        ).range(f, t)
-      }),
-    ])
-  } catch {
-    // Schema migration not yet applied — return raw RPC payload without expense recomputation.
-    return NextResponse.json({ ok: true, isHolding, periodo: { from: start, to: end }, ...data })
+          .range(f, t)
+      )
+    } catch {
+      // withdrawals unavailable; totals will be incomplete but dashboard still renders
+    }
   }
 
   const faturamento: number = data?.cards_topo?.faturamento ?? 0
