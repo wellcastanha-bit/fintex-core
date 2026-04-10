@@ -90,5 +90,11 @@ export function parsePeriodRange(params: URLSearchParams): { start: string; end:
     return { start: formatUTCDate(first), end: formatUTCDate(last) }
   }
 
+  if (period === 'esse_ano') {
+    const first = new Date(Date.UTC(base.getUTCFullYear(), 0, 1))
+    const last = new Date(Date.UTC(base.getUTCFullYear() + 1, 0, 0))
+    return { start: formatUTCDate(first), end: formatUTCDate(last) }
+  }
+
   return { start: today, end: today }
 }

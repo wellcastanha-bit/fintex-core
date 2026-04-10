@@ -9,6 +9,7 @@ type PresetKey =
   | "ultimos_30"
   | "mes_anterior"
   | "esse_mes"
+  | "esse_ano"
   | "uma_data"
   | "um_periodo";
 
@@ -19,7 +20,7 @@ type DateSelection = {
 };
 
 export type DashboardQuery =
-  | { kind: "period"; period: "hoje" | "ontem" | "7d" | "30d" | "mes_anterior" | "este_mes" }
+  | { kind: "period"; period: "hoje" | "ontem" | "7d" | "30d" | "mes_anterior" | "este_mes" | "esse_ano" }
   | { kind: "range"; from: string; to: string };
 
 function pad2(n: number) {
@@ -137,6 +138,12 @@ function computePreset(preset: PresetKey, now = new Date()): DateSelection {
     return { preset, startISO: toISODate(s), endISO: toISODate(e) };
   }
 
+  if (preset === "esse_ano") {
+    const s = new Date(today.getFullYear(), 0, 1);
+    const e = new Date(today.getFullYear(), 11, 31);
+    return { preset, startISO: toISODate(s), endISO: toISODate(e) };
+  }
+
   const iso = toISODate(today);
   return { preset: "uma_data", startISO: iso, endISO: iso };
 }
@@ -156,8 +163,9 @@ function selectionToQuery(sel: DateSelection): DashboardQuery {
   if (p === "ultimos_7") return { kind: "period", period: "7d" };
   if (p === "ultimos_30") return { kind: "period", period: "30d" };
   if (p === "esse_mes") return { kind: "period", period: "este_mes" };
+  if (p === "esse_ano") return { kind: "period", period: "esse_ano" };
 
-  return { kind: "period", period: p };
+  return { kind: "period", period: p as "hoje" | "ontem" | "mes_anterior" };
 }
 
 export function buildDashboardQS(q: DashboardQuery) {
@@ -332,6 +340,7 @@ function DatePickerFintex({
       ultimos_30: "últimos 30 dias",
       mes_anterior: "mês anterior",
       esse_mes: "esse mês",
+      esse_ano: "esse ano",
       uma_data: "uma data",
       um_periodo: "um período",
     };
@@ -345,6 +354,7 @@ function DatePickerFintex({
     { key: "ultimos_30", label: "últimos 30 dias" },
     { key: "mes_anterior", label: "mês anterior" },
     { key: "esse_mes", label: "esse mês" },
+    { key: "esse_ano", label: "esse ano" },
     { key: "uma_data", label: "uma data" },
     { key: "um_periodo", label: "um período" },
   ];

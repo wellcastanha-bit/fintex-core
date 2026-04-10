@@ -89,6 +89,7 @@ type PeriodKey =
   | "30d"
   | "mes_anterior"
   | "este_mes"
+  | "esse_ano"
   | "uma_data"
   | "um_periodo";
 
@@ -99,6 +100,7 @@ const PERIOD_LABEL: Record<PeriodKey, string> = {
   "30d": "últimos 30 dias",
   mes_anterior: "mês anterior",
   este_mes: "esse mês",
+  esse_ano: "esse ano",
   uma_data: "uma data",
   um_periodo: "um período",
 };
@@ -123,7 +125,7 @@ function PeriodSelect({ value, onChange }: { value: PeriodKey; onChange: (v: Per
             appearance: "none",
           }}
         >
-          {(["hoje", "ontem", "7d", "30d", "mes_anterior", "este_mes", "uma_data", "um_periodo"] as PeriodKey[]).map(
+          {(["hoje", "ontem", "7d", "30d", "mes_anterior", "este_mes", "esse_ano", "uma_data", "um_periodo"] as PeriodKey[]).map(
             (k) => (
               <option key={k} value={k}>
                 {PERIOD_LABEL[k]}
@@ -234,6 +236,7 @@ export default function MobileDashboardPage() {
     if (period === "30d") return { queryString: "period=30d", localLabel: "Últimos 30 dias" };
     if (period === "este_mes") return { queryString: "period=este_mes", localLabel: "Esse mês" };
     if (period === "mes_anterior") return { queryString: "period=mes_anterior", localLabel: "Mês anterior" };
+    if (period === "esse_ano") return { queryString: "period=esse_ano", localLabel: "Esse ano" };
 
     if (period === "uma_data") {
       const d = clampISO(singleDate) || end;
