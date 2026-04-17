@@ -202,13 +202,17 @@ export async function GET(req: NextRequest) {
     const totalWithdrawals = (withdrawalEntries as WithdrawalEntry[])
       .reduce((s, e) => s + Number(e.amount), 0)
     const freshSaidas = cashExpenses + totalWithdrawals
+    const freshProvaReal =
+      (Number(cc.caixaInicial) || 0) +
+      (Number(cc.entradasDinheiro) || 0) -
+      freshSaidas
+    const freshQuebra = (Number(cc.caixaFinal) || 0) - freshProvaReal
     patched.conferencia_caixa = {
       ...cc,
       saidas: freshSaidas,
-      provaReal:
-        (Number(cc.caixaInicial) || 0) +
-        (Number(cc.entradasDinheiro) || 0) -
-        freshSaidas,
+      provaReal: freshProvaReal,
+      quebra: freshQuebra,
+      status: Math.abs(freshQuebra) > 5 ? 'ATENÇÃO' : 'OK',
     }
   }
 
