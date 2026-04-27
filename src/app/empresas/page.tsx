@@ -202,25 +202,6 @@ export default async function EmpresasPage(_props: PageProps) {
             }}
           >
             <div style={{ marginBottom: 24 }}>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: '7px 11px',
-                  borderRadius: 999,
-                  background: 'rgba(79,220,255,0.08)',
-                  border: '1px solid rgba(79,220,255,0.16)',
-                  color: '#9feeff',
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: '0.04em',
-                  marginBottom: 18,
-                }}
-              >
-                
-              </div>
-
               <h1
                 style={{
                   margin: 0,
