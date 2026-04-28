@@ -118,7 +118,7 @@ export default function ConfiguracoesPage() {
       >
         <MenuConfig active={active} onChange={setActive} />
 
-        {active === "empresa" && <Empresa config={data.config} />}
+        {active === "empresa" && <Empresa />}
         {active === "pagamentos" && <FormasPagamento pagamentos={data.pagamentos} />}
         {active === "plataformas" && <Plataformas plataformas={data.plataformas} />}
         {active === "atendimentos" && <Atendimentos atendimentos={data.atendimentos} />}
