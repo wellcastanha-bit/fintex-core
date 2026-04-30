@@ -34,36 +34,42 @@ function accentRGB(accent: Accent) {
         line: "rgba(80,255,160,0.35)",
         glow: "rgba(80,255,160,0.14)",
         dot: "rgba(80,255,160,0.95)",
+        bar: "linear-gradient(90deg, rgba(80,255,160,0.28) 0%, rgba(80,255,160,0.90) 55%, rgba(255,255,255,0.22) 100%)",
       };
     case "yellow":
       return {
         line: "rgba(255,200,80,0.35)",
         glow: "rgba(255,200,80,0.14)",
         dot: "rgba(255,200,80,0.95)",
+        bar: "linear-gradient(90deg, rgba(255,200,80,0.28) 0%, rgba(255,200,80,0.90) 55%, rgba(255,255,255,0.22) 100%)",
       };
     case "red":
       return {
         line: "rgba(255,100,120,0.35)",
         glow: "rgba(255,100,120,0.14)",
         dot: "rgba(255,100,120,0.95)",
+        bar: "linear-gradient(90deg, rgba(255,100,120,0.28) 0%, rgba(255,100,120,0.90) 55%, rgba(255,255,255,0.22) 100%)",
       };
     case "purple":
       return {
         line: "rgba(160,120,255,0.35)",
         glow: "rgba(160,120,255,0.14)",
         dot: "rgba(160,120,255,0.95)",
+        bar: "linear-gradient(90deg, rgba(160,120,255,0.28) 0%, rgba(160,120,255,0.90) 55%, rgba(255,255,255,0.22) 100%)",
       };
     case "pink":
       return {
         line: "rgba(255,100,180,0.35)",
         glow: "rgba(255,100,180,0.14)",
         dot: "rgba(255,100,180,0.95)",
+        bar: "linear-gradient(90deg, rgba(255,100,180,0.28) 0%, rgba(255,100,180,0.90) 55%, rgba(255,255,255,0.22) 100%)",
       };
     default:
       return {
         line: "rgba(45,207,190,0.35)",
         glow: "rgba(45,207,190,0.14)",
         dot: "rgba(45,207,190,0.95)",
+        bar: "linear-gradient(90deg, rgba(45,207,190,0.30) 0%, #2DCFBE 55%, rgba(255,255,255,0.25) 100%)",
       };
   }
 }
@@ -283,7 +289,7 @@ function BarRow({
           style={{
             height: "100%",
             width: `${w}%`,
-            background: a.line,
+            background: a.bar,
             boxShadow: `0 0 18px ${a.glow}`,
           }}
         />
