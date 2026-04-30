@@ -3,20 +3,20 @@
 import React, { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
-const AQUA = "rgba(79,220,255,0.45)";
-const AQUA_SOFT = "rgba(79,220,255,0.22)";
+const AQUA = "rgba(45,207,190,0.45)";
+const AQUA_SOFT = "rgba(45,207,190,0.22)";
 
 function cardBg() {
   return `
-    radial-gradient(1200px 320px at 15% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.04) 45%, rgba(79,220,255,0.02) 70%),
+    radial-gradient(1200px 320px at 15% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.04) 45%, rgba(45,207,190,0.02) 70%),
     linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
   `;
 }
 
 function glow(on: boolean) {
   return on
-    ? `0 0 0 1px rgba(79,220,255,0.22), 0 18px 60px rgba(0,0,0,0.55), 0 0 30px rgba(79,220,255,0.22)`
-    : `0 0 0 1px rgba(79,220,255,0.16), 0 18px 60px rgba(0,0,0,0.55), 0 0 22px rgba(79,220,255,0.16)`;
+    ? `0 0 0 1px rgba(45,207,190,0.22), 0 18px 60px rgba(0,0,0,0.55), 0 0 30px rgba(45,207,190,0.22)`
+    : `0 0 0 1px rgba(45,207,190,0.16), 0 18px 60px rgba(0,0,0,0.55), 0 0 22px rgba(45,207,190,0.16)`;
 }
 
 export function SectionCard({
@@ -36,8 +36,8 @@ export function SectionCard({
         borderRadius: 18,
         padding: 18,
         border: hover
-          ? "1px solid rgba(79,220,255,0.55)"
-          : "1px solid rgba(79,220,255,0.32)",
+          ? "1px solid rgba(45,207,190,0.55)"
+          : "1px solid rgba(45,207,190,0.32)",
         boxShadow: glow(hover),
         background: cardBg(),
         transition: "border 160ms ease, box-shadow 160ms ease",
@@ -79,10 +79,10 @@ export function RowButton({
       style={{
         width: "100%",
         border: on
-          ? "1px solid rgba(79,220,255,0.55)"
+          ? "1px solid rgba(45,207,190,0.55)"
           : "1px solid rgba(255,255,255,0.14)",
         background: `
-          radial-gradient(700px 160px at 15% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.04) 45%, rgba(79,220,255,0.02) 70%),
+          radial-gradient(700px 160px at 15% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.04) 45%, rgba(45,207,190,0.02) 70%),
           linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 25%, rgba(6,16,37,0.94) 100%)
         `,
         boxShadow: on
@@ -115,10 +115,10 @@ export function RowButton({
       >
         <Icon
           size={24}
-          color={on ? "#4fdcff" : "#ffffff"}
+          color={on ? "#2DCFBE" : "#ffffff"}
           style={{
             filter: on
-              ? `drop-shadow(0 0 6px rgba(79,220,255,0.55)) drop-shadow(0 0 14px rgba(79,220,255,0.35))`
+              ? `drop-shadow(0 0 6px rgba(45,207,190,0.55)) drop-shadow(0 0 14px rgba(45,207,190,0.35))`
               : "none",
             transition: "filter 160ms ease, color 160ms ease",
           }}
@@ -161,7 +161,7 @@ export function RowButton({
         </div>
       </div>
 
-      <ChevronRight size={20} color={on ? "#4fdcff" : "rgba(255,255,255,0.55)"} />
+      <ChevronRight size={20} color={on ? "#2DCFBE" : "rgba(255,255,255,0.55)"} />
     </button>
   );
 }
@@ -230,9 +230,9 @@ export function Toggle({
         height: 44,
         borderRadius: 12,
         border: on
-          ? "1px solid rgba(79,220,255,0.55)"
+          ? "1px solid rgba(45,207,190,0.55)"
           : "1px solid rgba(255,255,255,0.14)",
-        background: on ? "rgba(79,220,255,0.10)" : "rgba(255,255,255,0.06)",
+        background: on ? "rgba(45,207,190,0.10)" : "rgba(255,255,255,0.06)",
         color: "#eaf0ff",
         fontWeight: 900,
         cursor: "pointer",
@@ -264,8 +264,8 @@ export function Toggle({
             width: 18,
             height: 18,
             borderRadius: 999,
-            background: on ? "#4fdcff" : "rgba(255,255,255,0.55)",
-            boxShadow: on ? "0 0 10px rgba(79,220,255,0.55)" : "none",
+            background: on ? "#2DCFBE" : "rgba(255,255,255,0.55)",
+            boxShadow: on ? "0 0 10px rgba(45,207,190,0.55)" : "none",
             transition: "left 160ms ease, background 160ms ease, box-shadow 160ms ease",
           }}
         />
@@ -298,13 +298,13 @@ export function SmallBtn({
         border: danger
           ? "1px solid rgba(255,80,80,0.30)"
           : hover
-          ? "1px solid rgba(79,220,255,0.55)"
+          ? "1px solid rgba(45,207,190,0.55)"
           : "1px solid rgba(255,255,255,0.14)",
         background: "rgba(255,255,255,0.06)",
         color: "#eaf0ff",
         fontWeight: 900,
         cursor: "pointer",
-        boxShadow: hover ? `0 0 18px rgba(79,220,255,0.22)` : "none",
+        boxShadow: hover ? `0 0 18px rgba(45,207,190,0.22)` : "none",
         transition: "border 160ms ease, box-shadow 160ms ease",
         whiteSpace: "nowrap",
       }}
@@ -333,15 +333,15 @@ export function ToggleSwitch({
         height: 26,
         borderRadius: 999,
         border: value
-          ? "1px solid rgba(79,220,255,0.55)"
+          ? "1px solid rgba(45,207,190,0.55)"
           : "1px solid rgba(255,255,255,0.18)",
-        background: value ? "rgba(79,220,255,0.20)" : "rgba(255,255,255,0.08)",
+        background: value ? "rgba(45,207,190,0.20)" : "rgba(255,255,255,0.08)",
         position: "relative",
         cursor: disabled ? "wait" : "pointer",
         padding: 0,
         flexShrink: 0,
         transition: "background 160ms ease, border 160ms ease, box-shadow 160ms ease",
-        boxShadow: value ? "0 0 14px rgba(79,220,255,0.30)" : "none",
+        boxShadow: value ? "0 0 14px rgba(45,207,190,0.30)" : "none",
       }}
     >
       <span
@@ -352,8 +352,8 @@ export function ToggleSwitch({
           width: 18,
           height: 18,
           borderRadius: 999,
-          background: value ? "#4fdcff" : "rgba(255,255,255,0.50)",
-          boxShadow: value ? "0 0 10px rgba(79,220,255,0.55)" : "none",
+          background: value ? "#2DCFBE" : "rgba(255,255,255,0.50)",
+          boxShadow: value ? "0 0 10px rgba(45,207,190,0.55)" : "none",
           transition: "left 160ms ease, background 160ms ease, box-shadow 160ms ease",
         }}
       />
@@ -387,13 +387,13 @@ export function ConfigToggleItem({
         borderRadius: 14,
         border: ativo
           ? hover
-            ? "1px solid rgba(79,220,255,0.55)"
-            : "1px solid rgba(79,220,255,0.28)"
+            ? "1px solid rgba(45,207,190,0.55)"
+            : "1px solid rgba(45,207,190,0.28)"
           : hover
           ? "1px solid rgba(255,255,255,0.20)"
           : "1px solid rgba(255,255,255,0.10)",
-        background: ativo ? "rgba(79,220,255,0.06)" : "rgba(255,255,255,0.03)",
-        boxShadow: ativo && hover ? "0 0 18px rgba(79,220,255,0.12)" : "none",
+        background: ativo ? "rgba(45,207,190,0.06)" : "rgba(255,255,255,0.03)",
+        boxShadow: ativo && hover ? "0 0 18px rgba(45,207,190,0.12)" : "none",
         transition: "border 160ms ease, background 160ms ease, box-shadow 160ms ease",
         opacity: saving ? 0.65 : 1,
       }}
@@ -417,7 +417,7 @@ export function ConfigToggleItem({
             color: saving
               ? "rgba(234,240,255,0.40)"
               : ativo
-              ? "#4fdcff"
+              ? "#2DCFBE"
               : "rgba(234,240,255,0.30)",
             letterSpacing: 0.6,
             textTransform: "uppercase",

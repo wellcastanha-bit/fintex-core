@@ -4,7 +4,7 @@ import React, { useMemo, useRef, useEffect, useState } from "react";
 import { subscribeReservations } from "@/lib/realtime";
 import { useLoadingStore } from "@/lib/loading-store";
 
-const AQUA_LINE = "rgba(79,220,255,0.18)";
+const AQUA_LINE = "rgba(45,207,190,0.18)";
 const BG_CARD = "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))";
 
 type LocacaoStatus = "Pago" | "Pendente";
@@ -70,7 +70,7 @@ function CardShell({ children, style }: { children: React.ReactNode; style?: Rea
         padding: 14,
         background: BG_CARD,
         border: `1px solid ${AQUA_LINE}`,
-        boxShadow: "0 0 0 1px rgba(79,220,255,0.05) inset, 0 22px 60px rgba(0,0,0,0.40)",
+        boxShadow: "0 0 0 1px rgba(45,207,190,0.05) inset, 0 22px 60px rgba(0,0,0,0.40)",
         ...style,
       }}
     >
@@ -81,7 +81,7 @@ function CardShell({ children, style }: { children: React.ReactNode; style?: Rea
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: 13, fontWeight: 1000, letterSpacing: 0.2, color: "rgba(79,220,255,0.95)" }}>
+    <div style={{ fontSize: 13, fontWeight: 1000, letterSpacing: 0.2, color: "rgba(45,207,190,0.95)" }}>
       {children}
     </div>
   );
@@ -103,7 +103,7 @@ function FieldShell({ children, style }: { children: React.ReactNode; style?: Re
         borderRadius: 16,
         padding: 12,
         background: "rgba(2,11,24,0.45)",
-        border: "1px solid rgba(79,220,255,0.12)",
+        border: "1px solid rgba(45,207,190,0.12)",
         ...style,
       }}
     >
@@ -173,8 +173,8 @@ function AquaBtn({
         width: "100%",
         padding: "12px 14px",
         borderRadius: 14,
-        border: solid ? "1px solid rgba(79,220,255,0.26)" : "1px solid rgba(79,220,255,0.14)",
-        background: solid ? "rgba(79,220,255,0.12)" : "rgba(255,255,255,0.06)",
+        border: solid ? "1px solid rgba(45,207,190,0.26)" : "1px solid rgba(45,207,190,0.14)",
+        background: solid ? "rgba(45,207,190,0.12)" : "rgba(255,255,255,0.06)",
         color: "rgba(255,255,255,0.92)",
         fontWeight: 1000,
         fontSize: 12,
@@ -194,7 +194,7 @@ function SmallBtn({ children, onClick }: { children: React.ReactNode; onClick?: 
       onClick={onClick}
       style={{
         width: 38, height: 38, borderRadius: 12,
-        border: "1px solid rgba(79,220,255,0.18)",
+        border: "1px solid rgba(45,207,190,0.18)",
         background: "rgba(255,255,255,0.06)",
         color: "rgba(255,255,255,0.92)",
         display: "grid", placeItems: "center", cursor: "pointer",
@@ -234,13 +234,13 @@ function Accordion({ title, subtitle, children, open, setOpen }: {
         }}
       >
         <div>
-          <div style={{ fontSize: 13, fontWeight: 1000, color: "rgba(79,220,255,0.95)" }}>{title}</div>
+          <div style={{ fontSize: 13, fontWeight: 1000, color: "rgba(45,207,190,0.95)" }}>{title}</div>
           {subtitle ? <div style={{ marginTop: 6, fontSize: 11, opacity: 0.72 }}>{subtitle}</div> : null}
         </div>
         <div
           style={{
             width: 34, height: 34, borderRadius: 12,
-            border: "1px solid rgba(79,220,255,0.18)",
+            border: "1px solid rgba(45,207,190,0.18)",
             background: "rgba(255,255,255,0.06)",
             display: "grid", placeItems: "center",
           }}
@@ -249,7 +249,7 @@ function Accordion({ title, subtitle, children, open, setOpen }: {
         </div>
       </button>
 
-      <div style={{ height: open ? h : 0, transition: "height 260ms ease", overflow: "hidden", borderTop: "1px solid rgba(79,220,255,0.10)" }}>
+      <div style={{ height: open ? h : 0, transition: "height 260ms ease", overflow: "hidden", borderTop: "1px solid rgba(45,207,190,0.10)" }}>
         <div
           ref={innerRef}
           style={{ padding: 14, opacity: open ? 1 : 0, transform: open ? "translateY(0px)" : "translateY(-6px)", transition: "opacity 220ms ease, transform 260ms ease" }}
@@ -481,8 +481,8 @@ export default function MobileReservasPage() {
                 onClick={() => { if (c.iso) setSelectedISO(c.iso); }}
                 style={{
                   height: 34, borderRadius: 12,
-                  border: isSelected ? "1px solid rgba(79,220,255,0.30)" : hasReserva ? "1px solid rgba(79,220,255,0.42)" : "1px solid rgba(79,220,255,0.12)",
-                  background: c.day ? isSelected ? "rgba(79,220,255,0.14)" : hasReserva ? "rgba(79,220,255,0.10)" : "rgba(255,255,255,0.05)" : "transparent",
+                  border: isSelected ? "1px solid rgba(45,207,190,0.30)" : hasReserva ? "1px solid rgba(45,207,190,0.42)" : "1px solid rgba(45,207,190,0.12)",
+                  background: c.day ? isSelected ? "rgba(45,207,190,0.14)" : hasReserva ? "rgba(45,207,190,0.10)" : "rgba(255,255,255,0.05)" : "transparent",
                   color: c.day ? "rgba(255,255,255,0.92)" : "transparent",
                   fontWeight: 950, fontSize: 12,
                   cursor: c.day ? "pointer" : "default",
@@ -491,14 +491,14 @@ export default function MobileReservasPage() {
               >
                 {c.day || "—"}
                 {isToday && !isSelected ? (
-                  <span style={{ position: "absolute", left: 7, top: 7, width: 6, height: 6, borderRadius: 999, background: "rgba(79,220,255,0.9)" }} />
+                  <span style={{ position: "absolute", left: 7, top: 7, width: 6, height: 6, borderRadius: 999, background: "rgba(45,207,190,0.9)" }} />
                 ) : null}
               </button>
             );
           })}
         </div>
 
-        <div style={{ marginTop: 12, padding: 12, borderRadius: 16, background: "rgba(2,11,24,0.45)", border: "1px solid rgba(79,220,255,0.12)", fontWeight: 1000 }}>
+        <div style={{ marginTop: 12, padding: 12, borderRadius: 16, background: "rgba(2,11,24,0.45)", border: "1px solid rgba(45,207,190,0.12)", fontWeight: 1000 }}>
           {isoToBR(selectedISO)}
         </div>
       </CardShell>

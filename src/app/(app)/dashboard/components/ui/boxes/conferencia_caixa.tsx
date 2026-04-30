@@ -14,24 +14,24 @@ export type ConferenciaData = {
 };
 
 const OUTER_RADIUS = 20;
-const OUTER_BORDER = "1px solid rgba(79,220,255,0.34)";
+const OUTER_BORDER = "1px solid rgba(45,207,190,0.34)";
 const OUTER_BG = "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12))";
 const OUTER_SHADOW_OFF =
-  "0 0 0 1px rgba(79,220,255,0.14), 0 0 40px rgba(79,220,255,0.16), 0 18px 60px rgba(0,0,0,0.62)";
+  "0 0 0 1px rgba(45,207,190,0.14), 0 0 40px rgba(45,207,190,0.16), 0 18px 60px rgba(0,0,0,0.62)";
 const OUTER_SHADOW_ON =
-  "0 0 0 1px rgba(79,220,255,0.18), 0 0 52px rgba(79,220,255,0.20), 0 18px 60px rgba(0,0,0,0.62)";
+  "0 0 0 1px rgba(45,207,190,0.18), 0 0 52px rgba(45,207,190,0.20), 0 18px 60px rgba(0,0,0,0.62)";
 
 type Tone = "blue" | "green" | "red";
 
 function toneMap(tone: Tone) {
   const map = {
     blue: {
-      bd: "rgba(79,220,255,0.38)",
-      bdHover: "rgba(79,220,255,0.62)",
-      glow: "rgba(79,220,255,0.20)",
+      bd: "rgba(45,207,190,0.38)",
+      bdHover: "rgba(45,207,190,0.62)",
+      glow: "rgba(45,207,190,0.20)",
       innerTop: "rgba(255,255,255,0.08)",
       innerBot: "rgba(0,0,0,0.22)",
-      tag: "rgba(79,220,255,0.96)",
+      tag: "rgba(45,207,190,0.96)",
     },
     green: {
       bd: "rgba(67,208,121,0.38)",
@@ -118,8 +118,11 @@ function MiniStat({
           marginTop: 12,
           color: "rgba(255,255,255,0.96)",
           fontWeight: 990,
-          fontSize: 25,
+          fontSize: 20,
           letterSpacing: -0.2,
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
         }}
       >
         {value}
@@ -249,11 +252,11 @@ export default function ConferenciaCaixa({ data }: { data: ConferenciaData }) {
             style={{
               position: "relative",
               borderRadius: 18,
-              border: "1px solid rgba(79,220,255,0.18)",
+              border: "1px solid rgba(45,207,190,0.18)",
               background:
-                "radial-gradient(900px 260px at 20% 0%, rgba(79,220,255,0.22), rgba(0,0,0,0) 58%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.16))",
+                "radial-gradient(900px 260px at 20% 0%, rgba(45,207,190,0.22), rgba(0,0,0,0) 58%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.16))",
               boxShadow:
-                "0 0 0 1px rgba(79,220,255,0.10) inset, 0 0 32px rgba(79,220,255,0.12), 0 18px 55px rgba(0,0,0,0.52)",
+                "0 0 0 1px rgba(45,207,190,0.10) inset, 0 0 32px rgba(45,207,190,0.12), 0 18px 55px rgba(0,0,0,0.52)",
               padding: 16,
               overflow: "hidden",
               backdropFilter: "blur(12px)",
@@ -266,7 +269,7 @@ export default function ConferenciaCaixa({ data }: { data: ConferenciaData }) {
                 position: "absolute",
                 inset: -2,
                 borderRadius: 20,
-                background: "radial-gradient(110% 80% at 25% 0%, rgba(79,220,255,0.12), rgba(0,0,0,0) 62%)",
+                background: "radial-gradient(110% 80% at 25% 0%, rgba(45,207,190,0.12), rgba(0,0,0,0) 62%)",
                 pointerEvents: "none",
               }}
             />
@@ -288,7 +291,7 @@ export default function ConferenciaCaixa({ data }: { data: ConferenciaData }) {
                   <div
                     style={{
                       marginTop: 10,
-                      color: "#4dd5f8",
+                      color: "#2DCFBE",
                       fontWeight: 990,
                       fontSize: 34,
                       letterSpacing: 0.2,

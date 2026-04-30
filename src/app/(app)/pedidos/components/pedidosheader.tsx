@@ -86,9 +86,9 @@ export default function PedidosHeader(props: Props) {
           display: "flex",
           alignItems: "center",
           background: `linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.04) 25%, rgba(6,16,37,0.95) 100%)`,
-          border: hoverSearchWrap ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(255,255,255,0.14)",
+          border: hoverSearchWrap ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(255,255,255,0.14)",
           boxShadow: hoverSearchWrap
-            ? "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 18px rgba(79,220,255,0.45)"
+            ? "inset 0 1px 0 rgba(255,255,255,0.12), 0 0 18px rgba(45,207,190,0.45)"
             : "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.45)",
           transition: "border 160ms ease, box-shadow 160ms ease",
           boxSizing: "border-box",
@@ -122,9 +122,9 @@ export default function PedidosHeader(props: Props) {
               height: 40,
               padding: "0 14px",
               borderRadius: 12,
-              border: hoverBtn ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(79,220,255,0.40)",
+              border: hoverBtn ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(45,207,190,0.40)",
               background: `
-                radial-gradient(700px 140px at 15% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.05) 40%, rgba(79,220,255,0.03) 65%),
+                radial-gradient(700px 140px at 15% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.05) 40%, rgba(45,207,190,0.03) 65%),
                 linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
               `,
               color: "#fff",
@@ -146,8 +146,8 @@ export default function PedidosHeader(props: Props) {
                 width: 12,
                 height: 12,
                 borderRadius: 999,
-                background: "#4fdcff",
-                boxShadow: "0 0 0 4px rgba(79,220,255,0.18)",
+                background: "#2DCFBE",
+                boxShadow: "0 0 0 4px rgba(45,207,190,0.18)",
               }}
             />
             <span>{activeLabel}</span>

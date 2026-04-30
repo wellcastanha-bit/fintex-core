@@ -11,11 +11,11 @@ export function CardShell({
     <div
       style={{
         borderRadius: 18,
-        border: "1px solid rgba(79,220,255,0.16)",
+        border: "1px solid rgba(45,207,190,0.16)",
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))",
         boxShadow:
-          "0 0 0 1px rgba(79,220,255,0.08), 0 18px 55px rgba(0,0,0,0.55)",
+          "0 0 0 1px rgba(45,207,190,0.08), 0 18px 55px rgba(0,0,0,0.55)",
         ...style,
       }}
     >

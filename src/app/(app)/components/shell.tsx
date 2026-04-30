@@ -45,7 +45,7 @@ export default function Shell({
           width: 900,
           height: 600,
           borderRadius: "50%",
-          background: "rgba(79,220,255,0.09)",
+          background: "rgba(45,207,190,0.09)",
           filter: "blur(110px)",
           pointerEvents: "none",
           zIndex: 0,

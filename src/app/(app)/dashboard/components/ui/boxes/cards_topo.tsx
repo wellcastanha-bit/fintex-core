@@ -7,12 +7,12 @@ import AnimatedMetricValue from "@/components/animated-metric-value";
 function accentMap(accent: "aqua" | "green" | "red" | "gray") {
   const map = {
     aqua: {
-      bd: "rgba(79,220,255,0.34)",
-      bdHover: "rgba(79,220,255,0.60)",
-      glow: "rgba(79,220,255,0.18)",
+      bd: "rgba(45,207,190,0.34)",
+      bdHover: "rgba(45,207,190,0.60)",
+      glow: "rgba(45,207,190,0.18)",
       innerTop: "rgba(255,255,255,0.08)",
       innerBot: "rgba(0,0,0,0.22)",
-      tag: "rgba(79, 220, 255, 0.96)",
+      tag: "rgba(45, 207, 190, 0.96)",
     },
     green: {
       bd: "rgba(67,208,121,0.34)",

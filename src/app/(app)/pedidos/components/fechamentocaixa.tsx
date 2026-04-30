@@ -23,8 +23,8 @@ type Props = {
 
 type Anchor = { top: number; left: number };
 
-const AQUA = "rgba(79,220,255,0.45)";
-const AQUA_SOFT = "rgba(79,220,255,0.22)";
+const AQUA = "rgba(45,207,190,0.45)";
+const AQUA_SOFT = "rgba(45,207,190,0.22)";
 
 function glow(on: boolean) {
   return on
@@ -148,17 +148,17 @@ export default function FechamentoCaixa({
           padding: "0 14px",
           borderRadius: 999,
           border: selected
-            ? "1px solid rgba(79,220,255,0.78)"
+            ? "1px solid rgba(45,207,190,0.78)"
             : hv
-            ? "1px solid rgba(79,220,255,0.55)"
+            ? "1px solid rgba(45,207,190,0.55)"
             : "1px solid rgba(255,255,255,0.12)",
           background: selected
             ? `
-              radial-gradient(700px 140px at 15% -10%, rgba(79,220,255,0.18) 0%, rgba(79,220,255,0.08) 45%, rgba(79,220,255,0.03) 70%),
+              radial-gradient(700px 140px at 15% -10%, rgba(45,207,190,0.18) 0%, rgba(45,207,190,0.08) 45%, rgba(45,207,190,0.03) 70%),
               linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
             `
             : `
-              radial-gradient(700px 140px at 15% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.05) 45%, rgba(79,220,255,0.02) 70%),
+              radial-gradient(700px 140px at 15% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.05) 45%, rgba(45,207,190,0.02) 70%),
               linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
             `,
           color: "#fff",
@@ -168,10 +168,10 @@ export default function FechamentoCaixa({
           textAlign: "left",
           cursor: "pointer",
           boxShadow: selected
-            ? "0 10px 22px rgba(0,0,0,0.18), 0 0 18px rgba(79,220,255,0.22)"
+            ? "0 10px 22px rgba(0,0,0,0.18), 0 0 18px rgba(45,207,190,0.22)"
             : hv
-            ? "0 10px 22px rgba(0,0,0,0.18), 0 0 16px rgba(79,220,255,0.16)"
-            : "0 10px 22px rgba(0,0,0,0.18), 0 0 12px rgba(79,220,255,0.10)",
+            ? "0 10px 22px rgba(0,0,0,0.18), 0 0 16px rgba(45,207,190,0.16)"
+            : "0 10px 22px rgba(0,0,0,0.18), 0 0 12px rgba(45,207,190,0.10)",
           transition: "border 160ms ease, box-shadow 160ms ease, transform 120ms ease",
           userSelect: "none",
           whiteSpace: "nowrap",
@@ -204,16 +204,16 @@ export default function FechamentoCaixa({
         onMouseLeave={() => setHv(false)}
         style={{
           borderRadius: 18,
-          border: hv ? "1px solid rgba(79,220,255,0.50)" : "1px solid rgba(79,220,255,0.28)",
+          border: hv ? "1px solid rgba(45,207,190,0.50)" : "1px solid rgba(45,207,190,0.28)",
           background: `
-            radial-gradient(1200px 420px at 18% 12%, rgba(79,220,255,0.10) 0%, rgba(2,11,24,0) 52%),
-            radial-gradient(900px 360px at 86% 18%, rgba(79,220,255,0.05) 0%, rgba(2,11,24,0) 55%),
+            radial-gradient(1200px 420px at 18% 12%, rgba(45,207,190,0.10) 0%, rgba(2,11,24,0) 52%),
+            radial-gradient(900px 360px at 86% 18%, rgba(45,207,190,0.05) 0%, rgba(2,11,24,0) 55%),
             linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
           `,
           overflow: "hidden",
           boxShadow: hv
-            ? "0 22px 60px rgba(0,0,0,0.55), 0 0 24px rgba(79,220,255,0.16)"
-            : "0 22px 60px rgba(0,0,0,0.55), 0 0 18px rgba(79,220,255,0.12)",
+            ? "0 22px 60px rgba(0,0,0,0.55), 0 0 24px rgba(45,207,190,0.16)"
+            : "0 22px 60px rgba(0,0,0,0.55), 0 0 18px rgba(45,207,190,0.12)",
           transition: "border 160ms ease, box-shadow 160ms ease",
           position: "relative",
         }}
@@ -226,8 +226,8 @@ export default function FechamentoCaixa({
             position: "absolute",
             inset: 0,
             background: `
-              radial-gradient(820px 220px at 22% -10%, rgba(79,220,255,0.14) 0%, rgba(79,220,255,0.06) 45%, rgba(0,0,0,0) 72%),
-              radial-gradient(780px 220px at 88% 0%, rgba(79,220,255,0.09) 0%, rgba(0,0,0,0) 70%),
+              radial-gradient(820px 220px at 22% -10%, rgba(45,207,190,0.14) 0%, rgba(45,207,190,0.06) 45%, rgba(0,0,0,0) 72%),
+              radial-gradient(780px 220px at 88% 0%, rgba(45,207,190,0.09) 0%, rgba(0,0,0,0) 70%),
               linear-gradient(180deg, rgba(1,27,60,0.35) 0%, rgba(6,16,37,0.78) 55%, rgba(6,16,37,0.92) 100%)
             `,
             opacity: 0.95,
@@ -266,8 +266,8 @@ export default function FechamentoCaixa({
               width: 10,
               height: 10,
               borderRadius: 999,
-              background: "#4fdcff",
-              boxShadow: "0 0 0 4px rgba(79,220,255,0.18)",
+              background: "#2DCFBE",
+              boxShadow: "0 0 0 4px rgba(45,207,190,0.18)",
               flex: "0 0 auto",
               opacity: 0.95,
             }}
@@ -313,9 +313,9 @@ export default function FechamentoCaixa({
           width: CLOSED_W,
           height: CLOSED_H,
           borderRadius: 12,
-          border: hoverBtn ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(79,220,255,0.40)",
+          border: hoverBtn ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(45,207,190,0.40)",
           background: `
-            radial-gradient(700px 140px at 15% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.05) 40%, rgba(79,220,255,0.03) 65%),
+            radial-gradient(700px 140px at 15% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.05) 40%, rgba(45,207,190,0.03) 65%),
             linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
           `,
           color: "#fff",
@@ -339,8 +339,8 @@ export default function FechamentoCaixa({
               width: 12,
               height: 12,
               borderRadius: 999,
-              background: "#4fdcff",
-              boxShadow: "0 0 0 4px rgba(79,220,255,0.18)",
+              background: "#2DCFBE",
+              boxShadow: "0 0 0 4px rgba(45,207,190,0.18)",
               flex: "0 0 auto",
             }}
           />
@@ -412,8 +412,8 @@ export default function FechamentoCaixa({
             inset: 0,
             pointerEvents: "auto",
             background: `
-              radial-gradient(1200px 700px at 18% 18%, rgba(79,220,255,0.14) 0%, rgba(2,11,24,0) 55%),
-              radial-gradient(1000px 700px at 86% 24%, rgba(79,220,255,0.08) 0%, rgba(2,11,24,0) 55%),
+              radial-gradient(1200px 700px at 18% 18%, rgba(45,207,190,0.14) 0%, rgba(2,11,24,0) 55%),
+              radial-gradient(1000px 700px at 86% 24%, rgba(45,207,190,0.08) 0%, rgba(2,11,24,0) 55%),
               linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.62) 100%)
             `,
             backdropFilter: "blur(8px)",
@@ -433,13 +433,13 @@ export default function FechamentoCaixa({
             borderRadius: 16,
             overflow: "hidden",
             pointerEvents: "auto",
-            border: "1px solid rgba(79,220,255,0.30)",
+            border: "1px solid rgba(45,207,190,0.30)",
             background: `
-              radial-gradient(1200px 420px at 18% 12%, rgba(79,220,255,0.12) 0%, rgba(2,11,24,0) 52%),
-              radial-gradient(1000px 360px at 86% 18%, rgba(79,220,255,0.06) 0%, rgba(2,11,24,0) 55%),
+              radial-gradient(1200px 420px at 18% 12%, rgba(45,207,190,0.12) 0%, rgba(2,11,24,0) 52%),
+              radial-gradient(1000px 360px at 86% 18%, rgba(45,207,190,0.06) 0%, rgba(2,11,24,0) 55%),
               linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.96) 100%)
             `,
-            boxShadow: "0 28px 90px rgba(0,0,0,0.70), 0 0 34px rgba(79,220,255,0.18)",
+            boxShadow: "0 28px 90px rgba(0,0,0,0.70), 0 0 34px rgba(45,207,190,0.18)",
             transition: "width 420ms cubic-bezier(.2,.9,.2,1), height 420ms cubic-bezier(.2,.9,.2,1)",
             willChange: "width,height",
           }}
@@ -478,8 +478,8 @@ export default function FechamentoCaixa({
                   width: 12,
                   height: 12,
                   borderRadius: 999,
-                  background: "#4fdcff",
-                  boxShadow: "0 0 0 4px rgba(79,220,255,0.18)",
+                  background: "#2DCFBE",
+                  boxShadow: "0 0 0 4px rgba(45,207,190,0.18)",
                 }}
               />
               FECHAMENTO DE CAIXA

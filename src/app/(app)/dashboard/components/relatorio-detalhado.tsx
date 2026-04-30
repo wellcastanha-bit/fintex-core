@@ -10,7 +10,7 @@ export default function RelatorioDetalhadoView() {
         minHeight: "100vh",
         overflow: "hidden",
         background:
-          "radial-gradient(1200px 700px at 18% 0%, rgba(79,220,255,0.18), rgba(0,0,0,0) 55%), radial-gradient(900px 600px at 85% 10%, rgba(79,220,255,0.10), rgba(0,0,0,0) 60%), linear-gradient(180deg, #041328, #020b18 55%, #020914)",
+          "radial-gradient(1200px 700px at 18% 0%, rgba(45,207,190,0.18), rgba(0,0,0,0) 55%), radial-gradient(900px 600px at 85% 10%, rgba(45,207,190,0.10), rgba(0,0,0,0) 60%), linear-gradient(180deg, #041328, #020b18 55%, #020914)",
       }}
     >
       <div style={{ padding: 18, paddingBottom: 10 }}>
@@ -22,9 +22,9 @@ export default function RelatorioDetalhadoView() {
               borderRadius: 16,
               display: "grid",
               placeItems: "center",
-              background: "rgba(79,220,255,0.10)",
-              border: "1px solid rgba(79,220,255,0.22)",
-              boxShadow: "0 0 22px rgba(79,220,255,0.14)",
+              background: "rgba(45,207,190,0.10)",
+              border: "1px solid rgba(45,207,190,0.22)",
+              boxShadow: "0 0 22px rgba(45,207,190,0.14)",
             }}
           >
             <FileText size={18} color="rgba(255,255,255,0.92)" />
@@ -45,9 +45,9 @@ export default function RelatorioDetalhadoView() {
         <div
           style={{
             borderRadius: 20,
-            border: "1px solid rgba(79,220,255,0.34)",
+            border: "1px solid rgba(45,207,190,0.34)",
             boxShadow:
-              "0 0 0 1px rgba(79,220,255,0.14), 0 0 40px rgba(79,220,255,0.16), 0 18px 60px rgba(0,0,0,0.62)",
+              "0 0 0 1px rgba(45,207,190,0.14), 0 0 40px rgba(45,207,190,0.16), 0 18px 60px rgba(0,0,0,0.62)",
             background: "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12))",
             overflow: "hidden",
             backdropFilter: "blur(12px)",
@@ -57,7 +57,7 @@ export default function RelatorioDetalhadoView() {
           <div
             style={{
               padding: 16,
-              borderBottom: "1px solid rgba(79,220,255,0.16)",
+              borderBottom: "1px solid rgba(45,207,190,0.16)",
               background: "linear-gradient(180deg, rgba(22, 120, 145, 0.55), rgba(12, 70, 92, 0.45))",
               display: "flex",
               alignItems: "center",
@@ -74,7 +74,7 @@ export default function RelatorioDetalhadoView() {
                 height: 30,
                 padding: "0 12px",
                 borderRadius: 999,
-                border: "1px solid rgba(79,220,255,0.22)",
+                border: "1px solid rgba(45,207,190,0.22)",
                 background: "rgba(255,255,255,0.06)",
                 color: "rgba(255,255,255,0.86)",
                 fontWeight: 950,
@@ -91,8 +91,8 @@ export default function RelatorioDetalhadoView() {
                   width: 8,
                   height: 8,
                   borderRadius: 999,
-                  background: "rgba(79,220,255,0.95)",
-                  boxShadow: "0 0 14px rgba(79,220,255,0.28)",
+                  background: "rgba(45,207,190,0.95)",
+                  boxShadow: "0 0 14px rgba(45,207,190,0.28)",
                   display: "inline-block",
                 }}
               />
@@ -106,9 +106,9 @@ export default function RelatorioDetalhadoView() {
                 borderRadius: 18,
                 border: "1px solid rgba(255,255,255,0.10)",
                 background:
-                  "radial-gradient(900px 260px at 20% 0%, rgba(79,220,255,0.18), rgba(0,0,0,0) 58%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.16))",
+                  "radial-gradient(900px 260px at 20% 0%, rgba(45,207,190,0.18), rgba(0,0,0,0) 58%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.16))",
                 boxShadow:
-                  "0 0 0 1px rgba(79,220,255,0.10) inset, 0 0 32px rgba(79,220,255,0.12), 0 18px 55px rgba(0,0,0,0.52)",
+                  "0 0 0 1px rgba(45,207,190,0.10) inset, 0 0 32px rgba(45,207,190,0.12), 0 18px 55px rgba(0,0,0,0.52)",
                 padding: 18,
                 overflow: "hidden",
               }}
@@ -122,9 +122,9 @@ export default function RelatorioDetalhadoView() {
                       borderRadius: 16,
                       display: "grid",
                       placeItems: "center",
-                      background: "rgba(79,220,255,0.10)",
-                      border: "1px solid rgba(79,220,255,0.22)",
-                      boxShadow: "0 0 22px rgba(79,220,255,0.14)",
+                      background: "rgba(45,207,190,0.10)",
+                      border: "1px solid rgba(45,207,190,0.22)",
+                      boxShadow: "0 0 22px rgba(45,207,190,0.14)",
                     }}
                   >
                     <Construction size={20} color="rgba(255,255,255,0.92)" />
@@ -200,7 +200,7 @@ export default function RelatorioDetalhadoView() {
                 marginTop: 12,
                 padding: 12,
                 borderRadius: 16,
-                border: "1px solid rgba(79,220,255,0.15)",
+                border: "1px solid rgba(45,207,190,0.15)",
                 background: "rgba(255,255,255,0.04)",
                 color: "rgba(255,255,255,0.70)",
                 fontSize: 12,

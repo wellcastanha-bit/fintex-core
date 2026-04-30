@@ -60,12 +60,12 @@ function PayBtn({ p, forma, setForma, trocoRef }: PayBtnProps) {
         border: src
           ? "none"
           : ativo
-          ? "1px solid rgba(79,220,255,0.55)"
+          ? "1px solid rgba(45,207,190,0.55)"
           : "1px solid rgba(255,255,255,0.14)",
         background: src
           ? "transparent"
           : ativo
-          ? "rgba(79,220,255,0.12)"
+          ? "rgba(45,207,190,0.12)"
           : "rgba(255,255,255,0.06)",
         color: "#eaf0ff",
         fontWeight: 900,
@@ -283,7 +283,7 @@ export default function Pagamento({ pagamentos, showToast, onRequestCancel }: Pr
   const premiumBg = `radial-gradient(
       900px 200px at 15% -10%,
       rgba(79, 220, 255, 0.12) 0%,
-      rgba(79,220,255,0.06) 35%,
+      rgba(45,207,190,0.06) 35%,
       rgba(79, 220, 255, 0.04) 60%
     ),
     linear-gradient(
@@ -293,11 +293,11 @@ export default function Pagamento({ pagamentos, showToast, onRequestCancel }: Pr
       rgba(6,16,37,0.94) 100%
     )`;
 
-  const hoverBorder = () => "1px solid rgba(79,220,255,0.55)";
+  const hoverBorder = () => "1px solid rgba(45,207,190,0.55)";
 
   const hoverShadow = (hover: boolean) =>
     hover
-      ? `inset 0 1px 0 rgba(255,255,255,0.12), 0 0 18px rgba(79,220,255,0.45)`
+      ? `inset 0 1px 0 rgba(255,255,255,0.12), 0 0 18px rgba(45,207,190,0.45)`
       : `inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.45)`;
 
   const actionFieldStyle = (hover: boolean, tint: "green" | "red"): React.CSSProperties => {
@@ -352,7 +352,7 @@ export default function Pagamento({ pagamentos, showToast, onRequestCancel }: Pr
           transition: "border 160ms ease, box-shadow 160ms ease",
         }}
       >
-        <div style={{ color: "#27d3ff", fontWeight: 800, fontSize: 18, marginBottom: 12 }}>
+        <div style={{ color: "#2DCFBE", fontWeight: 800, fontSize: 18, marginBottom: 12 }}>
           Formas de Pagamento:
         </div>
 

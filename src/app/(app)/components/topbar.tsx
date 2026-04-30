@@ -23,8 +23,7 @@ export default function Topbar({ nomeEmpresa, isHolding: _isHolding }: { nomeEmp
 
   const BASE = {
     color: "#fff" as const,
-    fontFamily:
-      'system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif',
+    fontFamily: "'BaiJamjuree', sans-serif",
     fontWeight: 800 as const,
     fontSize: 15,
     letterSpacing: 0.2,
@@ -56,12 +55,12 @@ export default function Topbar({ nomeEmpresa, isHolding: _isHolding }: { nomeEmp
           style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
         >
           <Image
-            src="/imagens/logo_fintex.jpeg"
+            src="/imagens/logo_foriv.png"
             alt="Fintex"
-            width={210}
-            height={50}
-            className="min-w-[160px] w-[160px] sm:w-auto sm:min-w-0"
-            style={{ height: 54, display: "block" }}
+            width={140}
+            height={33}
+            className="min-w-[110px] w-[110px] sm:w-auto sm:min-w-0"
+            style={{ height: 36, display: "block" }}
             priority
           />
         </Link>

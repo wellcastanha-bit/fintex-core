@@ -63,7 +63,7 @@ export default function Atendimento({ atendimentos }: Props) {
         background: `
           radial-gradient(900px 200px at 15% -10%,
             rgba(79, 220, 255, 0.12) 0%,
-            rgba(79,220,255,0.06) 35%,
+            rgba(45,207,190,0.06) 35%,
             rgba(79, 220, 255, 0.04) 60%
           ),
           linear-gradient(180deg,
@@ -72,10 +72,10 @@ export default function Atendimento({ atendimentos }: Props) {
             rgba(6,16,37,0.94) 100%
           )
         `,
-        border: cardGlowOn ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(79,220,255,0.42)",
+        border: cardGlowOn ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(45,207,190,0.42)",
         boxShadow: cardGlowOn
-          ? `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 26px rgba(79,220,255,0.45)`
-          : `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 22px rgba(79,220,255,0.12)`,
+          ? `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 26px rgba(45,207,190,0.45)`
+          : `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 22px rgba(45,207,190,0.12)`,
         transition: "border 160ms ease, box-shadow 160ms ease",
         boxSizing: "border-box",
         overflow: "hidden",
@@ -94,7 +94,7 @@ export default function Atendimento({ atendimentos }: Props) {
 
       <div
         style={{
-          color: "#4fdcff",
+          color: "#2DCFBE",
           fontWeight: 700,
           fontSize: 17,
           marginBottom: 12,
@@ -132,12 +132,12 @@ export default function Atendimento({ atendimentos }: Props) {
                   border: src
                     ? "none"
                     : ativo
-                    ? "1px solid rgba(79,220,255,0.55)"
+                    ? "1px solid rgba(45,207,190,0.55)"
                     : "1px solid rgba(255,255,255,0.14)",
                   background: src
                     ? "transparent"
                     : ativo
-                    ? "rgba(79,220,255,0.12)"
+                    ? "rgba(45,207,190,0.12)"
                     : "rgba(255,255,255,0.06)",
                   color: "#eaf0ff",
                   fontWeight: 900,

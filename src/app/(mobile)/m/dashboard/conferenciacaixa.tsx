@@ -5,7 +5,7 @@ import React from "react";
 const CARD_BG =
   "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))";
 const CARD_INNER = "rgba(2,11,24,0.42)";
-const AQUA_LINE = "rgba(79,220,255,0.18)";
+const AQUA_LINE = "rgba(45,207,190,0.18)";
 
 type ConferenciaConf = {
   caixaInicial: number;
@@ -42,8 +42,8 @@ function lineRGB(color: LineColor) {
       };
     default:
       return {
-        line: "rgba(79,220,255,0.35)",
-        glow: "rgba(79,220,255,0.14)",
+        line: "rgba(45,207,190,0.35)",
+        glow: "rgba(45,207,190,0.14)",
       };
   }
 }
@@ -63,7 +63,7 @@ function Shell({
         background: CARD_BG,
         border: `1px solid ${AQUA_LINE}`,
         boxShadow:
-          "0 0 0 1px rgba(79,220,255,0.06) inset, 0 26px 70px rgba(0,0,0,0.42)",
+          "0 0 0 1px rgba(45,207,190,0.06) inset, 0 26px 70px rgba(0,0,0,0.42)",
         ...style,
       }}
     >

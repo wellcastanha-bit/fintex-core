@@ -67,23 +67,23 @@ export default async function MobileEmpresasPage() {
       style={{
         minHeight: '100dvh',
         background:
-          'radial-gradient(circle at top, rgba(79,220,255,0.16) 0%, rgba(79,220,255,0.04) 18%, transparent 42%), linear-gradient(180deg, #041328 0%, #031022 45%, #020b18 100%)',
+          'radial-gradient(circle at top, rgba(45,207,190,0.16) 0%, rgba(45,207,190,0.04) 18%, transparent 42%), linear-gradient(180deg, #041328 0%, #031022 45%, #020b18 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 'max(32px, env(safe-area-inset-top)) 20px max(32px, env(safe-area-inset-bottom))',
-        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        fontFamily: "'BaiJamjuree', sans-serif",
       }}
     >
       <div style={{ width: '100%', maxWidth: 420, position: 'relative', zIndex: 1 }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}>
           <Image
-            src="/imagens/logo_fintex.jpeg"
+            src="/imagens/logo_foriv.png"
             alt="Fintex"
-            width={160}
-            height={52}
+            width={130}
+            height={42}
             priority
-            style={{ height: 52, width: 'auto', objectFit: 'contain', display: 'block' }}
+            style={{ height: 42, width: 'auto', objectFit: 'contain', display: 'block' }}
           />
         </div>
 
@@ -91,7 +91,7 @@ export default async function MobileEmpresasPage() {
           style={{
             borderRadius: 28,
             background: 'linear-gradient(180deg, rgba(10,25,45,0.94) 0%, rgba(5,16,33,0.96) 100%)',
-            border: '1px solid rgba(79,220,255,0.16)',
+            border: '1px solid rgba(45,207,190,0.16)',
             boxShadow: '0 0 0 1px rgba(255,255,255,0.03) inset, 0 24px 80px rgba(0,0,0,0.45)',
             overflow: 'hidden',
             position: 'relative',
@@ -101,7 +101,7 @@ export default async function MobileEmpresasPage() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(135deg, rgba(79,220,255,0.08), transparent 24%, transparent 72%, rgba(79,220,255,0.04))',
+              background: 'linear-gradient(135deg, rgba(45,207,190,0.08), transparent 24%, transparent 72%, rgba(45,207,190,0.04))',
               pointerEvents: 'none',
             }}
           />

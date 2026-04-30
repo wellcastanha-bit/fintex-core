@@ -212,7 +212,7 @@ export default function Local({ bairros }: Props) {
         background: `
           radial-gradient(900px 200px at 15% -10%,
             rgba(79, 220, 255, 0.12) 0%,
-            rgba(79,220,255,0.06) 35%,
+            rgba(45,207,190,0.06) 35%,
             rgba(79, 220, 255, 0.04) 60%
           ),
           linear-gradient(180deg,
@@ -221,10 +221,10 @@ export default function Local({ bairros }: Props) {
             rgba(6,16,37,0.94) 100%
           )
         `,
-        border: cardGlowOn ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(79,220,255,0.42)",
+        border: cardGlowOn ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(45,207,190,0.42)",
         boxShadow: cardGlowOn
-          ? `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 26px rgba(79,220,255,0.45)`
-          : `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 22px rgba(79,220,255,0.12)`,
+          ? `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 26px rgba(45,207,190,0.45)`
+          : `0 20px 55px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 0 22px rgba(45,207,190,0.12)`,
         transition: "border 160ms ease, box-shadow 160ms ease",
         boxSizing: "border-box",
         overflow: "hidden",
@@ -243,7 +243,7 @@ export default function Local({ bairros }: Props) {
 
       <div
         style={{
-          color: "#4fdcff",
+          color: "#2DCFBE",
           fontWeight: 700,
           fontSize: 17,
           marginBottom: 10,
@@ -279,10 +279,10 @@ export default function Local({ bairros }: Props) {
                 rgba(6,16,37,0.95) 100%
               )
             `,
-            border: fieldGlowOn || open ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(255,255,255,0.14)",
+            border: fieldGlowOn || open ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(255,255,255,0.14)",
             boxShadow:
               fieldGlowOn || open
-                ? `inset 0 1px 0 rgba(255,255,255,0.12), 0 0 18px rgba(79,220,255,0.45)`
+                ? `inset 0 1px 0 rgba(255,255,255,0.12), 0 0 18px rgba(45,207,190,0.45)`
                 : `inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.45)`,
             transition: "border 160ms ease, box-shadow 160ms ease, opacity 160ms ease",
             display: "grid",
@@ -299,12 +299,12 @@ export default function Local({ bairros }: Props) {
           <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0, position: "relative" }}>
             <MapPin
               size={28}
-              color="#4fdcff"
+              color="#2DCFBE"
               style={{
                 flexShrink: 0,
                 position: "relative",
                 top: -3,
-                filter: fieldGlowOn || open ? "drop-shadow(0 0 10px rgba(79,220,255,0.30))" : "none",
+                filter: fieldGlowOn || open ? "drop-shadow(0 0 10px rgba(45,207,190,0.30))" : "none",
                 transition: "filter 140ms ease",
               }}
             />
@@ -366,7 +366,7 @@ export default function Local({ bairros }: Props) {
                     rgba(6,16,37,0.92) 100%
                   )
                 `,
-                color: "#4fdcff",
+                color: "#2DCFBE",
                 fontWeight: 900,
                 fontSize: 18,
                 display: "flex",
@@ -400,10 +400,10 @@ export default function Local({ bairros }: Props) {
               width: pos.width - (showRS ? 132 : 0),
               borderRadius: 14,
               background: "#061025",
-              border: "1px solid rgba(79,220,255,0.44)",
+              border: "1px solid rgba(45,207,190,0.44)",
               boxShadow: `
                 0 28px 80px rgba(0,0,0,0.82),
-                0 0 24px rgba(79,220,255,0.16),
+                0 0 24px rgba(45,207,190,0.16),
                 inset 0 1px 0 rgba(255,255,255,0.06)
               `,
               maxHeight: 380,
@@ -430,8 +430,8 @@ export default function Local({ bairros }: Props) {
             <style>{`
               .fintex-local-scroll::-webkit-scrollbar { width: 10px; }
               .fintex-local-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 999px; }
-              .fintex-local-scroll::-webkit-scrollbar-thumb { background: rgba(79,220,255,0.25); border-radius: 999px; border: 2px solid rgba(6,16,37,1); }
-              .fintex-local-scroll::-webkit-scrollbar-thumb:hover { background: rgba(79,220,255,0.35); }
+              .fintex-local-scroll::-webkit-scrollbar-thumb { background: rgba(45,207,190,0.25); border-radius: 999px; border: 2px solid rgba(6,16,37,1); }
+              .fintex-local-scroll::-webkit-scrollbar-thumb:hover { background: rgba(45,207,190,0.35); }
             `}</style>
 
             <div
@@ -473,7 +473,7 @@ export default function Local({ bairros }: Props) {
                     `,
                   }}
                 >
-                  <Search size={18} color="rgba(79,220,255,0.95)" />
+                  <Search size={18} color="rgba(45,207,190,0.95)" />
                   <input
                     ref={searchRef}
                     value={q}
@@ -558,15 +558,15 @@ function OptionRow({
         gap: 12,
         cursor: "pointer",
         userSelect: "none",
-        background: active ? "rgba(79,220,255,0.14)" : "rgba(255,255,255,0.02)",
-        border: active ? "1px solid rgba(79,220,255,0.38)" : "1px solid rgba(255,255,255,0.06)",
-        boxShadow: active ? "0 0 16px rgba(79,220,255,0.14)" : "inset 0 1px 0 rgba(255,255,255,0.04)",
+        background: active ? "rgba(45,207,190,0.14)" : "rgba(255,255,255,0.02)",
+        border: active ? "1px solid rgba(45,207,190,0.38)" : "1px solid rgba(255,255,255,0.06)",
+        boxShadow: active ? "0 0 16px rgba(45,207,190,0.14)" : "inset 0 1px 0 rgba(255,255,255,0.04)",
         transition: "background 120ms ease, border 120ms ease, box-shadow 120ms ease",
       }}
       onMouseEnter={(e) => {
         if (active) return;
-        e.currentTarget.style.background = "rgba(79,220,255,0.08)";
-        e.currentTarget.style.border = "1px solid rgba(79,220,255,0.22)";
+        e.currentTarget.style.background = "rgba(45,207,190,0.08)";
+        e.currentTarget.style.border = "1px solid rgba(45,207,190,0.22)";
       }}
       onMouseLeave={(e) => {
         if (active) return;
@@ -594,7 +594,7 @@ function OptionRow({
       {value != null && (
         <div
           style={{
-            color: "rgba(79,220,255,0.98)",
+            color: "rgba(45,207,190,0.98)",
             fontWeight: 950,
             fontSize: 13,
             whiteSpace: "nowrap",

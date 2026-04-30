@@ -21,9 +21,9 @@ function Card({
         borderRadius: 22,
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))",
-        border: "1.5px solid rgba(79,220,255,0.45)",
+        border: "1.5px solid rgba(45,207,190,0.45)",
         boxShadow:
-          "0 0 0 1px rgba(79,220,255,0.15) inset, 0 18px 40px rgba(0,0,0,0.45)",
+          "0 0 0 1px rgba(45,207,190,0.15) inset, 0 18px 40px rgba(0,0,0,0.45)",
         marginBottom: 16,
         color: "inherit",
         transition: "all 0.2s ease",
@@ -38,12 +38,12 @@ function Card({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "rgba(79,220,255,0.08)",
-            border: "1px solid rgba(79,220,255,0.35)",
+            background: "rgba(45,207,190,0.08)",
+            border: "1px solid rgba(45,207,190,0.35)",
             flex: "0 0 auto",
           }}
         >
-          <div style={{ color: "#4fdcff" }}>{icon}</div>
+          <div style={{ color: "#2DCFBE" }}>{icon}</div>
         </div>
 
         <div style={{ flex: 1 }}>

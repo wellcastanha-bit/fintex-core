@@ -75,19 +75,19 @@ export function MonthCalendar({
                 cursor: "pointer",
                 userSelect: "none",
                 border: hasReserva
-                  ? "1px solid rgba(79,220,255,0.70)"
+                  ? "1px solid rgba(45,207,190,0.70)"
                   : active
-                  ? "1px solid rgba(79,220,255,0.55)"
+                  ? "1px solid rgba(45,207,190,0.55)"
                   : "1px solid rgba(255,255,255,0.10)",
                 background: hasReserva
-                  ? "rgba(75,212,246,0.58)"
+                  ? "rgba(45,207,190,0.58)"
                   : active
-                  ? "rgba(79,220,255,0.10)"
+                  ? "rgba(45,207,190,0.10)"
                   : "rgba(255,255,255,0.04)",
                 boxShadow: hasReserva
-                  ? "0 0 18px rgba(79,220,255,0.22)"
+                  ? "0 0 18px rgba(45,207,190,0.22)"
                   : active
-                  ? "0 0 0 1px rgba(79,220,255,0.18)"
+                  ? "0 0 0 1px rgba(45,207,190,0.18)"
                   : "none",
                 color: "#ffffff",
                 fontWeight: 900,

@@ -22,8 +22,8 @@ const features = [
     title: "Dashboard",
     description:
       "Visão completa da operação em tempo real com métricas que importam.",
-    gradient: "from-[#4fdcff]/20 to-[#4fdcff]/5",
-    color: "#4fdcff",
+    gradient: "from-[#2DCFBE]/20 to-[#2DCFBE]/5",
+    color: "#2DCFBE",
   },
   {
     icon: ClipboardList,
@@ -149,8 +149,8 @@ function AnimatedDivider({
   return (
     <Entrance show={show} delay={delay}>
       <div className="relative my-20 h-[2px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-[#4fdcff]/8" />
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#4fdcff]/18 to-transparent" />
+        <div className="absolute inset-0 bg-[#2DCFBE]/8" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2DCFBE]/18 to-transparent" />
         <div className="animate-horizontal-scan absolute left-[-20%] top-1/2 h-[2px] w-[18%] -translate-y-1/2 bg-gradient-to-r from-transparent via-[#7aeaff] to-transparent blur-[2px]" />
       </div>
     </Entrance>
@@ -180,7 +180,7 @@ export default function LandingPage() {
     <div
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen overflow-x-hidden bg-[#020b18] text-white selection:bg-[#4fdcff]/30 selection:text-white"
+      className="relative min-h-screen overflow-x-hidden bg-[#020b18] text-white selection:bg-[#2DCFBE]/30 selection:text-white"
     >
       <svg
         className="absolute inset-0 h-full w-full"
@@ -199,14 +199,14 @@ export default function LandingPage() {
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
 
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-[#4fdcff]/10 blur-3xl animate-float-slow" />
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-[#2DCFBE]/10 blur-3xl animate-float-slow" />
       <div className="pointer-events-none absolute -left-20 bottom-20 h-[400px] w-[400px] rounded-full bg-[#a78bfa]/8 blur-3xl animate-float-reverse" />
 
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(79,220,255,0.07) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 90% 50%, rgba(79,220,255,0.03) 0%, transparent 50%)",
+            "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(45,207,190,0.07) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 90% 50%, rgba(45,207,190,0.03) 0%, transparent 50%)",
         }}
       />
 
@@ -214,7 +214,7 @@ export default function LandingPage() {
         <Entrance show={mounted} delay={0}>
           <nav className="flex items-center justify-between py-6">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#4fdcff] to-[#4fdcff]/60 shadow-[0_0_30px_rgba(79,220,255,0.18)]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#2DCFBE] to-[#2DCFBE]/60 shadow-[0_0_30px_rgba(45,207,190,0.18)]">
                 <Zap size={16} className="text-[#020b18]" />
               </div>
               <span className="text-lg font-semibold tracking-tight">Fintex</span>
@@ -248,7 +248,7 @@ export default function LandingPage() {
               <h1 className="text-[clamp(2.5rem,5.5vw,4rem)] font-bold leading-[1.05] tracking-[-0.04em] text-white">
                 Gestão{" "}
                 <span className="relative">
-                  <span className="relative z-10 bg-gradient-to-r from-[#4fdcff] via-[#4fdcff] to-[#a78bfa] bg-clip-text text-transparent">
+                  <span className="relative z-10 bg-gradient-to-r from-[#2DCFBE] via-[#2DCFBE] to-[#a78bfa] bg-clip-text text-transparent">
                     inteligente
                   </span>
                 </span>
@@ -267,7 +267,7 @@ export default function LandingPage() {
               <div className="mt-10 flex items-center gap-4">
                 <Link
   href="/app"
-  className="group relative inline-flex items-center gap-2.5 rounded-2xl bg-[#4fdcff] px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(79,220,255,0.3)] active:scale-[0.98]"
+  className="group relative inline-flex items-center gap-2.5 rounded-2xl bg-[#2DCFBE] px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(45,207,190,0.3)] active:scale-[0.98]"
   style={{ color: "#011b3c" }}
 >
                   Acessar painel
@@ -299,9 +299,9 @@ export default function LandingPage() {
                       className="h-8 w-8 rounded-full border-2 border-[#020b18]"
                       style={{
                         background: `linear-gradient(135deg, ${
-                          ["#4fdcff", "#a78bfa", "#34d399", "#f472b6"][i % 4]
+                          ["#2DCFBE", "#a78bfa", "#34d399", "#f472b6"][i % 4]
                         }40, ${
-                          ["#4fdcff", "#a78bfa", "#34d399", "#f472b6"][i % 4]
+                          ["#2DCFBE", "#a78bfa", "#34d399", "#f472b6"][i % 4]
                         }10)`,
                       }}
                     />
@@ -423,11 +423,11 @@ export default function LandingPage() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse 50% 80% at 50% 0%, rgba(79,220,255,0.06) 0%, transparent 60%)",
+                    "radial-gradient(ellipse 50% 80% at 50% 0%, rgba(45,207,190,0.06) 0%, transparent 60%)",
                 }}
               />
               <div className="relative z-10">
-                <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#4fdcff]/20 bg-[#4fdcff]/5 px-4 py-1.5 text-xs font-medium text-[#4fdcff]">
+                <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#2DCFBE]/20 bg-[#2DCFBE]/5 px-4 py-1.5 text-xs font-medium text-[#2DCFBE]">
                   <TrendingUp size={12} />
                   Comece agora
                 </span>
@@ -435,7 +435,7 @@ export default function LandingPage() {
                 <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em] text-white lg:text-4xl">
                   Pronto para transformar
                   <br />
-                  <span className="bg-gradient-to-r from-[#4fdcff] to-[#a78bfa] bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-[#2DCFBE] to-[#a78bfa] bg-clip-text text-transparent">
                     sua operação?
                   </span>
                 </h2>
@@ -448,7 +448,7 @@ export default function LandingPage() {
                 <div className="mt-8 flex items-center justify-center gap-4">
                   <Link
   href="/app"
-  className="group relative inline-flex items-center gap-2.5 rounded-2xl bg-[#4fdcff] px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(79,220,255,0.3)] active:scale-[0.98]"
+  className="group relative inline-flex items-center gap-2.5 rounded-2xl bg-[#2DCFBE] px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(45,207,190,0.3)] active:scale-[0.98]"
   style={{ color: "#000000" }}
 >
                     Começar gratuitamente
@@ -471,7 +471,7 @@ export default function LandingPage() {
         <Entrance show={mounted} delay={1380}>
           <footer className="flex items-center justify-between border-t border-white/[0.06] py-8">
             <div className="flex items-center gap-2 text-sm text-white/30">
-              <div className="flex h-5 w-5 items-center justify-center rounded-md bg-gradient-to-br from-[#4fdcff] to-[#4fdcff]/60">
+              <div className="flex h-5 w-5 items-center justify-center rounded-md bg-gradient-to-br from-[#2DCFBE] to-[#2DCFBE]/60">
                 <Zap size={10} className="text-[#020b18]" />
               </div>
               Fintex © 2026

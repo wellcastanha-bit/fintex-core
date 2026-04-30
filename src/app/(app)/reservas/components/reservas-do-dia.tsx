@@ -3,7 +3,7 @@
 import React from "react";
 import { Pencil, Trash2 } from "lucide-react";
 
-const AQUA = "#4fdcff";
+const AQUA = "#2DCFBE";
 
 export type Reserva = {
   id: string;
@@ -46,7 +46,7 @@ export function ReservasDoDia({
       style={{
         borderRadius: 18,
         padding: 18,
-        border: "1px solid rgba(79,220,255,0.32)",
+        border: "1px solid rgba(45,207,190,0.32)",
         boxShadow: "0 18px 60px rgba(0,0,0,0.55)",
         background: "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(6,16,37,0.94) 100%)",
       }}

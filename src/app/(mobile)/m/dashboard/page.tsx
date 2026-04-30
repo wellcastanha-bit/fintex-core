@@ -9,11 +9,11 @@ import { useEmpresa } from "@/lib/empresa-context";
 import { useLoadingStore } from "@/lib/loading-store";
 
 const BG_PAGE =
-  "radial-gradient(1200px 700px at 20% 0%, rgba(79,220,255,0.12), transparent 55%), radial-gradient(900px 520px at 80% 10%, rgba(79,220,255,0.10), transparent 60%), linear-gradient(180deg, rgba(4,19,40,1), rgba(2,11,24,1) 58%, rgba(2,9,20,1))";
+  "radial-gradient(1200px 700px at 20% 0%, rgba(45,207,190,0.12), transparent 55%), radial-gradient(900px 520px at 80% 10%, rgba(45,207,190,0.10), transparent 60%), linear-gradient(180deg, rgba(4,19,40,1), rgba(2,11,24,1) 58%, rgba(2,9,20,1))";
 
 const CARD_BG =
   "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))";
-const AQUA_LINE = "rgba(79,220,255,0.18)";
+const AQUA_LINE = "rgba(45,207,190,0.18)";
 
 function pad2(n: number) {
   return String(n).padStart(2, "0");
@@ -51,7 +51,7 @@ function Shell({
         padding: 14,
         background: CARD_BG,
         border: `1px solid ${AQUA_LINE}`,
-        boxShadow: "0 0 0 1px rgba(79,220,255,0.06) inset, 0 26px 70px rgba(0,0,0,0.42)",
+        boxShadow: "0 0 0 1px rgba(45,207,190,0.06) inset, 0 26px 70px rgba(0,0,0,0.42)",
         ...style,
       }}
     >
@@ -116,7 +116,7 @@ function PeriodSelect({ value, onChange }: { value: PeriodKey; onChange: (v: Per
             width: "100%",
             height: 40,
             borderRadius: 14,
-            border: "1px solid rgba(79,220,255,0.20)",
+            border: "1px solid rgba(45,207,190,0.20)",
             background: "rgba(2,11,24,0.55)",
             color: "rgba(255,255,255,0.92)",
             fontWeight: 950,
@@ -158,7 +158,7 @@ const DATE_INPUT_STYLE: React.CSSProperties = {
   minWidth: 0,
   height: 42,
   borderRadius: 14,
-  border: "1px solid rgba(79,220,255,0.20)",
+  border: "1px solid rgba(45,207,190,0.20)",
   background: "rgba(2,11,24,0.55)",
   color: "rgba(255,255,255,0.92)",
   fontWeight: 1000,

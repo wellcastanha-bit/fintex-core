@@ -254,13 +254,13 @@ function MonthGrid({
           );
 
           const bg = edge
-            ? "rgba(79,220,255,0.26)"
+            ? "rgba(45,207,190,0.26)"
             : inRange
-            ? "rgba(79,220,255,0.12)"
+            ? "rgba(45,207,190,0.12)"
             : "transparent";
 
           const bd = edge
-            ? "1px solid rgba(79,220,255,0.55)"
+            ? "1px solid rgba(45,207,190,0.55)"
             : isToday
             ? "1px solid rgba(255,255,255,0.18)"
             : "1px solid rgba(255,255,255,0.00)";
@@ -282,7 +282,7 @@ function MonthGrid({
                 fontSize: 12,
                 cursor: c.inMonth ? "pointer" : "default",
                 outline: "none",
-                boxShadow: edge ? "0 0 18px rgba(79,220,255,0.18)" : "none",
+                boxShadow: edge ? "0 0 18px rgba(45,207,190,0.18)" : "none",
                 transition: "180ms ease",
               }}
             >
@@ -412,7 +412,7 @@ function DatePickerFintex({
     setOpen(false);
   };
 
-  const shellBd = open ? "rgba(79,220,255,0.42)" : "rgba(79,220,255,0.26)";
+  const shellBd = open ? "rgba(45,207,190,0.42)" : "rgba(45,207,190,0.26)";
 
   return (
     <div ref={anchorRef} style={{ position: "relative", minWidth: 250, maxWidth: 300, width: "100%" }}>
@@ -436,8 +436,8 @@ function DatePickerFintex({
           cursor: "pointer",
           textAlign: "left",
           boxShadow: open
-            ? "0 0 0 1px rgba(79,220,255,0.12), 0 0 26px rgba(79,220,255,0.18)"
-            : "0 0 0 1px rgba(79,220,255,0.06)",
+            ? "0 0 0 1px rgba(45,207,190,0.12), 0 0 26px rgba(45,207,190,0.18)"
+            : "0 0 0 1px rgba(45,207,190,0.06)",
           transition: "180ms ease",
           position: "relative",
         }}
@@ -472,11 +472,11 @@ function DatePickerFintex({
             width: DROPDOWN_W,
             maxWidth: "min(920px, 92vw)",
             borderRadius: 18,
-            border: "1px solid rgba(79,220,255,0.26)",
+            border: "1px solid rgba(45,207,190,0.26)",
             background:
-              "radial-gradient(900px 260px at 20% 0%, rgba(79,220,255,0.20), rgba(0,0,0,0) 58%), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.26))",
+              "radial-gradient(900px 260px at 20% 0%, rgba(45,207,190,0.20), rgba(0,0,0,0) 58%), linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.26))",
             boxShadow:
-              "0 0 0 1px rgba(79,220,255,0.10), 0 0 34px rgba(79,220,255,0.14), 0 18px 60px rgba(0,0,0,0.62)",
+              "0 0 0 1px rgba(45,207,190,0.10), 0 0 34px rgba(45,207,190,0.14), 0 18px 60px rgba(0,0,0,0.62)",
             overflow: "hidden",
             backdropFilter: "blur(14px)",
             WebkitBackdropFilter: "blur(14px)",
@@ -508,7 +508,7 @@ function DatePickerFintex({
                         padding: "0 12px",
                         border: "none",
                         borderTop: "1px solid rgba(255,255,255,0.06)",
-                        background: active ? "rgba(79,220,255,0.10)" : "transparent",
+                        background: active ? "rgba(45,207,190,0.10)" : "transparent",
                         color: "rgba(255,255,255,0.92)",
                         fontWeight: active ? 980 : 900,
                         cursor: "pointer",
@@ -516,7 +516,7 @@ function DatePickerFintex({
                       }}
                     >
                       <span>{p.label}</span>
-                      {active ? <span style={{ color: "#4fdcff", fontWeight: 980 }}>✓</span> : <span />}
+                      {active ? <span style={{ color: "#2DCFBE", fontWeight: 980 }}>✓</span> : <span />}
                     </button>
                   );
                 })}
@@ -686,12 +686,12 @@ function DatePickerFintex({
                     border: `1px solid ${
                       !rangeDraftStart || !rangeDraftEnd
                         ? "rgba(255,255,255,0.14)"
-                        : "rgba(79,220,255,0.40)"
+                        : "rgba(45,207,190,0.40)"
                     }`,
                     background:
                       !rangeDraftStart || !rangeDraftEnd
                         ? "rgba(255,255,255,0.06)"
-                        : "rgba(79,220,255,0.10)",
+                        : "rgba(45,207,190,0.10)",
                     color:
                       !rangeDraftStart || !rangeDraftEnd
                         ? "rgba(255,255,255,0.55)"
@@ -701,7 +701,7 @@ function DatePickerFintex({
                     boxShadow:
                       !rangeDraftStart || !rangeDraftEnd
                         ? "none"
-                        : "0 0 18px rgba(79,220,255,0.14)",
+                        : "0 0 18px rgba(45,207,190,0.14)",
                   }}
                 >
                   aplicar

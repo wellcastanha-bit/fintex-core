@@ -184,8 +184,8 @@ function BairroRow({
           gap: 10,
           padding: "14px 18px",
           borderRadius: 14,
-          border: "1px solid rgba(79,220,255,0.45)",
-          background: "rgba(79,220,255,0.06)",
+          border: "1px solid rgba(45,207,190,0.45)",
+          background: "rgba(45,207,190,0.06)",
         }}
       >
         <div style={{ display: "grid", gridTemplateColumns: "1fr 130px", gap: 10 }}>
@@ -231,12 +231,12 @@ function BairroRow({
         borderRadius: 14,
         border: ativo
           ? hover
-            ? "1px solid rgba(79,220,255,0.55)"
-            : "1px solid rgba(79,220,255,0.28)"
+            ? "1px solid rgba(45,207,190,0.55)"
+            : "1px solid rgba(45,207,190,0.28)"
           : hover
           ? "1px solid rgba(255,255,255,0.20)"
           : "1px solid rgba(255,255,255,0.10)",
-        background: ativo ? "rgba(79,220,255,0.06)" : "rgba(255,255,255,0.03)",
+        background: ativo ? "rgba(45,207,190,0.06)" : "rgba(255,255,255,0.03)",
         opacity: toggleSaving ? 0.65 : 1,
         transition: "border 160ms ease, background 160ms ease",
       }}
@@ -256,7 +256,7 @@ function BairroRow({
         style={{
           fontWeight: 900,
           fontSize: 14,
-          color: ativo ? "#4fdcff" : "rgba(79,220,255,0.35)",
+          color: ativo ? "#2DCFBE" : "rgba(45,207,190,0.35)",
           whiteSpace: "nowrap",
           transition: "color 160ms ease",
         }}
@@ -272,7 +272,7 @@ function BairroRow({
             color: toggleSaving
               ? "rgba(234,240,255,0.40)"
               : ativo
-              ? "#4fdcff"
+              ? "#2DCFBE"
               : "rgba(234,240,255,0.30)",
             letterSpacing: 0.6,
             textTransform: "uppercase",
@@ -296,7 +296,7 @@ function BairroRow({
           height: 34,
           borderRadius: 10,
           border: hover
-            ? "1px solid rgba(79,220,255,0.35)"
+            ? "1px solid rgba(45,207,190,0.35)"
             : "1px solid rgba(255,255,255,0.10)",
           background: "rgba(255,255,255,0.05)",
           cursor: "pointer",
@@ -307,7 +307,7 @@ function BairroRow({
           transition: "border 160ms ease",
         }}
       >
-        <Pencil size={13} color={hover ? "#4fdcff" : "rgba(234,240,255,0.50)"} />
+        <Pencil size={13} color={hover ? "#2DCFBE" : "rgba(234,240,255,0.50)"} />
       </button>
     </div>
   );
@@ -352,15 +352,15 @@ function NovoBairroForm({
         gap: 10,
         padding: "14px 18px",
         borderRadius: 14,
-        border: "1px solid rgba(79,220,255,0.45)",
-        background: "rgba(79,220,255,0.06)",
+        border: "1px solid rgba(45,207,190,0.45)",
+        background: "rgba(45,207,190,0.06)",
       }}
     >
       <div
         style={{
           fontSize: 11,
           fontWeight: 900,
-          color: "#4fdcff",
+          color: "#2DCFBE",
           letterSpacing: 0.7,
           textTransform: "uppercase",
         }}
@@ -390,7 +390,7 @@ function NovoBairroForm({
           style={{
             fontSize: 12,
             fontWeight: 700,
-            color: ativo ? "#4fdcff" : "rgba(234,240,255,0.40)",
+            color: ativo ? "#2DCFBE" : "rgba(234,240,255,0.40)",
             letterSpacing: 0.4,
             transition: "color 160ms ease",
           }}

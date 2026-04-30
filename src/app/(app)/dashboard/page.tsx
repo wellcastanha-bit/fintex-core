@@ -28,24 +28,24 @@ function TabBtn({
         height: 40,
         padding: "0 12px",
         borderRadius: 14,
-        border: active ? "1px solid rgba(79,220,255,0.40)" : "1px solid rgba(255,255,255,0.12)",
-        background: active ? "rgba(79,220,255,0.16)" : "rgba(255,255,255,0.06)",
+        border: active ? "1px solid rgba(45,207,190,0.40)" : "1px solid rgba(255,255,255,0.12)",
+        background: active ? "rgba(45,207,190,0.16)" : "rgba(255,255,255,0.06)",
         color: "rgba(255,255,255,0.92)",
         fontWeight: 950,
         cursor: "pointer",
         display: "inline-flex",
         alignItems: "center",
         gap: 10,
-        boxShadow: active ? "0 0 22px rgba(79,220,255,0.12)" : "none",
+        boxShadow: active ? "0 0 22px rgba(45,207,190,0.12)" : "none",
         userSelect: "none",
         transition: "all .16s ease",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLButtonElement;
         if (!active) {
-          el.style.border = "1px solid rgba(79,220,255,0.28)";
-          el.style.background = "rgba(79,220,255,0.10)";
-          el.style.boxShadow = "0 0 18px rgba(79,220,255,0.10)";
+          el.style.border = "1px solid rgba(45,207,190,0.28)";
+          el.style.background = "rgba(45,207,190,0.10)";
+          el.style.boxShadow = "0 0 18px rgba(45,207,190,0.10)";
         }
       }}
       onMouseLeave={(e) => {
@@ -85,7 +85,7 @@ function LockScreen({ onUnlock }: { onUnlock: () => void }) {
         alignItems: "center",
         justifyContent: "center",
         background:
-          "radial-gradient(1400px 900px at 18% 18%, rgba(79,220,255,0.14) 0%, rgba(2,11,24,0) 52%), linear-gradient(180deg, #041328 0%, #031022 35%, #020b18 100%)",
+          "radial-gradient(1400px 900px at 18% 18%, rgba(45,207,190,0.14) 0%, rgba(2,11,24,0) 52%), linear-gradient(180deg, #041328 0%, #031022 35%, #020b18 100%)",
         zIndex: 9999,
       }}
     >
@@ -96,7 +96,7 @@ function LockScreen({ onUnlock }: { onUnlock: () => void }) {
           padding: "36px 32px",
           borderRadius: 24,
           background: "linear-gradient(180deg, rgba(10,25,45,0.96) 0%, rgba(5,16,33,0.98) 100%)",
-          border: "1px solid rgba(79,220,255,0.18)",
+          border: "1px solid rgba(45,207,190,0.18)",
           boxShadow: "0 24px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.03) inset",
         }}
       >
@@ -134,7 +134,7 @@ function LockScreen({ onUnlock }: { onUnlock: () => void }) {
             borderRadius: 14,
             border: erro
               ? "1px solid rgba(255,100,100,0.50)"
-              : "1px solid rgba(79,220,255,0.18)",
+              : "1px solid rgba(45,207,190,0.18)",
             background: "rgba(2,11,24,0.60)",
             color: "#f8fbff",
             fontSize: 15,
@@ -166,8 +166,8 @@ function LockScreen({ onUnlock }: { onUnlock: () => void }) {
             width: "100%",
             padding: "12px 0",
             borderRadius: 14,
-            border: "1px solid rgba(79,220,255,0.30)",
-            background: "rgba(79,220,255,0.12)",
+            border: "1px solid rgba(45,207,190,0.30)",
+            background: "rgba(45,207,190,0.12)",
             color: "#f8fbff",
             fontSize: 14,
             fontWeight: 800,
@@ -195,9 +195,9 @@ export default function DashboardPage() {
     <div
       style={{
         borderRadius: 18,
-        border: "1px solid rgba(79,220,255,0.22)",
+        border: "1px solid rgba(45,207,190,0.22)",
         background: "rgba(0,0,0,0.18)",
-        boxShadow: "0 0 0 1px rgba(79,220,255,0.10) inset, 0 0 22px rgba(79,220,255,0.12)",
+        boxShadow: "0 0 0 1px rgba(45,207,190,0.10) inset, 0 0 22px rgba(45,207,190,0.12)",
         padding: 10,
         display: "flex",
         gap: 10,

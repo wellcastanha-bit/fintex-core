@@ -104,9 +104,9 @@ export default function GlobalLoadingOverlay() {
               background: "rgba(255,255,255,0.04)",
               backdropFilter: "blur(6px)",
               WebkitBackdropFilter: "blur(6px)",
-              border: "1px solid rgba(79,220,255,0.13)",
+              border: "1px solid rgba(45,207,190,0.13)",
               boxShadow:
-                "0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03), 0 0 40px rgba(79,220,255,0.06)",
+                "0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03), 0 0 40px rgba(45,207,190,0.06)",
               transform: fading ? "scale(0.96)" : "scale(1)",
               transition: "transform 280ms cubic-bezier(0.4,0,0.2,1)",
             }}
@@ -156,7 +156,7 @@ function ArcLoader() {
           cx="22"
           cy="22"
           r="18"
-          stroke="rgba(79,220,255,1)"
+          stroke="rgba(45,207,190,1)"
           strokeWidth="1.5"
           style={{ animation: "fintex-track-pulse 2.4s ease-in-out infinite" }}
         />
@@ -172,13 +172,13 @@ function ArcLoader() {
           style={{
             animation: "fintex-arc 1.1s cubic-bezier(0.4,0,0.6,1) infinite",
             transformOrigin: "22px 22px",
-            filter: "drop-shadow(0 0 4px rgba(79,220,255,0.35))",
+            filter: "drop-shadow(0 0 4px rgba(45,207,190,0.35))",
           }}
         />
         <defs>
           <linearGradient id="fintex-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#4fdcff" stopOpacity="0" />
-            <stop offset="60%" stopColor="#4fdcff" stopOpacity="1" />
+            <stop offset="0%" stopColor="#2DCFBE" stopOpacity="0" />
+            <stop offset="60%" stopColor="#2DCFBE" stopOpacity="1" />
             <stop offset="100%" stopColor="#a8f0ff" stopOpacity="1" />
           </linearGradient>
         </defs>

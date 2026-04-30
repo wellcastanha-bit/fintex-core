@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { redirect } from 'next/navigation'
 import { requireUser } from '@/lib/auth'
 import { createClient } from '@/lib/supabase/server'
@@ -75,13 +76,12 @@ export default async function EmpresasPage(_props: PageProps) {
       style={{
         minHeight: '100vh',
         background:
-          'radial-gradient(circle at top, rgba(79,220,255,0.16) 0%, rgba(79,220,255,0.04) 18%, transparent 42%), linear-gradient(180deg, #041328 0%, #031022 45%, #020b18 100%)',
+          'radial-gradient(circle at top, rgba(45,207,190,0.16) 0%, rgba(45,207,190,0.04) 18%, transparent 42%), linear-gradient(180deg, #041328 0%, #031022 45%, #020b18 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '32px 20px',
-        fontFamily:
-          'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        fontFamily: "'BaiJamjuree', sans-serif",
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -91,7 +91,7 @@ export default async function EmpresasPage(_props: PageProps) {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(to bottom right, rgba(79,220,255,0.04), transparent 28%, transparent 72%, rgba(79,220,255,0.03))',
+            'linear-gradient(to bottom right, rgba(45,207,190,0.04), transparent 28%, transparent 72%, rgba(45,207,190,0.03))',
           pointerEvents: 'none',
         }}
       />
@@ -105,7 +105,7 @@ export default async function EmpresasPage(_props: PageProps) {
           width: 520,
           height: 520,
           borderRadius: '50%',
-          background: 'rgba(79,220,255,0.08)',
+          background: 'rgba(45,207,190,0.08)',
           filter: 'blur(90px)',
           pointerEvents: 'none',
         }}
@@ -126,37 +126,14 @@ export default async function EmpresasPage(_props: PageProps) {
             marginBottom: 28,
           }}
         >
-          <div
-            style={{
-              position: 'relative',
-              padding: '12px 18px',
-              borderRadius: 18,
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(79,220,255,0.16)',
-              boxShadow:
-                '0 0 0 1px rgba(79,220,255,0.05) inset, 0 18px 60px rgba(0,0,0,0.35), 0 0 30px rgba(79,220,255,0.08)',
-              backdropFilter: 'blur(14px)',
-            }}
-          >
-            <span
-              style={{
-                fontSize: 30,
-                fontWeight: 800,
-                color: '#f8fbff',
-                letterSpacing: '-0.05em',
-              }}
-            >
-              Fin
-              <span
-                style={{
-                  color: '#4fdcff',
-                  textShadow: '0 0 18px rgba(79,220,255,0.35)',
-                }}
-              >
-                tex
-              </span>
-            </span>
-          </div>
+          <Image
+            src="/imagens/logo_foriv.png"
+            alt="Fintex"
+            width={160}
+            height={52}
+            priority
+            style={{ height: 52, width: 'auto', objectFit: 'contain', display: 'block' }}
+          />
         </div>
 
         <div
@@ -165,9 +142,9 @@ export default async function EmpresasPage(_props: PageProps) {
             borderRadius: 28,
             background:
               'linear-gradient(180deg, rgba(10,25,45,0.94) 0%, rgba(5,16,33,0.96) 100%)',
-            border: '1px solid rgba(79,220,255,0.16)',
+            border: '1px solid rgba(45,207,190,0.16)',
             boxShadow:
-              '0 0 0 1px rgba(255,255,255,0.03) inset, 0 24px 80px rgba(0,0,0,0.45), 0 0 40px rgba(79,220,255,0.08)',
+              '0 0 0 1px rgba(255,255,255,0.03) inset, 0 24px 80px rgba(0,0,0,0.45), 0 0 40px rgba(45,207,190,0.08)',
             overflow: 'hidden',
           }}
         >
@@ -176,7 +153,7 @@ export default async function EmpresasPage(_props: PageProps) {
               position: 'absolute',
               inset: 0,
               background:
-                'linear-gradient(135deg, rgba(79,220,255,0.08), transparent 24%, transparent 72%, rgba(79,220,255,0.04))',
+                'linear-gradient(135deg, rgba(45,207,190,0.08), transparent 24%, transparent 72%, rgba(45,207,190,0.04))',
               pointerEvents: 'none',
             }}
           />
@@ -189,7 +166,7 @@ export default async function EmpresasPage(_props: PageProps) {
               width: 220,
               height: 220,
               borderRadius: '50%',
-              background: 'rgba(79,220,255,0.08)',
+              background: 'rgba(45,207,190,0.08)',
               filter: 'blur(70px)',
               pointerEvents: 'none',
             }}

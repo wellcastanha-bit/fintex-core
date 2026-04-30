@@ -121,8 +121,8 @@ function mapPedidoToCashRow(row: any): PedidoCashRow {
   };
 }
 
-const AQUA = "rgba(79,220,255,0.45)";
-const AQUA_SOFT = "rgba(79,220,255,0.22)";
+const AQUA = "rgba(45,207,190,0.45)";
+const AQUA_SOFT = "rgba(45,207,190,0.22)";
 
 function CardShell({ children, hoverOn }: { children: React.ReactNode; hoverOn: boolean }) {
   return (
@@ -136,7 +136,7 @@ function CardShell({ children, hoverOn }: { children: React.ReactNode; hoverOn: 
           radial-gradient(
             900px 240px at 15% -10%,
             rgba(79, 220, 255, 0.10) 0%,
-            rgba(79,220,255,0.05) 40%,
+            rgba(45,207,190,0.05) 40%,
             rgba(79, 220, 255, 0.03) 65%
           ),
           linear-gradient(
@@ -146,7 +146,7 @@ function CardShell({ children, hoverOn }: { children: React.ReactNode; hoverOn: 
             rgba(6,16,37,0.94) 100%
           )
         `,
-        border: hoverOn ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(79,220,255,0.40)",
+        border: hoverOn ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(45,207,190,0.40)",
         boxShadow: hoverOn
           ? `
             0 20px 55px rgba(0,0,0,0.60),

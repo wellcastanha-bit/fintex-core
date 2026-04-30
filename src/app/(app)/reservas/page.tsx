@@ -7,7 +7,7 @@ import type { Reserva } from "./components/reservas-do-dia";
 import { subscribeReservations } from "@/lib/realtime";
 import { useLoadingStore } from "@/lib/loading-store";
 
-const AQUA = "#4fdcff";
+const AQUA = "#2DCFBE";
 const PAGE_BG = "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(6,16,37,0.94) 100%)";
 
 type LocacaoStatus = "Pago" | "Pendente";
@@ -59,7 +59,7 @@ function CardShell({ title, children }: { title: string; children: React.ReactNo
       style={{
         borderRadius: 18,
         padding: 18,
-        border: "1px solid rgba(79,220,255,0.32)",
+        border: "1px solid rgba(45,207,190,0.32)",
         boxShadow: "0 18px 60px rgba(0,0,0,0.55)",
         background: PAGE_BG,
       }}
@@ -155,8 +155,8 @@ function AquaButton({
         width: full ? "100%" : "auto",
         borderRadius: 16,
         padding: "0 18px",
-        border: "1px solid rgba(75,212,246,0.55)",
-        background: "linear-gradient(0deg, rgba(75,212,246,0.58), rgba(255,255,255,0.02))",
+        border: "1px solid rgba(45,207,190,0.55)",
+        background: "linear-gradient(0deg, rgba(45,207,190,0.58), rgba(255,255,255,0.02))",
         color: "#fff",
         fontWeight: 900,
         fontSize: 16,
@@ -603,11 +603,11 @@ export default function ReservasPage() {
                         borderRadius: 16,
                         border:
                           locacaoStatus === st
-                            ? "1px solid rgba(79,220,255,0.55)"
+                            ? "1px solid rgba(45,207,190,0.55)"
                             : "1px solid rgba(255,255,255,0.14)",
                         background:
                           locacaoStatus === st
-                            ? "rgba(79,220,255,0.14)"
+                            ? "rgba(45,207,190,0.14)"
                             : "rgba(255,255,255,0.06)",
                         color: "#fff",
                         fontWeight: 900,

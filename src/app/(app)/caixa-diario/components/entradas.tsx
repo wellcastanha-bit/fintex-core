@@ -49,8 +49,8 @@ function toNumberSmart(v: any) {
   return Number.isFinite(n) ? n : 0;
 }
 
-const AQUA = "rgba(79,220,255,0.45)";
-const AQUA_SOFT = "rgba(79,220,255,0.22)";
+const AQUA = "rgba(45,207,190,0.45)";
+const AQUA_SOFT = "rgba(45,207,190,0.22)";
 
 function CardShell({ children, cardGlowOn }: { children: React.ReactNode; cardGlowOn: boolean }) {
   return (
@@ -64,7 +64,7 @@ function CardShell({ children, cardGlowOn }: { children: React.ReactNode; cardGl
           radial-gradient(
             900px 240px at 15% -10%,
             rgba(79, 220, 255, 0.10) 0%,
-            rgba(79,220,255,0.05) 40%,
+            rgba(45,207,190,0.05) 40%,
             rgba(79, 220, 255, 0.03) 65%
           ),
           linear-gradient(
@@ -74,7 +74,7 @@ function CardShell({ children, cardGlowOn }: { children: React.ReactNode; cardGl
             rgba(6,16,37,0.94) 100%
           )
         `,
-        border: cardGlowOn ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(79,220,255,0.40)",
+        border: cardGlowOn ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(45,207,190,0.40)",
         boxShadow: cardGlowOn
           ? `
             0 20px 55px rgba(0,0,0,0.60),
@@ -123,11 +123,11 @@ function FieldShell({ children, glowOn }: { children: React.ReactNode; glowOn: b
             rgba(6,16,37,0.95) 100%
           )
         `,
-        border: glowOn ? "1px solid rgba(79,220,255,0.55)" : "1px solid rgba(255,255,255,0.14)",
+        border: glowOn ? "1px solid rgba(45,207,190,0.55)" : "1px solid rgba(255,255,255,0.14)",
         boxShadow: glowOn
           ? `
             inset 0 1px 0 rgba(255,255,255,0.12),
-            0 0 18px rgba(79,220,255,0.45)
+            0 0 18px rgba(45,207,190,0.45)
           `
           : `
             inset 0 1px 0 rgba(255,255,255,0.10),
@@ -344,7 +344,7 @@ export default function EntradasTab(props: {
 
             <div className="mt-6 grid grid-cols-2 gap-6">
               <div onMouseEnter={() => setHoverRegField("desc")} onMouseLeave={() => setHoverRegField(null)}>
-                <div className="mb-2 text-[15px] font-semibold" style={{ color: "#4fdcff" }}>
+                <div className="mb-2 text-[15px] font-semibold" style={{ color: "#2DCFBE" }}>
                   Descrição
                 </div>
                 <FieldShell glowOn={hoverRegField === "desc"}>
@@ -353,7 +353,7 @@ export default function EntradasTab(props: {
               </div>
 
               <div onMouseEnter={() => setHoverRegField("valor")} onMouseLeave={() => setHoverRegField(null)}>
-                <div className="mb-2 text-[15px] font-semibold" style={{ color: "#4fdcff" }}>
+                <div className="mb-2 text-[15px] font-semibold" style={{ color: "#2DCFBE" }}>
                   Valor (R$)
                 </div>
                 <FieldShell glowOn={hoverRegField === "valor"}>
@@ -407,7 +407,7 @@ export default function EntradasTab(props: {
                           border-b border-white/5
                           transition-all duration-150
                           hover:bg-white/[0.02]
-                          hover:shadow-[inset_0_0_0_1px_rgba(79,220,255,0.10)]
+                          hover:shadow-[inset_0_0_0_1px_rgba(45,207,190,0.10)]
                           group
                         "
                       >

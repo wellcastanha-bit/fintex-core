@@ -48,7 +48,7 @@ function BarRow({
     >
       <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "flex-start" }}>
         <div style={{ minWidth: 0 }}>
-          <div style={{ color: "#4dd5f8", fontWeight: 950, fontSize: 15 }}>
+          <div style={{ color: "#2DCFBE", fontWeight: 950, fontSize: 15 }}>
             {label}
           </div>
 
@@ -59,7 +59,7 @@ function BarRow({
 
         <div
           style={{
-            color: "#4dd5f8",
+            color: "#2DCFBE",
             fontWeight: 950,
             fontSize: 17,
             lineHeight: "18px",
@@ -78,7 +78,7 @@ function BarRow({
           borderRadius: 999,
           background: "rgba(255,255,255,0.08)",
           overflow: "hidden",
-          border: "1px solid rgba(79,220,255,0.10)",
+          border: "1px solid rgba(45,207,190,0.10)",
         }}
       >
         <div
@@ -86,8 +86,8 @@ function BarRow({
             width: `${w}%`,
             height: "100%",
             background:
-              "linear-gradient(90deg, rgba(79,220,255,0.30) 0%, #4dd5f8 55%, rgba(255,255,255,0.25) 100%)",
-            boxShadow: "0 0 20px rgba(79,220,255,0.18)",
+              "linear-gradient(90deg, rgba(45,207,190,0.30) 0%, #2DCFBE 55%, rgba(255,255,255,0.25) 100%)",
+            boxShadow: "0 0 20px rgba(45,207,190,0.18)",
           }}
         />
       </div>
@@ -104,10 +104,10 @@ export default function RankingPagamentos({ rows }: { rows: RankingPagamentoRow[
       onMouseLeave={() => setOuterHover(false)}
       style={{
         borderRadius: 20,
-        border: "1px solid rgba(79,220,255,0.34)",
+        border: "1px solid rgba(45,207,190,0.34)",
         boxShadow: outerHover
-          ? "0 0 0 1px rgba(79,220,255,0.18), 0 0 52px rgba(79,220,255,0.20), 0 18px 60px rgba(0,0,0,0.62)"
-          : "0 0 0 1px rgba(79,220,255,0.14), 0 0 40px rgba(79,220,255,0.16), 0 18px 60px rgba(0,0,0,0.62)",
+          ? "0 0 0 1px rgba(45,207,190,0.18), 0 0 52px rgba(45,207,190,0.20), 0 18px 60px rgba(0,0,0,0.62)"
+          : "0 0 0 1px rgba(45,207,190,0.14), 0 0 40px rgba(45,207,190,0.16), 0 18px 60px rgba(0,0,0,0.62)",
         background: "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12))",
         backdropFilter: outerHover ? "blur(16px)" : "blur(12px)",
         WebkitBackdropFilter: outerHover ? "blur(16px)" : "blur(12px)",

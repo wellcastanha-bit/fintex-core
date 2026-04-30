@@ -34,10 +34,10 @@ export default function DespesasDetalhadas({ rows }: { rows: DespesaRow[] }) {
       onMouseLeave={() => setOuterHover(false)}
       style={{
         borderRadius: 20,
-        border: "1px solid rgba(79,220,255,0.34)",
+        border: "1px solid rgba(45,207,190,0.34)",
         boxShadow: outerHover
-          ? "0 0 0 1px rgba(79,220,255,0.18), 0 0 52px rgba(79,220,255,0.20), 0 18px 60px rgba(0,0,0,0.62)"
-          : "0 0 0 1px rgba(79,220,255,0.14), 0 0 40px rgba(79,220,255,0.16), 0 18px 60px rgba(0,0,0,0.62)",
+          ? "0 0 0 1px rgba(45,207,190,0.18), 0 0 52px rgba(45,207,190,0.20), 0 18px 60px rgba(0,0,0,0.62)"
+          : "0 0 0 1px rgba(45,207,190,0.14), 0 0 40px rgba(45,207,190,0.16), 0 18px 60px rgba(0,0,0,0.62)",
         background: "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12))",
         backdropFilter: outerHover ? "blur(16px)" : "blur(12px)",
         WebkitBackdropFilter: outerHover ? "blur(16px)" : "blur(12px)",
@@ -126,7 +126,7 @@ function DespesaRowTile({
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <div
               style={{
-                color: "#4dd5f8",
+                color: "#2DCFBE",
                 fontWeight: 950,
                 fontSize: 15,
                 overflow: "hidden",
@@ -144,7 +144,7 @@ function DespesaRowTile({
                 transform: open ? "rotate(180deg)" : "rotate(0deg)",
                 transition: "transform 160ms ease",
                 lineHeight: 1,
-                color: "#4dd5f8",
+                color: "#2DCFBE",
                 flex: "0 0 auto",
               }}
               aria-hidden
@@ -157,7 +157,7 @@ function DespesaRowTile({
           </div>
         </div>
 
-        <div style={{ color: "#4dd5f8", fontWeight: 980, fontSize: 18, whiteSpace: "nowrap", flex: "0 0 auto" }}>
+        <div style={{ color: "#2DCFBE", fontWeight: 980, fontSize: 18, whiteSpace: "nowrap", flex: "0 0 auto" }}>
           {fmtBRL(row.valor)}
         </div>
       </button>

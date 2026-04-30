@@ -37,7 +37,7 @@ export default function MobileShell({
         WebkitOverflowScrolling: "touch",
         overscrollBehaviorY: "none",
         background:
-          "radial-gradient(1200px 700px at 50% -20%, rgba(79,220,255,0.15), transparent 60%)," +
+          "radial-gradient(1200px 700px at 50% -20%, rgba(45,207,190,0.15), transparent 60%)," +
           "linear-gradient(180deg, #041328 0%, #020b18 70%, #020814 100%)",
         color: "rgba(255,255,255,0.92)",
       }}
@@ -60,11 +60,11 @@ export default function MobileShell({
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", gap: 16 }}>
           <Link href="/m/empresas" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
             <Image
-              src="/imagens/logo_fintex.jpeg"
+              src="/imagens/logo_foriv.png"
               alt="Fintex"
-              width={210}
-              height={54}
-              style={{ height: "54px", width: "auto", objectFit: "contain", cursor: "pointer", display: "block" }}
+              width={140}
+              height={36}
+              style={{ height: "36px", width: "auto", objectFit: "contain", cursor: "pointer", display: "block" }}
               priority
             />
           </Link>
@@ -72,7 +72,7 @@ export default function MobileShell({
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 2, textAlign: "right", minWidth: 0 }}>
             <div
               style={{
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: 800,
                 color: "rgba(255,255,255,0.95)",
                 lineHeight: 1.3,
@@ -85,7 +85,7 @@ export default function MobileShell({
             {nomeEmpresa ? (
               <div
                 style={{
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: 800,
                   color: "rgba(255,255,255,0.95)",
                   lineHeight: 1.3,

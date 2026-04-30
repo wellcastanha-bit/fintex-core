@@ -123,10 +123,10 @@ function mapOrderToRow(o: OrdersSourceItem, i: number): Row {
   return out;
 }
 
-const AQUA_SOFT = "rgba(79,220,255,0.22)";
+const AQUA_SOFT = "rgba(45,207,190,0.22)";
 
 const headerStyle = (hover: boolean, width: number): React.CSSProperties => {
-  const borderColor = hover ? "rgba(75,212,246,0.85)" : "rgba(75,212,246,0.55)";
+  const borderColor = hover ? "rgba(45,207,190,0.85)" : "rgba(45,207,190,0.55)";
   return {
     width,
     height: 46,
@@ -139,8 +139,8 @@ const headerStyle = (hover: boolean, width: number): React.CSSProperties => {
     border: `1px solid ${borderColor}`,
     transition: "border 160ms ease, box-shadow 160ms ease",
     userSelect: "none",
-    background: `linear-gradient(180deg, #11586994 0%, #1b5d6d94 40%, #3590a794 100%)`,
-    boxShadow: hover ? "0 0 22px rgba(75,212,246,0.55)" : `0 0 18px ${AQUA_SOFT}`,
+    background: `linear-gradient(180deg, #0d4a4294 0%, #1a7a6e94 40%, #2DCFBE94 100%)`,
+    boxShadow: hover ? "0 0 22px rgba(45,207,190,0.55)" : `0 0 18px ${AQUA_SOFT}`,
   };
 };
 
@@ -188,10 +188,10 @@ export default function UltimosPedidos({
         borderTopLeftRadius: 16,
         borderTopRightRadius: 16,
         overflow: "hidden",
-        border: "1px solid rgba(79,220,255,0.30)",
+        border: "1px solid rgba(45,207,190,0.30)",
         boxShadow: `0 18px 60px rgba(0,0,0,0.55), 0 0 18px ${AQUA_SOFT}`,
         background: `
-          radial-gradient(1200px 320px at 15% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.04) 45%, rgba(79,220,255,0.02) 70%),
+          radial-gradient(1200px 320px at 15% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.04) 45%, rgba(45,207,190,0.02) 70%),
           linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
         `,
       }}
@@ -212,8 +212,8 @@ export default function UltimosPedidos({
                   linear-gradient(
                     180deg,
                     transparent 0%,
-                    rgba(75,212,246,0.28) 48%,
-                    rgba(75,212,246,0.28) 52%,
+                    rgba(45,207,190,0.28) 48%,
+                    rgba(45,207,190,0.28) 52%,
                     transparent 72%
                   )
                 `,

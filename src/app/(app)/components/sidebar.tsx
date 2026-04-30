@@ -9,6 +9,7 @@ import {
   Settings,
   CalendarClock,
   BarChart3,
+  FileBarChart2,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -100,7 +101,7 @@ export default function Sidebar({ isHolding = false }: { isHolding?: boolean }) 
                   ? "rgba(0,182,194,0.22)"
                   : "rgba(255,255,255,0.06)",
                 border: glowOn
-                  ? "1px solid rgba(79,220,255,0.25)"
+                  ? "1px solid rgba(45,207,190,0.25)"
                   : "1px solid rgba(255,255,255,0.08)",
                 boxShadow: active
                   ? "inset 0 0 0 1px rgba(255,255,255,0.10)"
@@ -123,7 +124,7 @@ export default function Sidebar({ isHolding = false }: { isHolding?: boolean }) 
               >
                 <Icon
                   size={28}
-                  color={active || hovered ? "#4fdcff" : "#ffffff"}
+                  color={active || hovered ? "#2DCFBE" : "#ffffff"}
                   style={{
                     transition: "color 160ms ease",
                   }}

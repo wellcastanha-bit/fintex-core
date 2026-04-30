@@ -8,6 +8,7 @@ export type ContextResult = {
   context: Context
   empresaIds: string[]
   nome: string
+  competencia?: string
   isHolding: boolean
 }
 
@@ -40,12 +41,14 @@ export async function requireContext(): Promise<ContextResult> {
     if (!data) redirect('/empresas')
 
     const [configRes, empresaRes] = await Promise.all([
-      admin.from('empresas_config').select('nome_exibicao').eq('empresa_id', context.id).maybeSingle(),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (admin.from('empresas_config') as any).select('nome_exibicao, competencia').eq('empresa_id', context.id).maybeSingle(),
       admin.from('empresas').select('nome').eq('id', context.id).single(),
     ])
 
     const nome = configRes.data?.nome_exibicao ?? empresaRes.data?.nome ?? ''
-    return { user, context, empresaIds: [context.id], nome, isHolding: false }
+    const competencia = configRes.data?.competencia ?? undefined
+    return { user, context, empresaIds: [context.id], nome, competencia, isHolding: false }
   }
 
   const profileRes = await adminFrom(admin, 'profiles')

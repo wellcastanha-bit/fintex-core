@@ -51,7 +51,7 @@ export default function Cliente() {
           radial-gradient(
             900px 200px at 15% -10%,
             rgba(79, 220, 255, 0.12) 0%,
-            rgba(79,220,255,0.06) 35%,
+            rgba(45,207,190,0.06) 35%,
             rgba(79, 220, 255, 0.04) 60%
           ),
           linear-gradient(
@@ -62,18 +62,18 @@ export default function Cliente() {
           )
         `,
         border: cardGlowOn
-          ? "1px solid rgba(79,220,255,0.55)"
+          ? "1px solid rgba(45,207,190,0.55)"
           : "1px solid rgba(79, 220, 255, 0.42)",
         boxShadow: cardGlowOn
           ? `
             0 20px 55px rgba(0,0,0,0.6),
             0 1px 0 rgba(255,255,255,0.08),
-            0 0 26px rgba(79,220,255,0.45)
+            0 0 26px rgba(45,207,190,0.45)
           `
           : `
             0 20px 55px rgba(0,0,0,0.6),
             0 1px 0 rgba(255,255,255,0.08),
-            0 0 18px rgba(79,220,255,0.22)
+            0 0 18px rgba(45,207,190,0.22)
           `,
         transition: "border 160ms ease, box-shadow 160ms ease",
       }}
@@ -92,7 +92,7 @@ export default function Cliente() {
 
       <div
         style={{
-          color: "#4fdcff",
+          color: "#2DCFBE",
           fontWeight: 700,
           fontSize: 17,
           marginBottom: 10,
@@ -124,12 +124,12 @@ export default function Cliente() {
             )
           `,
           border: inputGlowOn
-            ? "1px solid rgba(79,220,255,0.55)"
+            ? "1px solid rgba(45,207,190,0.55)"
             : "1px solid rgba(255,255,255,0.14)",
           boxShadow: inputGlowOn
             ? `
               inset 0 1px 0 rgba(255,255,255,0.12),
-              0 0 18px rgba(79,220,255,0.45)
+              0 0 18px rgba(45,207,190,0.45)
             `
             : `
               inset 0 1px 0 rgba(255,255,255,0.10),
@@ -138,7 +138,7 @@ export default function Cliente() {
           transition: "border 160ms ease, box-shadow 160ms ease",
         }}
       >
-        <User size={24} color="#4fdcff" />
+        <User size={24} color="#2DCFBE" />
 
         <input
           type="text"

@@ -1,7 +1,7 @@
 import React from "react";
 
-export const AQUA = "rgba(79,220,255,0.45)";
-export const AQUA_SOFT = "rgba(79,220,255,0.22)";
+export const AQUA = "rgba(45,207,190,0.45)";
+export const AQUA_SOFT = "rgba(45,207,190,0.22)";
 
 export const GREEN = "rgba(14,212,63,0.55)";
 export const GREEN_SOFT = "rgba(14,212,63,0.22)";
@@ -15,7 +15,7 @@ export function glowBox(on: boolean) {
 }
 
 export const headerFieldStyle = (hover: boolean, totalW: number): React.CSSProperties => {
-  const borderColor = hover ? "rgba(75,212,246,0.85)" : "rgba(75,212,246,0.55)";
+  const borderColor = hover ? "rgba(45,207,190,0.85)" : "rgba(45,207,190,0.55)";
   return {
     width: totalW + 6,
     height: 58,
@@ -34,9 +34,9 @@ export const headerFieldStyle = (hover: boolean, totalW: number): React.CSSPrope
     background: `
       linear-gradient(
         180deg,
-        #115869 0%,
-        #1b5d6d 40%,
-        #3590a7 100%
+        #0d4a42 0%,
+        #1a7a6e 40%,
+        #2DCFBE 100%
       )
     `,
   };
@@ -48,13 +48,13 @@ export const Arrow = ({ tint = "aqua" }: { tint?: "aqua" | "red" | "green" }) =>
       ? "rgba(14,212,63,0.95)"
       : tint === "red"
       ? "rgba(225,11,11,0.95)"
-      : "rgba(79,220,255,0.95)";
+      : "rgba(45,207,190,0.95)";
   const glow =
     tint === "green"
       ? "0 0 16px rgba(14,212,63,0.35)"
       : tint === "red"
       ? "0 0 16px rgba(225,11,11,0.35)"
-      : "0 0 16px rgba(79,220,255,0.35)";
+      : "0 0 16px rgba(45,207,190,0.35)";
   return (
     <span
       aria-hidden
@@ -78,8 +78,8 @@ export const fintexSelectStyleBase: React.CSSProperties = {
   width: "100%",
   height: 38,
   borderRadius: 999,
-  border: "2px solid rgba(79,220,255,0.35)",
-  background: "linear-gradient(180deg, #ffffff 0%, #ffffff 55%, #37a7c2 100%)",
+  border: "2px solid rgba(45,207,190,0.35)",
+  background: "linear-gradient(180deg, #ffffff 0%, #ffffff 55%, #2DCFBE 100%)",
   color: "#0b2c4a",
   fontWeight: 900,
   fontSize: 15,
@@ -90,7 +90,7 @@ export const fintexSelectStyleBase: React.CSSProperties = {
   appearance: "none",
   WebkitAppearance: "none",
   MozAppearance: "none",
-  boxShadow: "0 0 12px rgba(79,220,255,0.18)",
+  boxShadow: "0 0 12px rgba(45,207,190,0.18)",
 };
 
 export const optionStyle: React.CSSProperties = {
@@ -111,21 +111,21 @@ export function pillStyle(tint: "red" | "green" | "aqua", hover: boolean): React
       ? hover ? "rgba(14,212,63,0.85)" : "rgba(14,212,63,0.60)"
       : tint === "red"
       ? hover ? "rgba(225,11,11,0.85)" : "rgba(225,11,11,0.60)"
-      : hover ? "rgba(79,220,255,0.85)" : "rgba(79,220,255,0.60)";
+      : hover ? "rgba(45,207,190,0.85)" : "rgba(45,207,190,0.60)";
 
   const glow =
     tint === "green"
       ? hover ? "0 0 22px rgba(14,212,63,0.35)" : "0 0 14px rgba(14,212,63,0.22)"
       : tint === "red"
       ? hover ? "0 0 22px rgba(225,11,11,0.30)" : "0 0 14px rgba(225,11,11,0.18)"
-      : hover ? "0 0 22px rgba(79,220,255,0.32)" : "0 0 14px rgba(79,220,255,0.20)";
+      : hover ? "0 0 22px rgba(45,207,190,0.32)" : "0 0 14px rgba(45,207,190,0.20)";
 
   const bg =
     tint === "green"
       ? "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.92) 30%, rgba(0, 255, 64, 0.3) 100%)"
       : tint === "red"
       ? "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.92) 30%, rgba(255, 0, 0, 0.3) 100%)"
-      : "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.92) 30%, rgba(0, 204, 255, 0.5) 100%)";
+      : "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.92) 30%, rgba(45,207,190,0.5) 100%)";
 
   return {
     width: "100%",
@@ -169,9 +169,9 @@ export const Stat = ({ label, value }: { label: string; value: string }) => (
       height: 40,
       padding: "0 16px",
       borderRadius: 10,
-      border: "1px solid rgba(79,220,255,0.30)",
+      border: "1px solid rgba(45,207,190,0.30)",
       background: `
-        radial-gradient(700px 160px at 15% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.04) 45%, rgba(79,220,255,0.02) 70%),
+        radial-gradient(700px 160px at 15% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.04) 45%, rgba(45,207,190,0.02) 70%),
         linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 25%, rgba(6,16,37,0.94) 100%)
       `,
       color: "#fff",
@@ -180,7 +180,7 @@ export const Stat = ({ label, value }: { label: string; value: string }) => (
       alignItems: "center",
       gap: 8,
       flexShrink: 0,
-      boxShadow: "0 10px 22px rgba(0,0,0,0.18), 0 0 16px rgba(79,220,255,0.16)",
+      boxShadow: "0 10px 22px rgba(0,0,0,0.18), 0 0 16px rgba(45,207,190,0.16)",
       userSelect: "none",
       whiteSpace: "nowrap",
     }}

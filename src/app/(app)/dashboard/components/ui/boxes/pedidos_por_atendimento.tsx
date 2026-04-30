@@ -22,12 +22,12 @@ function accentMap(accent: AtendimentoRow["accent"]) {
       tag: "rgba(255,255,255,0.80)",
     },
     blue: {
-      bd: "rgba(79,220,255,0.38)",
-      bdHover: "rgba(79,220,255,0.62)",
-      glow: "rgba(79,220,255,0.20)",
+      bd: "rgba(45,207,190,0.38)",
+      bdHover: "rgba(45,207,190,0.62)",
+      glow: "rgba(45,207,190,0.20)",
       innerTop: "rgba(255,255,255,0.08)",
       innerBot: "rgba(0,0,0,0.22)",
-      tag: "rgba(79, 220, 255, 0.96)",
+      tag: "rgba(45, 207, 190, 0.96)",
     },
     orange: {
       bd: "rgba(255,184,77,0.42)",
@@ -151,10 +151,10 @@ export default function PedidosPorAtendimento({ rows }: { rows: AtendimentoRow[]
       onMouseLeave={() => setOuterHover(false)}
       style={{
         borderRadius: 20,
-        border: "1px solid rgba(79,220,255,0.34)",
+        border: "1px solid rgba(45,207,190,0.34)",
         boxShadow: outerHover
-          ? "0 0 0 1px rgba(79,220,255,0.18), 0 0 52px rgba(79,220,255,0.20), 0 18px 60px rgba(0,0,0,0.62)"
-          : "0 0 0 1px rgba(79,220,255,0.14), 0 0 40px rgba(79,220,255,0.16), 0 18px 60px rgba(0,0,0,0.62)",
+          ? "0 0 0 1px rgba(45,207,190,0.18), 0 0 52px rgba(45,207,190,0.20), 0 18px 60px rgba(0,0,0,0.62)"
+          : "0 0 0 1px rgba(45,207,190,0.14), 0 0 40px rgba(45,207,190,0.16), 0 18px 60px rgba(0,0,0,0.62)",
         background: "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12))",
         backdropFilter: outerHover ? "blur(16px)" : "blur(12px)",
         WebkitBackdropFilter: outerHover ? "blur(16px)" : "blur(12px)",

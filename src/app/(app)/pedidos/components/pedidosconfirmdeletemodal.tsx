@@ -21,16 +21,16 @@ export default function PedidosConfirmDeleteModal({ open, busy, onClose, onConfi
         ? "rgba(225,11,11,0.85)"
         : "rgba(225,11,11,0.55)"
       : hover
-      ? "rgba(79,220,255,0.85)"
-      : "rgba(79,220,255,0.55)";
+      ? "rgba(45,207,190,0.85)"
+      : "rgba(45,207,190,0.55)";
 
     const glow = isDanger
       ? hover
         ? "0 0 22px rgba(225,11,11,0.28)"
         : "0 0 18px rgba(225,11,11,0.18)"
       : hover
-      ? "0 0 22px rgba(79,220,255,0.22)"
-      : "0 0 18px rgba(79,220,255,0.14)";
+      ? "0 0 22px rgba(45,207,190,0.22)"
+      : "0 0 18px rgba(45,207,190,0.14)";
 
     return {
       height: 40,
@@ -40,9 +40,9 @@ export default function PedidosConfirmDeleteModal({ open, busy, onClose, onConfi
       border: `1px solid ${border}`,
       background: `
         radial-gradient(700px 140px at 15% -10%,
-          ${isDanger ? "rgba(225,11,11,0.12)" : "rgba(79,220,255,0.10)"} 0%,
-          ${isDanger ? "rgba(225,11,11,0.06)" : "rgba(79,220,255,0.05)"} 40%,
-          rgba(79,220,255,0.02) 70%
+          ${isDanger ? "rgba(225,11,11,0.12)" : "rgba(45,207,190,0.10)"} 0%,
+          ${isDanger ? "rgba(225,11,11,0.06)" : "rgba(45,207,190,0.05)"} 40%,
+          rgba(45,207,190,0.02) 70%
         ),
         linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.94) 100%)
       `,
@@ -108,11 +108,11 @@ export default function PedidosConfirmDeleteModal({ open, busy, onClose, onConfi
           border: "1px solid rgba(225,11,11,0.35)",
           background: `
             radial-gradient(900px 220px at 15% -10%, rgba(225,11,11,0.12) 0%, rgba(225,11,11,0.06) 40%, rgba(225,11,11,0.02) 70%),
-            radial-gradient(1000px 300px at 20% -10%, rgba(79,220,255,0.10) 0%, rgba(79,220,255,0.04) 45%, rgba(79,220,255,0.02) 70%),
+            radial-gradient(1000px 300px at 20% -10%, rgba(45,207,190,0.10) 0%, rgba(45,207,190,0.04) 45%, rgba(45,207,190,0.02) 70%),
             linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 22%, rgba(6,16,37,0.96) 100%)
           `,
           boxShadow:
-            "0 28px 80px rgba(0,0,0,0.65), 0 0 34px rgba(225,11,11,0.20), 0 0 26px rgba(79,220,255,0.10)",
+            "0 28px 80px rgba(0,0,0,0.65), 0 0 34px rgba(225,11,11,0.20), 0 0 26px rgba(45,207,190,0.10)",
         }}
         onMouseDown={(e) => e.stopPropagation()}
       >
