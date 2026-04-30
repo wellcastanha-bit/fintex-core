@@ -43,13 +43,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body>
+      <head>
         <Script
           src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-
-        <Script id="onesignal-init" strategy="afterInteractive">
+        <Script id="onesignal-init" strategy="beforeInteractive">
           {`
             window.OneSignalDeferred = window.OneSignalDeferred || [];
             OneSignalDeferred.push(async function(OneSignal) {
@@ -59,7 +58,8 @@ export default function RootLayout({
             });
           `}
         </Script>
-
+      </head>
+      <body>
         <SwRegister />
         <TapFeedback />
         <LoadingProvider>
