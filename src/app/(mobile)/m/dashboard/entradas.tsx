@@ -231,12 +231,12 @@ function BarRow({
       <div
         style={{
           display: "flex",
-          alignItems: "baseline",
+          alignItems: "flex-start",
           justifyContent: "space-between",
           gap: 12,
         }}
       >
-        <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
+        <div style={{ display: "flex", alignItems: "flex-start", gap: 8, minWidth: 0 }}>
           <span
             style={{
               width: 7,
@@ -245,18 +245,21 @@ function BarRow({
               background: a.dot,
               boxShadow: `0 0 12px ${a.dot}`,
               display: "inline-block",
-              marginTop: 2,
+              flexShrink: 0,
+              marginTop: 4,
             }}
           />
-          <div style={{ fontWeight: 1000, fontSize: 14 }}>{label}</div>
-          {subtitle ? (
-            <div style={{ fontSize: 13, opacity: 0.72, fontWeight: 900 }}>
-              {subtitle}
-            </div>
-          ) : null}
+          <div style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
+            <div style={{ fontWeight: 1000, fontSize: 14 }}>{label}</div>
+            {subtitle ? (
+              <div style={{ fontSize: 13, opacity: 0.72, fontWeight: 900 }}>
+                {subtitle}
+              </div>
+            ) : null}
+          </div>
         </div>
 
-        <div style={{ fontSize: 14, fontWeight: 1000, opacity: 0.9 }}>
+        <div style={{ fontSize: 14, fontWeight: 1000, opacity: 0.9, flexShrink: 0, paddingTop: 1 }}>
           {right}
         </div>
       </div>
