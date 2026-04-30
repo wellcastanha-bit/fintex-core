@@ -7,7 +7,7 @@ import AnimatedMetricValue from "@/components/animated-metric-value";
 const CARD_BG =
   "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))";
 const CARD_INNER = "rgba(2,11,24,0.42)";
-const AQUA_LINE = "rgba(45,207,190,0.18)";
+const AQUA_LINE = "rgba(255,255,255,0.08)";
 
 type Accent = "aqua" | "green" | "yellow" | "red" | "purple";
 
@@ -110,7 +110,7 @@ function GlowCard({
         padding: 14,
         background: CARD_INNER,
         border: `1px solid ${a.line}`,
-        boxShadow: `0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 26px ${a.glow}`,
+        boxShadow: "none",
         ...style,
       }}
     >

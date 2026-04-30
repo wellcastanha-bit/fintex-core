@@ -13,7 +13,7 @@ const BG_PAGE =
 
 const CARD_BG =
   "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))";
-const AQUA_LINE = "rgba(45,207,190,0.18)";
+const AQUA_LINE = "rgba(255,255,255,0.08)";
 
 function pad2(n: number) {
   return String(n).padStart(2, "0");
