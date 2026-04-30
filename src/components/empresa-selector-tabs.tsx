@@ -33,6 +33,7 @@ export default function EmpresaSelectorTabs({
   const showTabs = temEmpresas && temHoldings
 
   const [view, setView] = useState<View>('empresas')
+  const [pressed, setPressed] = useState<string | null>(null)
   const { startLoading } = useDelayedLoading()
 
   const fs = compact ? 15 : 16
@@ -101,7 +102,7 @@ export default function EmpresaSelectorTabs({
       )}
 
       {(!showTabs || view === 'empresas') && temEmpresas && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap, height: '52dvh', overflowY: 'auto', paddingRight: 2 }}>
           {lista.map((acesso) => (
             <form
               key={acesso.empresa_id}
@@ -110,6 +111,9 @@ export default function EmpresaSelectorTabs({
             >
               <button
                 type="submit"
+                onPointerDown={() => setPressed(acesso.empresa_id)}
+                onPointerUp={() => setPressed(null)}
+                onPointerLeave={() => setPressed(null)}
                 style={{
                   width: '100%',
                   padding: '16px 18px',
@@ -123,6 +127,11 @@ export default function EmpresaSelectorTabs({
                   gap: 16,
                   textAlign: 'left',
                   boxShadow: '0 0 0 1px rgba(255,255,255,0.02) inset, 0 10px 28px rgba(0,0,0,0.18)',
+                  transform: pressed === acesso.empresa_id ? 'scale(0.96)' : 'scale(1)',
+                  opacity: pressed === acesso.empresa_id ? 0.78 : 1,
+                  transition: pressed === acesso.empresa_id
+                    ? 'transform 80ms ease, opacity 80ms ease'
+                    : 'transform 220ms cubic-bezier(0.34,1.56,0.64,1), opacity 220ms ease',
                 }}
               >
                 <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: compact ? 4 : 6 }}>
@@ -169,7 +178,7 @@ export default function EmpresaSelectorTabs({
       )}
 
       {(!showTabs || view === 'holdings') && temHoldings && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap, height: '52dvh', overflowY: 'auto', paddingRight: 2 }}>
           {holdings.map((h) => (
             <form
               key={h.id}
@@ -178,6 +187,9 @@ export default function EmpresaSelectorTabs({
             >
               <button
                 type="submit"
+                onPointerDown={() => setPressed(h.id)}
+                onPointerUp={() => setPressed(null)}
+                onPointerLeave={() => setPressed(null)}
                 style={{
                   width: '100%',
                   padding: '16px 18px',
@@ -191,6 +203,11 @@ export default function EmpresaSelectorTabs({
                   gap: 16,
                   textAlign: 'left',
                   boxShadow: '0 0 0 1px rgba(255,255,255,0.02) inset, 0 10px 28px rgba(0,0,0,0.18)',
+                  transform: pressed === h.id ? 'scale(0.96)' : 'scale(1)',
+                  opacity: pressed === h.id ? 0.78 : 1,
+                  transition: pressed === h.id
+                    ? 'transform 80ms ease, opacity 80ms ease'
+                    : 'transform 220ms cubic-bezier(0.34,1.56,0.64,1), opacity 220ms ease',
                 }}
               >
                 <div style={{ minWidth: 0, display: 'flex', flexDirection: 'column', gap: compact ? 4 : 6 }}>

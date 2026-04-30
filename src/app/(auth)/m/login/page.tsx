@@ -10,6 +10,7 @@ export default function MobileLoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [btnPressed, setBtnPressed] = useState(false)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -179,6 +180,9 @@ export default function MobileLoginPage() {
               <button
                 type="submit"
                 disabled={loading}
+                onPointerDown={() => !loading && setBtnPressed(true)}
+                onPointerUp={() => setBtnPressed(false)}
+                onPointerLeave={() => setBtnPressed(false)}
                 style={{
                   height: 52,
                   marginTop: 4,
@@ -193,6 +197,11 @@ export default function MobileLoginPage() {
                   fontWeight: 800,
                   letterSpacing: '0.01em',
                   boxShadow: loading ? 'none' : '0 12px 30px rgba(45,207,190,0.14)',
+                  transform: btnPressed ? 'scale(0.96)' : 'scale(1)',
+                  opacity: btnPressed ? 0.78 : 1,
+                  transition: btnPressed
+                    ? 'transform 80ms ease, opacity 80ms ease'
+                    : 'transform 220ms cubic-bezier(0.34,1.56,0.64,1), opacity 220ms ease',
                 }}
               >
                 {loading ? 'Entrando...' : 'Entrar'}

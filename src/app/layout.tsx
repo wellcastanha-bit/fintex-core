@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import SwRegister from "./sw-register";
 import { LoadingProvider } from "@/lib/loading-store";
 import GlobalLoadingOverlay from "@/components/global-loading-overlay";
+import TapFeedback from "@/components/tap-feedback";
 
 export const metadata: Metadata = {
   title: "Fintex",
@@ -43,6 +44,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <body>
         <SwRegister />
+        <TapFeedback />
         <LoadingProvider>
           <GlobalLoadingOverlay />
           {children}

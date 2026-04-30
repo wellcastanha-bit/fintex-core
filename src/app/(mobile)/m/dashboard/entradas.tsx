@@ -9,7 +9,7 @@ const CARD_BG =
 const CARD_INNER = "rgba(2,11,24,0.42)";
 const AQUA_LINE = "rgba(255,255,255,0.08)";
 
-type Accent = "aqua" | "green" | "yellow" | "red" | "purple";
+type Accent = "aqua" | "green" | "yellow" | "red" | "purple" | "pink";
 
 type ApiRow = { label: string; pedidos: number; valor: number; pct: number; accent?: Accent };
 
@@ -52,6 +52,12 @@ function accentRGB(accent: Accent) {
         line: "rgba(160,120,255,0.35)",
         glow: "rgba(160,120,255,0.14)",
         dot: "rgba(160,120,255,0.95)",
+      };
+    case "pink":
+      return {
+        line: "rgba(255,100,180,0.35)",
+        glow: "rgba(255,100,180,0.14)",
+        dot: "rgba(255,100,180,0.95)",
       };
     default:
       return {
@@ -300,6 +306,7 @@ function mapAccentFromLabel(label: string, kind: "pay" | "plat" | "att"): Accent
   const L = (label || "").toUpperCase();
 
   if (kind === "plat") {
+    if (L.includes("AMO")) return "pink";
     if (L.includes("AIQ")) return "purple";
     if (L.includes("WHATS")) return "green";
     if (L.includes("DELIVERY")) return "yellow";

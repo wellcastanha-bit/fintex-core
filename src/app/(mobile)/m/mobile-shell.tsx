@@ -26,6 +26,44 @@ export default function MobileShell({
     };
   }, []);
 
+  useEffect(() => {
+    const TAGS = new Set(["BUTTON", "A", "SELECT"]);
+
+    function getTarget(e: TouchEvent): HTMLElement | null {
+      let el = e.target as HTMLElement | null;
+      while (el) {
+        if (
+          TAGS.has(el.tagName) ||
+          el.getAttribute("role") === "button" ||
+          el.getAttribute("data-tap") === "true" ||
+          (el.onclick != null && el.tagName !== "DIV") ||
+          el.style?.cursor === "pointer"
+        ) return el;
+        el = el.parentElement;
+      }
+      return null;
+    }
+
+    function onStart(e: TouchEvent) {
+      const el = getTarget(e);
+      if (el) el.classList.add("tap-press");
+    }
+    function onEnd(e: TouchEvent) {
+      const el = getTarget(e);
+      if (el) el.classList.remove("tap-press");
+    }
+
+    document.addEventListener("touchstart", onStart, { passive: true });
+    document.addEventListener("touchend", onEnd, { passive: true });
+    document.addEventListener("touchcancel", onEnd, { passive: true });
+
+    return () => {
+      document.removeEventListener("touchstart", onStart);
+      document.removeEventListener("touchend", onEnd);
+      document.removeEventListener("touchcancel", onEnd);
+    };
+  }, []);
+
   return (
     <EmpresaProvider value={empresaCtx}>
     <div
