@@ -286,8 +286,7 @@ function PedidoCard({
 
           <div
             style={{
-              width: 
-              ,
+              width: 36,
               height: 36,
               borderRadius: 12,
               border: `1px solid ${a.line}`,
