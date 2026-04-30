@@ -51,7 +51,7 @@ function Shell({
         padding: 14,
         background: CARD_BG,
         border: `1px solid ${AQUA_LINE}`,
-        boxShadow: "0 0 0 1px rgba(45,207,190,0.06) inset, 0 26px 70px rgba(0,0,0,0.42)",
+        boxShadow: "none",
         ...style,
       }}
     >
