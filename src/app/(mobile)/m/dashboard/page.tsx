@@ -4,7 +4,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import Entradas from "./entradas";
 import Saidas from "./saidas";
 import CardCaixa from "./conferenciacaixa";
-import RankingPagamentos from "./rankingpagamentos";
 import { resolveTodayBRT } from "@/lib/period";
 import { useEmpresa } from "@/lib/empresa-context";
 import { useLoadingStore } from "@/lib/loading-store";
@@ -349,8 +348,6 @@ export default function MobileDashboardPage() {
         <Entradas api={api} isFatias={isFatias} />
 
         <Saidas api={api} />
-
-        <RankingPagamentos api={api} />
 
         <CardCaixa conf={conf ?? null} />
       </div>
