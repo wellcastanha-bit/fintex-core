@@ -1,4 +1,4 @@
-const CACHE = "fintex-v1";
+const CACHE = "fintex-v2";
 
 self.addEventListener("install", () => {
   self.skipWaiting();
