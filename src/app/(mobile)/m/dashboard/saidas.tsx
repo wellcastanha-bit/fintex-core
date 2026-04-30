@@ -94,7 +94,7 @@ function Shell({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: 12, fontWeight: 1000, opacity: 0.9 }}>
+    <div style={{ fontSize: 14, fontWeight: 1000, opacity: 0.9 }}>
       {children}
     </div>
   );
@@ -165,7 +165,7 @@ function RowCard({
               <div
                 style={{
                   fontWeight: 1000,
-                  fontSize: 13,
+                  fontSize: 15,
                   color: "rgba(255,255,255,0.96)",
                   whiteSpace: "nowrap",
                   flex: "0 0 auto",
@@ -176,7 +176,7 @@ function RowCard({
 
               <div
                 style={{
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: 1000,
                   opacity: 0.9,
                   transform: open ? "rotate(180deg)" : "rotate(0deg)",
@@ -193,7 +193,7 @@ function RowCard({
 
           <div
             style={{
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 1000,
               opacity: 0.92,
               whiteSpace: "nowrap",
@@ -238,7 +238,7 @@ export default function Saidas({ api }: { api: ApiDashboard | null }) {
               borderRadius: 12,
               border: "1px solid rgba(255,255,255,0.08)",
               background: "rgba(0,0,0,0.14)",
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 900,
               opacity: 0.75,
             }}
@@ -273,7 +273,7 @@ export default function Saidas({ api }: { api: ApiDashboard | null }) {
                     <div style={{ minWidth: 0, flex: "1 1 auto" }}>
                       <div
                         style={{
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: 900,
                           opacity: 0.88,
                           overflow: "hidden",
@@ -285,12 +285,12 @@ export default function Saidas({ api }: { api: ApiDashboard | null }) {
                       </div>
                       <div style={{ display: "flex", gap: 6, marginTop: 2, alignItems: "center" }}>
                         {fmtDate(it.data) ? (
-                          <div style={{ fontSize: 10, fontWeight: 800, opacity: 0.5 }}>
+                          <div style={{ fontSize: 12, fontWeight: 800, opacity: 0.5 }}>
                             {fmtDate(it.data)}
                           </div>
                         ) : null}
                         {(it as any).payment_method ? (
-                          <div style={{ fontSize: 10, fontWeight: 800, opacity: 0.6 }}>
+                          <div style={{ fontSize: 12, fontWeight: 800, opacity: 0.6 }}>
                             {PAYMENT_LABEL[(it as any).payment_method] ?? (it as any).payment_method}
                           </div>
                         ) : null}
@@ -298,7 +298,7 @@ export default function Saidas({ api }: { api: ApiDashboard | null }) {
                     </div>
                     <div
                       style={{
-                        fontSize: 12,
+                        fontSize: 14,
                         fontWeight: 1000,
                         opacity: 0.95,
                         whiteSpace: "nowrap",
@@ -312,7 +312,7 @@ export default function Saidas({ api }: { api: ApiDashboard | null }) {
                 <div
                   style={{
                     marginTop: 2,
-                    fontSize: 11,
+                    fontSize: 13,
                     fontWeight: 900,
                     opacity: 0.55,
                     textAlign: "right",
@@ -343,7 +343,7 @@ export default function Saidas({ api }: { api: ApiDashboard | null }) {
           >
             <div
               style={{
-                fontSize: 11,
+                fontSize: 13,
                 fontWeight: 1000,
                 letterSpacing: 0.4,
                 opacity: 0.78,
@@ -356,7 +356,7 @@ export default function Saidas({ api }: { api: ApiDashboard | null }) {
 
             <div
               style={{
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 1100 as any,
                 opacity: 0.96,
                 whiteSpace: "nowrap",

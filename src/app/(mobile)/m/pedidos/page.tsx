@@ -116,7 +116,7 @@ function PageTitleRow({
 }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
-      <div style={{ fontSize: 18, fontWeight: 1000, letterSpacing: 0.2 }}>
+      <div style={{ fontSize: 20, fontWeight: 1000, letterSpacing: 0.2 }}>
         {children}
       </div>
       <div style={{ marginLeft: "auto", minWidth: 0 }}>{right}</div>
@@ -134,7 +134,7 @@ function Badge({ text, accent = "aqua" }: { text: string; accent?: Accent }) {
         border: "none",
         background: "rgba(255,255,255,0.06)",
         color: "rgba(255,255,255,0.92)",
-        fontSize: 11,
+        fontSize: 13,
         fontWeight: 1000,
         letterSpacing: 0.2,
         boxShadow: `0 0 18px ${a.glow}`,
@@ -196,12 +196,12 @@ function FieldRow({ label, value }: { label: string; value: React.ReactNode }) {
         boxShadow: "0 0 0 1px rgba(255,255,255,0.02) inset",
       }}
     >
-      <div style={{ fontSize: 11, fontWeight: 1000, opacity: 0.7 }}>
+      <div style={{ fontSize: 13, fontWeight: 1000, opacity: 0.7 }}>
         {label.toUpperCase()}
       </div>
       <div
         style={{
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 950,
           opacity: 0.92,
           textAlign: "right",
@@ -261,7 +261,7 @@ function PedidoCard({
         >
           <div
             style={{
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 1000,
               letterSpacing: 0.2,
               minWidth: 0,
@@ -275,7 +275,7 @@ function PedidoCard({
 
           <div
             style={{
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 1000,
               opacity: 0.95,
               whiteSpace: "nowrap",
@@ -318,7 +318,7 @@ function PedidoCard({
         >
           <div
             style={{
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: 1000,
               letterSpacing: 0.2,
               minWidth: 0,
@@ -331,7 +331,7 @@ function PedidoCard({
           </div>
 
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
-            <div style={{ fontSize: 11, fontWeight: 950, opacity: 0.75 }}>{p.hora}</div>
+            <div style={{ fontSize: 13, fontWeight: 950, opacity: 0.75 }}>{p.hora}</div>
             <Badge text={p.pagamento} accent={paymentAccent(p.pagamento)} />
           </div>
         </div>
@@ -395,7 +395,7 @@ function PeriodSelect({
 }) {
   return (
     <div style={{ display: "grid", gap: 8, minWidth: 160 }}>
-      <div style={{ fontSize: 11, fontWeight: 950, opacity: 0.75, textAlign: "right" }} />
+      <div style={{ fontSize: 13, fontWeight: 950, opacity: 0.75, textAlign: "right" }} />
       <div style={{ position: "relative" }}>
         <select
           value={value}
@@ -451,7 +451,7 @@ const DATE_INPUT_STYLE: React.CSSProperties = {
   background: "rgba(2,11,24,0.55)",
   color: "rgba(255,255,255,0.92)",
   fontWeight: 1000,
-  fontSize: 13,
+  fontSize: 15,
   letterSpacing: 0.2,
   outline: "none",
   padding: "0 12px",
@@ -620,7 +620,7 @@ export default function MobilePedidosPage() {
         {period === "uma_data" ? (
           <Shell>
             <div style={{ display: "grid", gap: 8 }}>
-              <div style={{ fontSize: 12, fontWeight: 950, opacity: 0.82 }}>
+              <div style={{ fontSize: 14, fontWeight: 950, opacity: 0.82 }}>
                 Selecionar data
               </div>
               <DateInput value={singleDate} onChange={setSingleDate} />
@@ -631,7 +631,7 @@ export default function MobilePedidosPage() {
         {period === "um_periodo" ? (
           <Shell>
             <div style={{ display: "grid", gap: 10 }}>
-              <div style={{ fontSize: 12, fontWeight: 950, opacity: 0.82 }}>
+              <div style={{ fontSize: 14, fontWeight: 950, opacity: 0.82 }}>
                 Selecionar período
               </div>
               <div
@@ -643,14 +643,14 @@ export default function MobilePedidosPage() {
                 }}
               >
                 <div style={{ display: "grid", gap: 6, minWidth: 0 }}>
-                  <div style={{ fontSize: 11, fontWeight: 950, opacity: 0.75 }}>
+                  <div style={{ fontSize: 13, fontWeight: 950, opacity: 0.75 }}>
                     De:
                   </div>
                   <DateInput value={rangeFrom} onChange={setRangeFrom} />
                 </div>
 
                 <div style={{ display: "grid", gap: 6, minWidth: 0 }}>
-                  <div style={{ fontSize: 11, fontWeight: 950, opacity: 0.75 }}>
+                  <div style={{ fontSize: 13, fontWeight: 950, opacity: 0.75 }}>
                     Até:
                   </div>
                   <DateInput value={rangeTo} onChange={setRangeTo} />
@@ -672,7 +672,7 @@ export default function MobilePedidosPage() {
           >
             <div
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 opacity: 0.82,
                 fontWeight: 950,
                 minWidth: 0,
@@ -686,7 +686,7 @@ export default function MobilePedidosPage() {
 
             <div
               style={{
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 1000,
                 opacity: 0.95,
                 whiteSpace: "nowrap",
@@ -698,16 +698,16 @@ export default function MobilePedidosPage() {
           </div>
 
           {isFatias ? (
-            <div style={{ marginTop: 6, fontSize: 11, opacity: 0.82, fontWeight: 950 }}>
+            <div style={{ marginTop: 6, fontSize: 13, opacity: 0.82, fontWeight: 950 }}>
               {`Fatias vendidas: ${totalFatias}`}
             </div>
           ) : null}
-          <div style={{ marginTop: 8, fontSize: 11, opacity: 0.7, fontWeight: 950 }}>
+          <div style={{ marginTop: 8, fontSize: 13, opacity: 0.7, fontWeight: 950 }}>
             {isoToBR(fromISO)} - {isoToBR(toISO)}
           </div>
 
           {loading || err ? (
-            <div style={{ marginTop: 8, fontSize: 11, opacity: 0.7, fontWeight: 900 }}>
+            <div style={{ marginTop: 8, fontSize: 13, opacity: 0.7, fontWeight: 900 }}>
               {loading ? "Carregando..." : `Erro: ${err}`}
             </div>
           ) : null}

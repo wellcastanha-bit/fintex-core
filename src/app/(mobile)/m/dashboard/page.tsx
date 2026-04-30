@@ -72,9 +72,9 @@ function TitleRow({
   return (
     <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
       <div>
-        <div style={{ fontSize: 18, fontWeight: 1000, letterSpacing: 0.2 }}>{title}</div>
+        <div style={{ fontSize: 20, fontWeight: 1000, letterSpacing: 0.2 }}>{title}</div>
         {subtitle ? (
-          <div style={{ marginTop: 6, fontSize: 12, opacity: 0.75, fontWeight: 900 }}>{subtitle}</div>
+          <div style={{ marginTop: 6, fontSize: 14, opacity: 0.75, fontWeight: 900 }}>{subtitle}</div>
         ) : null}
       </div>
       {right ? <div style={{ flex: "0 0 auto" }}>{right}</div> : null}
@@ -162,7 +162,7 @@ const DATE_INPUT_STYLE: React.CSSProperties = {
   background: "rgba(2,11,24,0.55)",
   color: "rgba(255,255,255,0.92)",
   fontWeight: 1000,
-  fontSize: 13,
+  fontSize: 15,
   outline: "none",
   padding: "0 12px",
   boxSizing: "border-box",
@@ -312,7 +312,7 @@ export default function MobileDashboardPage() {
             }
           />
           {err ? (
-            <div style={{ marginTop: 10, fontSize: 11, opacity: 0.7, fontWeight: 900 }}>
+            <div style={{ marginTop: 10, fontSize: 13, opacity: 0.7, fontWeight: 900 }}>
               {`Erro: ${err}`}
             </div>
           ) : null}
@@ -321,7 +321,7 @@ export default function MobileDashboardPage() {
         {period === "uma_data" ? (
           <Shell>
             <div style={{ display: "grid", gap: 8 }}>
-              <div style={{ fontSize: 12, fontWeight: 950, opacity: 0.82 }}>Selecionar data</div>
+              <div style={{ fontSize: 14, fontWeight: 950, opacity: 0.82 }}>Selecionar data</div>
               <DateInput value={singleDate} onChange={setSingleDate} />
             </div>
           </Shell>
@@ -330,14 +330,14 @@ export default function MobileDashboardPage() {
         {period === "um_periodo" ? (
           <Shell>
             <div style={{ display: "grid", gap: 10 }}>
-              <div style={{ fontSize: 12, fontWeight: 950, opacity: 0.82 }}>Selecionar período</div>
+              <div style={{ fontSize: 14, fontWeight: 950, opacity: 0.82 }}>Selecionar período</div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, minWidth: 0 }}>
                 <div style={{ display: "grid", gap: 6, minWidth: 0 }}>
-                  <div style={{ fontSize: 11, fontWeight: 950, opacity: 0.75 }}>De:</div>
+                  <div style={{ fontSize: 13, fontWeight: 950, opacity: 0.75 }}>De:</div>
                   <DateInput value={rangeFrom} onChange={setRangeFrom} />
                 </div>
                 <div style={{ display: "grid", gap: 6, minWidth: 0 }}>
-                  <div style={{ fontSize: 11, fontWeight: 950, opacity: 0.75 }}>Até:</div>
+                  <div style={{ fontSize: 13, fontWeight: 950, opacity: 0.75 }}>Até:</div>
                   <DateInput value={rangeTo} onChange={setRangeTo} />
                 </div>
               </div>

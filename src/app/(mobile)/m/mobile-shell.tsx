@@ -72,7 +72,7 @@ export default function MobileShell({
           <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 2, textAlign: "right", minWidth: 0 }}>
             <div
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: 800,
                 color: "rgba(255,255,255,0.95)",
                 lineHeight: 1.3,
@@ -85,7 +85,7 @@ export default function MobileShell({
             {nomeEmpresa ? (
               <div
                 style={{
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: 800,
                   color: "rgba(255,255,255,0.95)",
                   lineHeight: 1.3,

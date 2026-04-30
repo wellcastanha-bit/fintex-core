@@ -110,7 +110,7 @@ export default async function MobileEmpresasPage() {
             <div style={{ marginBottom: 24 }}>
               <div
                 style={{
-                  fontSize: 24,
+                  fontSize: 26,
                   fontWeight: 800,
                   letterSpacing: '-0.04em',
                   color: '#f8fbff',
@@ -119,7 +119,7 @@ export default async function MobileEmpresasPage() {
               >
                 Selecionar empresa
               </div>
-              <div style={{ fontSize: 13, color: 'rgba(227,236,248,0.62)', lineHeight: 1.6 }}>
+              <div style={{ fontSize: 15, color: 'rgba(227,236,248,0.62)', lineHeight: 1.6 }}>
                 Escolha com qual operação deseja continuar.
               </div>
             </div>

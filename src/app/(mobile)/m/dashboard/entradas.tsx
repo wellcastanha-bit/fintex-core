@@ -87,7 +87,7 @@ function Shell({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: 12, fontWeight: 1000, opacity: 0.9 }}>
+    <div style={{ fontSize: 14, fontWeight: 1000, opacity: 0.9 }}>
       {children}
     </div>
   );
@@ -132,17 +132,17 @@ function TopCard({
 }) {
   return (
     <GlowCard accent={accent} style={{ minHeight: 84 }}>
-      <div style={{ fontSize: 11, fontWeight: 1000, opacity: 0.8 }}>
+      <div style={{ fontSize: 13, fontWeight: 1000, opacity: 0.8 }}>
         {title.toUpperCase()}
       </div>
-      <div style={{ marginTop: 10, fontSize: 18, fontWeight: 1000 }}>
+      <div style={{ marginTop: 10, fontSize: 20, fontWeight: 1000 }}>
         {value}
       </div>
       {sub1 ? (
         <div
           style={{
             marginTop: 8,
-            fontSize: 11,
+            fontSize: 13,
             opacity: 0.78,
             fontWeight: 900,
           }}
@@ -175,7 +175,7 @@ function MiniMetricCard({
           position: "absolute",
           top: 10,
           right: 12,
-          fontSize: 12,
+          fontSize: 14,
           fontWeight: 1000,
           opacity: 0.9,
           color: a.dot,
@@ -195,15 +195,15 @@ function MiniMetricCard({
             display: "inline-block",
           }}
         />
-        <div style={{ fontSize: 11, fontWeight: 1000, opacity: 0.85 }}>
+        <div style={{ fontSize: 13, fontWeight: 1000, opacity: 0.85 }}>
           {title}
         </div>
       </div>
 
-      <div style={{ marginTop: 12, fontSize: 18, fontWeight: 1000 }}>
+      <div style={{ marginTop: 12, fontSize: 20, fontWeight: 1000 }}>
         {value}
       </div>
-      <div style={{ marginTop: 8, fontSize: 11, opacity: 0.78, fontWeight: 900 }}>
+      <div style={{ marginTop: 8, fontSize: 13, opacity: 0.78, fontWeight: 900 }}>
         {sub}
       </div>
     </GlowCard>
@@ -248,15 +248,15 @@ function BarRow({
               marginTop: 2,
             }}
           />
-          <div style={{ fontWeight: 1000, fontSize: 12 }}>{label}</div>
+          <div style={{ fontWeight: 1000, fontSize: 14 }}>{label}</div>
           {subtitle ? (
-            <div style={{ fontSize: 11, opacity: 0.72, fontWeight: 900 }}>
+            <div style={{ fontSize: 13, opacity: 0.72, fontWeight: 900 }}>
               {subtitle}
             </div>
           ) : null}
         </div>
 
-        <div style={{ fontSize: 12, fontWeight: 1000, opacity: 0.9 }}>
+        <div style={{ fontSize: 14, fontWeight: 1000, opacity: 0.9 }}>
           {right}
         </div>
       </div>

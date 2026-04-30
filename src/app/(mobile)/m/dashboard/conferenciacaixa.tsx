@@ -96,7 +96,7 @@ function GlowCard({
     >
       <div
         style={{
-          fontSize: 11,
+          fontSize: 13,
           fontWeight: 1000,
           opacity: 1,
           color: "rgba(255,255,255,0.98)",
@@ -105,7 +105,7 @@ function GlowCard({
         {title.toUpperCase()}
       </div>
 
-      <div style={{ marginTop: 10, fontSize: 18, fontWeight: 1000 }}>
+      <div style={{ marginTop: 10, fontSize: 20, fontWeight: 1000 }}>
         {value}
       </div>
     </div>
@@ -164,7 +164,7 @@ export default function CardCaixa({
           marginBottom: 12,
         }}
       >
-        <div style={{ fontSize: 12, fontWeight: 1000, opacity: 0.9 }}>
+        <div style={{ fontSize: 14, fontWeight: 1000, opacity: 0.9 }}>
           Conferência de Caixa
         </div>
 
@@ -177,7 +177,7 @@ export default function CardCaixa({
             background: statusPalette.bg,
             color: "rgba(255,255,255,0.92)",
             fontWeight: 950,
-            fontSize: 11,
+            fontSize: 13,
             display: "inline-flex",
             alignItems: "center",
             gap: 7,

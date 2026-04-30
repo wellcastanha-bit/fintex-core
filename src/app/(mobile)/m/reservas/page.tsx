@@ -81,7 +81,7 @@ function CardShell({ children, style }: { children: React.ReactNode; style?: Rea
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: 13, fontWeight: 1000, letterSpacing: 0.2, color: "rgba(45,207,190,0.95)" }}>
+    <div style={{ fontSize: 15, fontWeight: 1000, letterSpacing: 0.2, color: "rgba(45,207,190,0.95)" }}>
       {children}
     </div>
   );
@@ -89,7 +89,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ fontSize: 11, fontWeight: 1000, letterSpacing: 0.2, color: "#ffffff" }}>
+    <div style={{ fontSize: 13, fontWeight: 1000, letterSpacing: 0.2, color: "#ffffff" }}>
       {children}
     </div>
   );
@@ -177,7 +177,7 @@ function AquaBtn({
         background: solid ? "rgba(45,207,190,0.12)" : "rgba(255,255,255,0.06)",
         color: "rgba(255,255,255,0.92)",
         fontWeight: 1000,
-        fontSize: 12,
+        fontSize: 14,
         cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.65 : 1,
         ...style,
@@ -234,8 +234,8 @@ function Accordion({ title, subtitle, children, open, setOpen }: {
         }}
       >
         <div>
-          <div style={{ fontSize: 13, fontWeight: 1000, color: "rgba(45,207,190,0.95)" }}>{title}</div>
-          {subtitle ? <div style={{ marginTop: 6, fontSize: 11, opacity: 0.72 }}>{subtitle}</div> : null}
+          <div style={{ fontSize: 15, fontWeight: 1000, color: "rgba(45,207,190,0.95)" }}>{title}</div>
+          {subtitle ? <div style={{ marginTop: 6, fontSize: 13, opacity: 0.72 }}>{subtitle}</div> : null}
         </div>
         <div
           style={{
@@ -445,10 +445,10 @@ export default function MobileReservasPage() {
 
   return (
     <div style={{ display: "grid", gap: 12 }}>
-      <div style={{ fontSize: 18, fontWeight: 1000, letterSpacing: 0.2 }}>Reservas</div>
+      <div style={{ fontSize: 20, fontWeight: 1000, letterSpacing: 0.2 }}>Reservas</div>
 
       {fetchError && (
-        <div style={{ padding: "12px 14px", borderRadius: 14, background: "rgba(255,80,80,0.12)", border: "1px solid rgba(255,80,80,0.35)", color: "rgba(255,140,140,0.95)", fontWeight: 700, fontSize: 12 }}>
+        <div style={{ padding: "12px 14px", borderRadius: 14, background: "rgba(255,80,80,0.12)", border: "1px solid rgba(255,80,80,0.35)", color: "rgba(255,140,140,0.95)", fontWeight: 700, fontSize: 14 }}>
           Erro: {fetchError}
         </div>
       )}
@@ -457,14 +457,14 @@ export default function MobileReservasPage() {
         <SectionTitle>Calendário</SectionTitle>
 
         <div style={{ marginTop: 10, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-          <div style={{ fontSize: 14, fontWeight: 1000, letterSpacing: 0.2 }}>{monthTitlePT(monthRef)}</div>
+          <div style={{ fontSize: 16, fontWeight: 1000, letterSpacing: 0.2 }}>{monthTitlePT(monthRef)}</div>
           <div style={{ display: "flex", gap: 10 }}>
             <SmallBtn onClick={() => setMonthRef((d) => new Date(d.getFullYear(), d.getMonth() - 1, 1))}>◀</SmallBtn>
             <SmallBtn onClick={() => setMonthRef((d) => new Date(d.getFullYear(), d.getMonth() + 1, 1))}>▶</SmallBtn>
           </div>
         </div>
 
-        <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 8, fontSize: 11, fontWeight: 900, opacity: 0.7 }}>
+        <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 8, fontSize: 13, fontWeight: 900, opacity: 0.7 }}>
           {dow.map((x, idx) => <div key={`${x}-${idx}`} style={{ textAlign: "center" }}>{x}</div>)}
         </div>
 
@@ -484,7 +484,7 @@ export default function MobileReservasPage() {
                   border: isSelected ? "1px solid rgba(45,207,190,0.30)" : hasReserva ? "1px solid rgba(45,207,190,0.42)" : "1px solid rgba(45,207,190,0.12)",
                   background: c.day ? isSelected ? "rgba(45,207,190,0.14)" : hasReserva ? "rgba(45,207,190,0.10)" : "rgba(255,255,255,0.05)" : "transparent",
                   color: c.day ? "rgba(255,255,255,0.92)" : "transparent",
-                  fontWeight: 950, fontSize: 12,
+                  fontWeight: 950, fontSize: 14,
                   cursor: c.day ? "pointer" : "default",
                   position: "relative",
                 }}
@@ -507,7 +507,7 @@ export default function MobileReservasPage() {
         <SectionTitle>Reservas do dia: {isoToBR(selectedISO)}</SectionTitle>
 
         {reservasDoDia.length === 0 ? (
-          <div style={{ marginTop: 10, fontSize: 12, opacity: 0.75 }}>Nenhuma reserva nesse dia.</div>
+          <div style={{ marginTop: 10, fontSize: 14, opacity: 0.75 }}>Nenhuma reserva nesse dia.</div>
         ) : (
           <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
             {reservasDoDia.map((r) => {
@@ -522,16 +522,16 @@ export default function MobileReservasPage() {
                   style={{ textAlign: "left", borderRadius: 18, padding: 14, background: "rgba(2,11,24,0.42)", border: `1px solid ${a.line}`, boxShadow: `0 0 26px ${a.glow}`, color: "inherit", cursor: "pointer" }}
                 >
                   <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 12, alignItems: "baseline" }}>
-                    <div style={{ fontSize: 13, fontWeight: 1000 }}>{r.customerName || "—"}</div>
-                    {hasLocacaoValor ? <div style={{ fontSize: 13, fontWeight: 1000, whiteSpace: "nowrap" }}>{fmtBRL(r.value)}</div> : <div />}
+                    <div style={{ fontSize: 15, fontWeight: 1000 }}>{r.customerName || "—"}</div>
+                    {hasLocacaoValor ? <div style={{ fontSize: 15, fontWeight: 1000, whiteSpace: "nowrap" }}>{fmtBRL(r.value)}</div> : <div />}
                   </div>
 
                   <div style={{ marginTop: 10, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, opacity: 0.88 }}>
-                    <div style={{ fontSize: 12, fontWeight: 950 }}>
+                    <div style={{ fontSize: 14, fontWeight: 950 }}>
                       {r.startTime || "—"}{r.endTime ? ` → ${r.endTime}` : ""}{r.table ? ` • Mesa ${r.table}` : ""}{r.people ? ` • ${r.people} pessoas` : ""}
                     </div>
                     {hasLocacaoValor ? (
-                      <div style={{ padding: "6px 10px", borderRadius: 999, border: `1px solid ${a.line}`, background: "rgba(255,255,255,0.06)", fontSize: 11, fontWeight: 1000, whiteSpace: "nowrap" }}>
+                      <div style={{ padding: "6px 10px", borderRadius: 999, border: `1px solid ${a.line}`, background: "rgba(255,255,255,0.06)", fontSize: 13, fontWeight: 1000, whiteSpace: "nowrap" }}>
                         {r.isPaid ? "Pago" : "Pendente"}
                       </div>
                     ) : null}
@@ -539,13 +539,13 @@ export default function MobileReservasPage() {
 
                   {(r.phone || r.notes || r.location) ? (
                     <div style={{ marginTop: 12, display: "grid", gap: 8 }}>
-                      {r.phone ? <div style={{ fontSize: 12 }}><span style={{ fontWeight: 1000, opacity: 0.9 }}>Telefone:</span> {r.phone}</div> : null}
-                      {r.location ? <div style={{ fontSize: 12 }}><span style={{ fontWeight: 1000, opacity: 0.9 }}>Locação:</span> {r.location}</div> : null}
-                      {r.notes ? <div style={{ fontSize: 12 }}><span style={{ fontWeight: 1000, opacity: 0.9 }}>Obs:</span> {r.notes}</div> : null}
+                      {r.phone ? <div style={{ fontSize: 14 }}><span style={{ fontWeight: 1000, opacity: 0.9 }}>Telefone:</span> {r.phone}</div> : null}
+                      {r.location ? <div style={{ fontSize: 14 }}><span style={{ fontWeight: 1000, opacity: 0.9 }}>Locação:</span> {r.location}</div> : null}
+                      {r.notes ? <div style={{ fontSize: 14 }}><span style={{ fontWeight: 1000, opacity: 0.9 }}>Obs:</span> {r.notes}</div> : null}
                     </div>
                   ) : null}
 
-                  <div style={{ marginTop: 10, fontSize: 11, opacity: 0.55 }}>Toque para editar</div>
+                  <div style={{ marginTop: 10, fontSize: 13, opacity: 0.55 }}>Toque para editar</div>
                 </button>
               );
             })}
@@ -640,7 +640,7 @@ export default function MobileReservasPage() {
           {editingId ? (
             confirmDeleteId === editingId ? (
               <div style={{ display: "grid", gap: 8 }}>
-                <div style={{ fontSize: 12, fontWeight: 1000, opacity: 0.85, textAlign: "center" }}>
+                <div style={{ fontSize: 14, fontWeight: 1000, opacity: 0.85, textAlign: "center" }}>
                   Excluir essa reserva?
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>

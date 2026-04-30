@@ -53,7 +53,7 @@ export default function MobileLoginPage() {
               boxShadow: '0 0 0 1px rgba(45,207,190,0.05) inset, 0 18px 60px rgba(0,0,0,0.35)',
             }}
           >
-            <span style={{ fontSize: 30, fontWeight: 800, color: '#f8fbff', letterSpacing: '-0.05em' }}>
+            <span style={{ fontSize: 32, fontWeight: 800, color: '#f8fbff', letterSpacing: '-0.05em' }}>
               Fin<span style={{ color: '#2DCFBE', textShadow: '0 0 18px rgba(45,207,190,0.35)' }}>tex</span>
             </span>
           </div>
@@ -89,7 +89,7 @@ export default function MobileLoginPage() {
                   background: 'rgba(45,207,190,0.08)',
                   border: '1px solid rgba(45,207,190,0.16)',
                   color: '#2DCFBE',
-                  fontSize: 12,
+                  fontSize: 14,
                   fontWeight: 700,
                   letterSpacing: '0.04em',
                   marginBottom: 18,
@@ -100,7 +100,7 @@ export default function MobileLoginPage() {
 
               <div
                 style={{
-                  fontSize: 24,
+                  fontSize: 26,
                   fontWeight: 800,
                   letterSpacing: '-0.04em',
                   color: '#f8fbff',
@@ -110,14 +110,14 @@ export default function MobileLoginPage() {
                 Entrar na plataforma
               </div>
 
-              <div style={{ fontSize: 13, color: 'rgba(227,236,248,0.62)', lineHeight: 1.6 }}>
+              <div style={{ fontSize: 15, color: 'rgba(227,236,248,0.62)', lineHeight: 1.6 }}>
                 Acesse sua operação pelo celular.
               </div>
             </div>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <label style={{ fontSize: 13, fontWeight: 700, color: '#d8e7f5' }}>Email</label>
+                <label style={{ fontSize: 15, fontWeight: 700, color: '#d8e7f5' }}>Email</label>
                 <input
                   type="email"
                   placeholder="seu@email.com"
@@ -127,7 +127,7 @@ export default function MobileLoginPage() {
                   style={{
                     height: 50,
                     padding: '0 16px',
-                    fontSize: 16,
+                    fontSize: 18,
                     color: '#f8fbff',
                     background: 'rgba(3,10,22,0.9)',
                     border: '1px solid rgba(45,207,190,0.12)',
@@ -139,7 +139,7 @@ export default function MobileLoginPage() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <label style={{ fontSize: 13, fontWeight: 700, color: '#d8e7f5' }}>Senha</label>
+                <label style={{ fontSize: 15, fontWeight: 700, color: '#d8e7f5' }}>Senha</label>
                 <input
                   type="password"
                   placeholder="••••••••"
@@ -149,7 +149,7 @@ export default function MobileLoginPage() {
                   style={{
                     height: 50,
                     padding: '0 16px',
-                    fontSize: 16,
+                    fontSize: 18,
                     color: '#f8fbff',
                     background: 'rgba(3,10,22,0.9)',
                     border: '1px solid rgba(45,207,190,0.12)',
@@ -168,7 +168,7 @@ export default function MobileLoginPage() {
                     background: 'rgba(120,22,22,0.18)',
                     border: '1px solid rgba(248,113,113,0.22)',
                     color: '#fca5a5',
-                    fontSize: 13,
+                    fontSize: 15,
                     fontWeight: 600,
                   }}
                 >
@@ -189,7 +189,7 @@ export default function MobileLoginPage() {
                     ? 'linear-gradient(180deg, rgba(21,67,79,0.8) 0%, rgba(10,46,55,0.8) 100%)'
                     : 'linear-gradient(180deg, rgba(45,207,190,0.22) 0%, rgba(20,145,173,0.34) 100%)',
                   color: loading ? 'rgba(210,226,232,0.6)' : '#eaffff',
-                  fontSize: 15,
+                  fontSize: 17,
                   fontWeight: 800,
                   letterSpacing: '0.01em',
                   boxShadow: loading ? 'none' : '0 12px 30px rgba(45,207,190,0.14)',

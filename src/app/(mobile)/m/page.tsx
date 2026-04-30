@@ -47,18 +47,18 @@ function Card({
         </div>
 
         <div style={{ flex: 1 }}>
-          <div style={{ fontWeight: 900, fontSize: 16 }}>
+          <div style={{ fontWeight: 900, fontSize: 18 }}>
             {title}
           </div>
 
-          <div style={{ fontSize: 12, marginTop: 6, opacity: 0.7 }}>
+          <div style={{ fontSize: 14, marginTop: 6, opacity: 0.7 }}>
             {subtitle}
           </div>
 
           <div
             style={{
               marginTop: 14,
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 800,
               display: "flex",
               alignItems: "center",
@@ -122,10 +122,10 @@ export default function MobileHome() {
   return (
     <div>
       <div style={{ marginBottom: 22 }}>
-        <div style={{ fontSize: 20, fontWeight: 900 }}>
+        <div style={{ fontSize: 22, fontWeight: 900 }}>
           Visão rápida
         </div>
-        <div style={{ fontSize: 12, opacity: 0.7, marginTop: 6 }}>
+        <div style={{ fontSize: 14, opacity: 0.7, marginTop: 6 }}>
           Acesso rápido às principais informações.
         </div>
       </div>
