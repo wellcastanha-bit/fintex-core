@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { redirect } from 'next/navigation'
 import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { getContext, type Context } from '@/lib/context'
@@ -24,7 +25,7 @@ async function getHoldingEmpresaIds(holdingId: string): Promise<string[]> {
   return ((data as any[]) ?? []).map((r) => r.empresa_id as string)
 }
 
-export async function requireContext(): Promise<ContextResult> {
+async function requireContextImpl(): Promise<ContextResult> {
   const supabase = await createClient()
 
   const [{ data: { user } }, context] = await Promise.all([
@@ -83,3 +84,5 @@ export async function requireContext(): Promise<ContextResult> {
 
   return { user, context, empresaIds, nome, isHolding: true }
 }
+
+export const requireContext = cache(requireContextImpl)

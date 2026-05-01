@@ -1,10 +1,11 @@
 import React from "react";
+import { cache } from "react";
 import type { Metadata } from "next";
 import { getContext } from "@/lib/context";
 import { createAdminClient } from "@/lib/supabase/server";
 import MobileShell from "./mobile-shell";
 
-async function resolveNome(): Promise<{ nome: string | undefined; isHolding: boolean }> {
+const resolveNome = cache(async (): Promise<{ nome: string | undefined; isHolding: boolean }> => {
   const ctx = await getContext()
   if (!ctx) return { nome: undefined, isHolding: false }
 
@@ -19,7 +20,7 @@ async function resolveNome(): Promise<{ nome: string | undefined; isHolding: boo
   const res = await (admin as any).from('holdings').select('nome').eq('id', ctx.id).single()
   const row = res.data as { nome: string | null } | null
   return { nome: row?.nome ?? undefined, isHolding: true }
-}
+})
 
 export async function generateMetadata(): Promise<Metadata> {
   const { nome, isHolding } = await resolveNome()

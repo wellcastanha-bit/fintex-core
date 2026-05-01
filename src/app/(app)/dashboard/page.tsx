@@ -220,12 +220,9 @@ export default function DashboardPage() {
     </div>
   );
 
-  if (!desbloqueado) {
-    return <LockScreen onUnlock={() => setDesbloqueado(true)} />;
-  }
-
   return (
     <div style={{ width: "100%" }}>
+      {!desbloqueado && <LockScreen onUnlock={() => setDesbloqueado(true)} />}
       <HeaderDashboard
         title="Dashboard"
         subtitle={nomeEmpresa}
@@ -234,7 +231,10 @@ export default function DashboardPage() {
         rightSlot={tabToggle}
       />
       <div>
-        {tab === "DASHBOARD" ? <DashboardView qs={qs} isFatias={isFatias} /> : <RelatorioDetalhadoView />}
+        <div style={{ display: tab === "DASHBOARD" ? "block" : "none" }}>
+          <DashboardView qs={qs} isFatias={isFatias} />
+        </div>
+        {tab === "RELATORIO" && <RelatorioDetalhadoView />}
       </div>
     </div>
   );
