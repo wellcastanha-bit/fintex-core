@@ -14,6 +14,7 @@ function Card({
   return (
     <Link
       href={href}
+      data-tap="true"
       style={{
         display: "block",
         textDecoration: "none",

@@ -253,7 +253,14 @@ export default function MobileDashboardPage() {
   const [_loading, setLoading] = useState(false);
   const [api, setApi] = useState<ApiDashboard | null>(null);
   const [err, setErr] = useState<string>("");
+  const [reloadTick, setReloadTick] = useState(0);
   const { startLoading, stopLoading } = useLoadingStore();
+
+  useEffect(() => {
+    const handler = () => setReloadTick((t) => t + 1);
+    window.addEventListener("fintex:reload", handler);
+    return () => window.removeEventListener("fintex:reload", handler);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -264,7 +271,7 @@ export default function MobileDashboardPage() {
       setErr("");
       startLoading();
       try {
-        const res = await fetch(`/api/dashboard?${queryString}`, { signal: controller.signal });
+        const res = await fetch(`/api/dashboard?${queryString}`, { signal: controller.signal, cache: "no-store" });
         const j = (await res.json()) as ApiDashboard;
         if (!res.ok || !j?.ok) throw new Error(j?.error || `Erro ${res.status}`);
         if (alive) setApi(j);
@@ -285,7 +292,7 @@ export default function MobileDashboardPage() {
       controller.abort();
       stopLoading();
     };
-  }, [queryString, startLoading, stopLoading]);
+  }, [queryString, reloadTick, startLoading, stopLoading]);
 
   const conf = api?.conferencia_caixa;
 

@@ -580,6 +580,12 @@ export default function MobilePedidosPage() {
     return subscribeOrders(empresaId, () => setReloadTick((t) => t + 1));
   }, [empresaId]);
 
+  useEffect(() => {
+    const handler = () => setReloadTick((t) => t + 1);
+    window.addEventListener("fintex:reload", handler);
+    return () => window.removeEventListener("fintex:reload", handler);
+  }, []);
+
   const totalPedidos = pedidos.length;
   const totalValor = useMemo(
     () => pedidos.reduce((acc, p) => acc + (Number(p.valor) || 0), 0),

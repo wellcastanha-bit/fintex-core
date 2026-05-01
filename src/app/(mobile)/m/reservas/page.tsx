@@ -373,6 +373,12 @@ export default function MobileReservasPage() {
     };
   }, []);
 
+  useEffect(() => {
+    const handler = () => reloadRef.current();
+    window.addEventListener("fintex:reload", handler);
+    return () => window.removeEventListener("fintex:reload", handler);
+  }, []);
+
   function limpar() {
     setChegada("19:30"); setSaida(""); setPessoas(""); setMesa("");
     setNome(""); setTelefone(""); setObs(""); setLocacao("");
