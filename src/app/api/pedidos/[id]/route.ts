@@ -28,7 +28,7 @@ export async function PATCH(
     .update(patch)
     .eq('id', id)
     .in('empresa_id', empresaIds)
-    .select()
+    .select('id, status, responsavel, fatias, created_at')
     .single()
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

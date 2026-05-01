@@ -3,8 +3,10 @@ import { requireContext } from '@/lib/require-context'
 import { createAdminClient } from '@/lib/supabase/server'
 import { resolveTodayBRT, opDateRangeUTC } from '@/lib/period'
 import { fetchAll } from '@/lib/paginate'
+import { serverMark, buildServerTiming, perfLog } from '@/lib/perf'
 
 export async function GET(req: NextRequest) {
+  const tTotal = serverMark()
   const { context, empresaIds, isHolding } = await requireContext()
   const dateParam = req.nextUrl.searchParams.get('date')
   const opDate = dateParam && /^\d{4}-\d{2}-\d{2}$/.test(dateParam) ? dateParam : resolveTodayBRT()
@@ -72,7 +74,11 @@ export async function GET(req: NextRequest) {
         ),
       ])
 
-      return NextResponse.json({ ok: true, isHolding: true, op_date: opDate, session: null, entries, pedidos })
+      const totalMs = tTotal()
+      perfLog('caixa-diario (holding)', totalMs)
+      const res = NextResponse.json({ ok: true, isHolding: true, op_date: opDate, session: null, entries, pedidos })
+      res.headers.set('Server-Timing', buildServerTiming({ total: totalMs }))
+      return res
     }
 
     const empresaId = empresaIds[0]
@@ -141,7 +147,9 @@ export async function GET(req: NextRequest) {
 
     if (sessionRes.error) throw new Error(sessionRes.error.message)
 
-    return NextResponse.json({
+    const totalMs = tTotal()
+    perfLog('caixa-diario (empresa)', totalMs)
+    const res = NextResponse.json({
       ok: true,
       isHolding: false,
       op_date: opDate,
@@ -149,6 +157,8 @@ export async function GET(req: NextRequest) {
       entries,
       pedidos,
     })
+    res.headers.set('Server-Timing', buildServerTiming({ total: totalMs }))
+    return res
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : 'Erro interno'
     return NextResponse.json({ error: msg }, { status: 500 })
