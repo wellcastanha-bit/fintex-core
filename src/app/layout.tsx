@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import SwRegister from "./sw-register";
 import { LoadingProvider } from "@/lib/loading-store";
+import TopProgressBar from "@/components/global-loading-overlay";
 
 export const metadata: Metadata = {
   title: "Fintex",
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body>
         <SwRegister />
         <LoadingProvider>
+          <TopProgressBar />
           {children}
         </LoadingProvider>
       </body>
