@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useDelayedLoading } from "@/lib/hooks/use-delayed-loading";
 import { fmtBRL } from "./ui/card_shell";
 import CardsTopo, { type DashboardKpis } from "./ui/boxes/cards_topo";
 import RankingPagamentos, { type RankingPagamentoRow } from "./ui/boxes/ranking_pagamentos";
@@ -165,17 +164,13 @@ const EMPTY: DashboardData = {
 
 export default function DashboardView({ qs = "period=hoje", isFatias = false }: { qs?: string; isFatias?: boolean }) {
   const [data, setData] = useState<DashboardData>(EMPTY)
-  const [loading, setLoading] = useState(true)
   const [fetchError, setFetchError] = useState(false)
-  const { startLoading, stopLoading } = useDelayedLoading()
 
   useEffect(() => {
     const controller = new AbortController()
     let cancelled = false
 
-    setLoading(true)
     setFetchError(false)
-    startLoading()
 
     fetch(`/api/dashboard?${qs}`, { signal: controller.signal })
       .then((r) => {
@@ -191,17 +186,10 @@ export default function DashboardView({ qs = "period=hoje", isFatias = false }: 
         if (cancelled || (err instanceof DOMException && err.name === 'AbortError')) return
         setFetchError(true)
       })
-      .finally(() => {
-        if (!cancelled) {
-          setLoading(false)
-          stopLoading()
-        }
-      })
 
     return () => {
       cancelled = true
       controller.abort()
-      stopLoading()
     }
   }, [qs]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -210,8 +198,6 @@ export default function DashboardView({ qs = "period=hoje", isFatias = false }: 
       style={{
         width: "100%",
         background: "transparent",
-        opacity: loading ? 0.65 : 1,
-        transition: "opacity 200ms ease",
       }}
     >
       {fetchError && (

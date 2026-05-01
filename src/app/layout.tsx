@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import SwRegister from "./sw-register";
 import { LoadingProvider } from "@/lib/loading-store";
-import GlobalLoadingOverlay from "@/components/global-loading-overlay";
 import TapFeedback from "@/components/tap-feedback";
 
 export const metadata: Metadata = {
@@ -45,7 +44,6 @@ export default function RootLayout({
       <body>
         <SwRegister />
         <LoadingProvider>
-          <GlobalLoadingOverlay />
           {children}
         </LoadingProvider>
       </body>
