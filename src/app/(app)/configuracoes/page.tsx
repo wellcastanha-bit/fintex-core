@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useLoadingStore } from "@/lib/loading-store";
 
 import MenuConfig from "./components/menu";
 import Empresa from "./components/empresa";
@@ -49,30 +48,18 @@ export type Configuracoes = {
 
 export default function ConfiguracoesPage() {
   const [active, setActive] = useState<SectionKey>("empresa");
-  const [configuracoes, setConfiguracoes] = useState<Configuracoes | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [configuracoes, setConfiguracoes] = useState<Configuracoes>({ config: null, plataformas: [], pagamentos: [], atendimentos: [], bairros: [] });
   const [erro, setErro] = useState<string | null>(null);
-  const { startLoading, stopLoading } = useLoadingStore();
 
   useEffect(() => {
-    startLoading();
     fetch("/api/configuracoes")
       .then((r) => r.json())
       .then((res) => {
         if (!res.ok) throw new Error(res.error ?? "Erro ao carregar configurações");
         setConfiguracoes(res.data);
       })
-      .catch((e: Error) => setErro(e.message))
-      .finally(() => { setLoading(false); stopLoading(); });
-  }, [startLoading, stopLoading]);
-
-  if (loading) {
-    return (
-      <div style={{ color: "rgba(234,240,255,0.45)", fontWeight: 700, fontSize: 15, padding: 32 }}>
-        Carregando configurações...
-      </div>
-    );
-  }
+      .catch((e: Error) => setErro(e.message));
+  }, []);
 
   if (erro) {
     return (
@@ -92,7 +79,7 @@ export default function ConfiguracoesPage() {
     );
   }
 
-  const data = configuracoes!;
+  const data = configuracoes;
 
   return (
     <>

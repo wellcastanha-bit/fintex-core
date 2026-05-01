@@ -164,12 +164,14 @@ const EMPTY: DashboardData = {
 
 export default function DashboardView({ qs = "period=hoje", isFatias = false }: { qs?: string; isFatias?: boolean }) {
   const [data, setData] = useState<DashboardData>(EMPTY)
+  const [loading, setLoading] = useState(true)
   const [fetchError, setFetchError] = useState(false)
 
   useEffect(() => {
     const controller = new AbortController()
     let cancelled = false
 
+    setLoading(true)
     setFetchError(false)
 
     fetch(`/api/dashboard?${qs}`, { signal: controller.signal })
@@ -186,6 +188,9 @@ export default function DashboardView({ qs = "period=hoje", isFatias = false }: 
         if (cancelled || (err instanceof DOMException && err.name === 'AbortError')) return
         setFetchError(true)
       })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
 
     return () => {
       cancelled = true
@@ -198,6 +203,8 @@ export default function DashboardView({ qs = "period=hoje", isFatias = false }: 
       style={{
         width: "100%",
         background: "transparent",
+        opacity: loading ? 0.6 : 1,
+        transition: "opacity 180ms ease",
       }}
     >
       {fetchError && (

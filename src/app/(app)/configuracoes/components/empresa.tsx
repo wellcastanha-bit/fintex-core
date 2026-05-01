@@ -11,8 +11,7 @@ type EmpresaPerfil = {
 };
 
 export default function Empresa() {
-  const [perfil, setPerfil] = useState<EmpresaPerfil | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [perfil, setPerfil] = useState<EmpresaPerfil>({ nome: null, cnpj: null, telefone: null, endereco: null });
   const [erro, setErro] = useState<string | null>(null);
 
   useEffect(() => {
@@ -22,26 +21,8 @@ export default function Empresa() {
         if (!res.ok) throw new Error(res.error ?? "Erro");
         setPerfil(res.data);
       })
-      .catch(() => setErro("Não foi possível carregar os dados da empresa."))
-      .finally(() => setLoading(false));
+      .catch(() => setErro("Não foi possível carregar os dados da empresa."));
   }, []);
-
-  if (loading) {
-    return (
-      <SectionCard title="Empresa / Loja">
-        <div
-          style={{
-            color: "rgba(234,240,255,0.45)",
-            fontWeight: 700,
-            fontSize: 14,
-            padding: "12px 0",
-          }}
-        >
-          Carregando...
-        </div>
-      </SectionCard>
-    );
-  }
 
   if (erro) {
     return (

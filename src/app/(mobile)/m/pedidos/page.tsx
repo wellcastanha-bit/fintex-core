@@ -5,7 +5,6 @@ import { useEmpresaId } from "@/lib/hooks/use-empresa-id";
 import { subscribeOrders } from "@/lib/realtime";
 import { resolveTodayBRT } from "@/lib/period";
 import { useEmpresa } from "@/lib/empresa-context";
-import { useLoadingStore } from "@/lib/loading-store";
 
 const AQUA_LINE = "rgba(79,220,255,0.18)";
 const CARD_BG =
@@ -525,8 +524,6 @@ export default function MobilePedidosPage() {
 
   const empresaId = useEmpresaId();
   const { isFatias } = useEmpresa();
-  const { startLoading, stopLoading } = useLoadingStore();
-
   const opToday = useMemo(() => resolveTodayBRT(), []);
 
   const [period, setPeriod] = useState<PeriodKey>("hoje");
@@ -563,7 +560,6 @@ export default function MobilePedidosPage() {
     async function load() {
       setLoading(true);
       setErr("");
-      startLoading();
       try {
         const res = await fetch(`/api/pedidos?${queryString}`, { cache: "no-store" });
         const j = await res.json();
@@ -573,12 +569,11 @@ export default function MobilePedidosPage() {
         if (alive) { setPedidos([]); setErr(e?.message || "Erro ao carregar pedidos"); }
       } finally {
         if (alive) setLoading(false);
-        stopLoading();
       }
     }
     load();
-    return () => { alive = false; stopLoading(); };
-  }, [queryString, reloadTick, startLoading, stopLoading]);
+    return () => { alive = false; };
+  }, [queryString, reloadTick]);
 
   useEffect(() => {
     if (!empresaId) return;
@@ -706,14 +701,14 @@ export default function MobilePedidosPage() {
             {isoToBR(fromISO)} - {isoToBR(toISO)}
           </div>
 
-          {loading || err ? (
+          {err ? (
             <div style={{ marginTop: 8, fontSize: 13, opacity: 0.7, fontWeight: 900 }}>
-              {loading ? "Carregando..." : `Erro: ${err}`}
+              {`Erro: ${err}`}
             </div>
           ) : null}
         </Shell>
 
-        <div style={{ display: "grid", gap: 10 }}>
+        <div style={{ display: "grid", gap: 10, opacity: loading ? 0.6 : 1, transition: "opacity 180ms ease" }}>
           {pedidos.map((p) => (
             <PedidoCard
               key={p.id}

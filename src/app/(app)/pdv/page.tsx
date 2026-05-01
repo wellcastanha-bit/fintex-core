@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useLoadingStore } from "@/lib/loading-store";
 
 import Cliente from "./components/cliente";
 import Plataforma from "./components/plataforma";
@@ -42,14 +41,11 @@ export default function Page() {
   const [pagamentos, setPagamentos] = useState<ConfigItem[]>([]);
   const [atendimentos, setAtendimentos] = useState<ConfigItem[]>([]);
   const [bairros, setBairros] = useState<BairroItem[]>([]);
-  const [loadingConfig, setLoadingConfig] = useState(true);
   const [erroConfig, setErroConfig] = useState<string | null>(null);
 
   const [toast, setToast] = useState<{ msg: string; type: ToastType } | null>(null);
-  const { startLoading, stopLoading } = useLoadingStore();
 
   useEffect(() => {
-    startLoading();
     fetch("/api/configuracoes")
       .then((r) => r.json())
       .then((res) => {
@@ -59,9 +55,8 @@ export default function Page() {
         setAtendimentos(res.data.atendimentos ?? []);
         setBairros(res.data.bairros ?? []);
       })
-      .catch((e: Error) => setErroConfig(e.message))
-      .finally(() => { setLoadingConfig(false); stopLoading(); });
-  }, [startLoading, stopLoading]);
+      .catch((e: Error) => setErroConfig(e.message));
+  }, []);
 
   const showToast = useCallback((msg: string, type: ToastType = "error") => {
     setToast({ msg, type });
@@ -92,14 +87,6 @@ export default function Page() {
   const closeCancelModal = useCallback(() => {
     setCancelModal({ open: false });
   }, []);
-
-  if (loadingConfig) {
-    return (
-      <div style={{ color: "rgba(234,240,255,0.45)", fontWeight: 700, fontSize: 15, padding: 32 }}>
-        Carregando PDV...
-      </div>
-    );
-  }
 
   if (erroConfig) {
     return (

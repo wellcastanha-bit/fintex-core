@@ -2,7 +2,6 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import SwRegister from "./sw-register";
 import { LoadingProvider } from "@/lib/loading-store";
-import TapFeedback from "@/components/tap-feedback";
 
 export const metadata: Metadata = {
   title: "Fintex",

@@ -2,7 +2,6 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { useLoadingStore } from "@/lib/loading-store";
 import { resolveTodayBRT } from "@/lib/period";
 
 const EntradasTab = dynamic(() => import("./entradas"), { ssr: false });
@@ -248,7 +247,6 @@ function TabBar({ tab, setTab }: { tab: TabKey; setTab: (k: TabKey) => void }) {
 
 export default function CaixaDiario() {
   const STAT_W = 170;
-  const { startLoading, stopLoading } = useLoadingStore();
 
   const [tab, setTab] = useState<TabKey>("entradas");
   const [dateISO, setDateISO] = useState<string>(() => resolveTodayBRT());
@@ -288,7 +286,6 @@ export default function CaixaDiario() {
 
     async function load() {
       setStatus("loading");
-      startLoading();
       try {
         const res = await fetch(`/api/caixa-diario?date=${encodeURIComponent(dateISO)}`, { cache: "no-store" });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -326,14 +323,12 @@ export default function CaixaDiario() {
       } catch {
         if (!alive) return;
         setStatus("err");
-      } finally {
-        if (alive) stopLoading();
       }
     }
 
     load();
-    return () => { alive = false; stopLoading(); };
-  }, [dateISO, startLoading, stopLoading]);
+    return () => { alive = false; };
+  }, [dateISO]);
 
   const totalsByPay = useMemo(() => {
     const base = { dinheiro: 0, pix: 0, online: 0, debito: 0, credito: 0, total: 0 };
@@ -540,7 +535,7 @@ export default function CaixaDiario() {
       <div className="w-full min-w-0">
         <div className="mb-8">
           <div className="text-[34px] font-extrabold leading-none">Caixa Diário</div>
-          {status === "loading" && <div className="mt-3 text-[13px] text-slate-200/70">Carregando…</div>}
+          {status === "loading" && <div className="mt-3 text-[13px] text-slate-200/60">Carregando…</div>}
           {status === "err" && <div className="mt-3 text-[13px] text-red-300/80">Falha ao carregar o caixa.</div>}
         </div>
 

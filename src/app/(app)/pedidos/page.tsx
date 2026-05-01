@@ -33,16 +33,17 @@ export default function Page() {
     if (!r.ok) throw new Error(`PATCH ${id} falhou: ${r.status}`);
   }
 
-  if (loading) return <div style={{ padding: 14, fontWeight: 900 }}>Carregando...</div>;
   if (error) return <div style={{ padding: 14, fontWeight: 900, color: "#e74c3c" }}>Erro ao carregar pedidos.</div>;
 
   return (
-    <PedidosClient
-      orders={orders}
-      onRequestDelete={onRequestDelete}
-      onPatch={onPatch}
-      filterOperationalDay={true}
-      isFatias={isFatias}
-    />
+    <div style={{ opacity: loading ? 0.6 : 1, transition: "opacity 180ms ease" }}>
+      <PedidosClient
+        orders={orders}
+        onRequestDelete={onRequestDelete}
+        onPatch={onPatch}
+        filterOperationalDay={true}
+        isFatias={isFatias}
+      />
+    </div>
   );
 }
